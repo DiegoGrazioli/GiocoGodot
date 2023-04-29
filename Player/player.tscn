@@ -1,0 +1,90 @@
+[gd_scene load_steps=18 format=3 uid="uid://dd506jl64yl0m"]
+
+[ext_resource type="Script" path="res://Player/player.gd" id="1_7oeyu"]
+[ext_resource type="Texture2D" uid="uid://cola5d4gvjo7u" path="res://assets/Enemies/Guerriera/idle/Warrior_Idle_1.png" id="2_hu4cf"]
+[ext_resource type="Texture2D" uid="uid://j8n2xv8xk857" path="res://assets/Enemies/Guerriera/idle/Warrior_Idle_2.png" id="3_mf1gu"]
+[ext_resource type="Texture2D" uid="uid://dfujwey1ni7em" path="res://assets/Enemies/Guerriera/idle/Warrior_Idle_3.png" id="4_u5frx"]
+[ext_resource type="Texture2D" uid="uid://gp87ejncsb8r" path="res://assets/Enemies/Guerriera/idle/Warrior_Idle_4.png" id="5_03qo4"]
+[ext_resource type="Texture2D" uid="uid://bjsjimcydvqem" path="res://assets/Enemies/Guerriera/idle/Warrior_Idle_5.png" id="6_7fp8l"]
+[ext_resource type="Texture2D" uid="uid://dnpwx1do2oikh" path="res://assets/Enemies/Guerriera/idle/Warrior_Idle_6.png" id="7_1g26e"]
+[ext_resource type="Texture2D" uid="uid://d4knwueqw5eoo" path="res://assets/Enemies/Guerriera/Run/Warrior_Run_1.png" id="8_vx7jp"]
+[ext_resource type="Texture2D" uid="uid://bjn20npsnc5y2" path="res://assets/Enemies/Guerriera/Run/Warrior_Run_2.png" id="9_vvd0h"]
+[ext_resource type="Texture2D" uid="uid://be0r0r10j8rws" path="res://assets/Enemies/Guerriera/Run/Warrior_Run_3.png" id="10_l0uij"]
+[ext_resource type="Texture2D" uid="uid://dh6xykg7m0yk0" path="res://assets/Enemies/Guerriera/Run/Warrior_Run_4.png" id="11_vmqk8"]
+[ext_resource type="Texture2D" uid="uid://be4nx6x2n4ge0" path="res://assets/Enemies/Guerriera/Run/Warrior_Run_5.png" id="12_0qkq7"]
+[ext_resource type="Texture2D" uid="uid://c82mxvcpogg6r" path="res://assets/Enemies/Guerriera/Run/Warrior_Run_6.png" id="13_801e3"]
+[ext_resource type="Texture2D" uid="uid://lmqkdg0lsx6g" path="res://assets/Enemies/Guerriera/Run/Warrior_Run_7.png" id="14_4cngh"]
+[ext_resource type="Texture2D" uid="uid://d1jx50l8p7wbi" path="res://assets/Enemies/Guerriera/Run/Warrior_Run_8.png" id="15_letvd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4kfcp"]
+size = Vector2(20, 33)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ok3hr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hu4cf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_mf1gu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_u5frx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_03qo4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_7fp8l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_1g26e")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_vx7jp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_vvd0h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_l0uij")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_vmqk8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_0qkq7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_801e3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_4cngh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_letvd")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 10.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_7oeyu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5, 4.5)
+shape = SubResource("RectangleShape2D_4kfcp")
+debug_color = Color(0.760784, 0.627451, 0.964706, 0.419608)
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ok3hr")
+animation = &"Walk"
+frame_progress = 0.505933
+
+[node name="Camera2D" type="Camera2D" parent="."]
