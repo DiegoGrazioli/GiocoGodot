@@ -1,13 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://d4ev2npw117j3"]
 
 [ext_resource type="PackedScene" uid="uid://dd506jl64yl0m" path="res://Player/player.tscn" id="1_kmtr7"]
-[ext_resource type="Texture2D" uid="uid://d4knwueqw5eoo" path="res://assets/Enemies/Guerriera/Run/Warrior_Run_1.png" id="2_ya0sk"]
+[ext_resource type="Texture2D" uid="uid://bq018cesxckux" path="res://assets/Enemies/Enemy01/attack01.png" id="2_mb4we"]
 
-[node name="Game" type="Node2D"]
+[node name="Mappa" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_kmtr7")]
 position = Vector2(80, 4)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(6, -5)
-texture = ExtResource("2_ya0sk")
+texture = ExtResource("2_mb4we")
