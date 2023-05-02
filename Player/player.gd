@@ -1,7 +1,7 @@
 extends CharacterBody2D
 var movement = Vector2()
 
-const SPEED = 300.0
+const SPEED = 150.0
 
 var start_attack2 = false #per il secondo attacco
 var dash_accel = 1
@@ -40,14 +40,16 @@ func _physics_process(delta):
 	
 	#dash
 	if Input.is_action_just_pressed("DASH") and $DashCooldown.is_stopped() and velocity != Vector2(0, 0): #se il cooldown è finito e se non è fermo fai il dash
-		dash_accel = 3
+		dash_accel = 2
 		$Sprite2D.play("Dash")
+		
 
 	move_and_slide()
-
+	Globals.dashBarValue = 100 * ($DashCooldown.wait_time - $DashCooldown.time_left)
 
 
 func _on_sprite_2d_animation_finished():
+	
 	if $Sprite2D.animation == "Attack1": #quando finisce di attaccare torna all'animazione standard
 		if start_attack2 == false:
 			$Sprite2D.play("Idle")
@@ -59,3 +61,8 @@ func _on_sprite_2d_animation_finished():
 	elif $Sprite2D.animation == "Dash":
 		$Sprite2D.play("Idle")
 		$DashCooldown.start()
+		
+
+
+func _on_dash_cooldown_timeout():
+	pass

@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://dt5wm13yl83rd"]
+
+[ext_resource type="Script" path="res://ui.gd" id="1_dnx8p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iuiwk"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c680f"]
+bg_color = Color(0.0666667, 0.623529, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_dnx8p")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = 50.0
+offset_top = 10.0
+offset_right = 200.0
+offset_bottom = 37.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_iuiwk")
+theme_override_styles/fill = SubResource("StyleBoxFlat_c680f")
+value = 56.0
+show_percentage = false
