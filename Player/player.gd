@@ -12,7 +12,14 @@ func _physics_process(delta):
 	if $Sprite2D.animation != "Attack1" and $Sprite2D.animation != "Attack2":  #se attacca non si muove
 		movement.x = Input.get_axis("LEFT", "RIGHT")
 		movement.y = Input.get_axis("UP", "DOWN")
-		movement = movement.normalized() #normalizzato yeee (ora funziona)
+		movement = movement.normalized() 				#normalizzato yeee (ora funziona)
+		if movement != Vector2(0, 0): 					#se non metti input il raycast non diventa un punto
+			$RayCast2D.target_position.x = movement.x*16
+			$RayCast2D.target_position.y = movement.y*16
+		if movement.x < 0: 								#risolve errore di dislocazione della CollisionShape quando flippa lo sprite
+			$CollisionShape2D.position.x = 5
+		elif movement.x > 0:
+			$CollisionShape2D.position.x = -5
 		velocity = movement * SPEED * dash_accel
 	else :
 		velocity = Vector2(0, 0)
@@ -43,9 +50,18 @@ func _physics_process(delta):
 		dash_accel = 2
 		$Sprite2D.play("Dash")
 		
-
-	move_and_slide()
+	#per barra dash
 	Globals.dashBarValue = 100 * ($DashCooldown.wait_time - $DashCooldown.time_left)
+	
+	#per interazioni
+	if Input.is_action_just_pressed("INTERACT") and $RayCast2D.is_colliding():
+			var collider = $RayCast2D.get_collider()
+			if collider is Chest and collider.is_closed():
+				collider.open()
+	
+	move_and_slide()
+	
+	
 
 
 func _on_sprite_2d_animation_finished():
