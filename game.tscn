@@ -703,6 +703,18 @@ region_rect = Rect2(38, 36, 20, 24)
 position = Vector2(529, 306)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("7_qp5ag")]
-position = Vector2(887, 349)
+position = Vector2(1317, 462)
+
+[node name="EnemySpawner2" parent="." instance=ExtResource("7_qp5ag")]
+position = Vector2(2650, 1659)
+
+[node name="EnemySpawner3" parent="." instance=ExtResource("7_qp5ag")]
+position = Vector2(3737, 560)
+
+[node name="EnemySpawner5" parent="." instance=ExtResource("7_qp5ag")]
+position = Vector2(305, 2108)
+
+[node name="EnemySpawner4" parent="." instance=ExtResource("7_qp5ag")]
+position = Vector2(3711, 2105)
 
 [editable path="Player"]

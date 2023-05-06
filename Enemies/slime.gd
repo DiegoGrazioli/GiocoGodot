@@ -4,16 +4,22 @@ class_name Enemy
 
 const SPEED = 150.0
 var life = 10
+var makeMove = false
 
 func _ready():
 	pass
 
 
 func _physics_process(delta):
-	
+	if makeMove:
+		move()
 	if life <= 0:
 		$Sprite2D.play("Die")
 		await ($Sprite2D.animation_finished)
+		var number = randi_range(0,100)
+		print(number)
+		if  number == 15:
+			Globals.key += 1
 		queue_free()
 	else: 
 		await ($Sprite2D.animation_finished)
@@ -47,3 +53,36 @@ func _on_area_2d_body_entered(body):
 		$Sprite2D.play("Attack")
 		await $Sprite2D.animation_finished
 		body.hit(2)
+		
+func move():
+	# Set the enemy's speed and rotation speed
+	var speed = 25
+	
+	# Calculate the direction vector towards the player
+	var direction = Globals.playerPos - position
+	direction = direction.normalized()
+	if direction.x > 0:
+		$Sprite2D.flip_h = true
+	else:
+		$Sprite2D.flip_h = false
+	
+	# Calculate the enemy's velocity and rotation
+	var velocity = direction * speed
+	
+	# Move the enemy smoothly
+	var delta = get_process_delta_time()
+	position += velocity * delta
+
+
+
+
+
+
+func _on_area_2d_2_body_entered(body):
+	if body.name == "Player":
+		makeMove = true
+
+
+func _on_area_2d_2_body_exited(body):
+	if body.name == "Player":
+		makeMove = false

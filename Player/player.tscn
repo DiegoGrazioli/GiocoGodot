@@ -184,7 +184,12 @@ shape = SubResource("RectangleShape2D_4kfcp")
 debug_color = Color(0.760784, 0.627451, 0.964706, 0.419608)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
+zoom = Vector2(3, 3)
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+rotation_smoothing_enabled = true
+rotation_smoothing_speed = 10.0
 
 [node name="DashCooldown" type="Timer" parent="."]
 wait_time = 2.0
