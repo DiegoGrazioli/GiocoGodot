@@ -5,6 +5,8 @@ class_name Enemy
 const SPEED = 150.0
 var life = 10
 var makeMove = false
+var posx = 0 
+var posy = 0 
 
 func _ready():
 	pass
@@ -17,7 +19,6 @@ func _physics_process(delta):
 		$Sprite2D.play("Die")
 		await ($Sprite2D.animation_finished)
 		var number = randi_range(0,100)
-		print(number)
 		if  number == 15:
 			Globals.key += 1
 		queue_free()
@@ -59,7 +60,9 @@ func move():
 	var speed = 25
 	
 	# Calculate the direction vector towards the player
-	var direction = Globals.playerPos - position
+	var direction = Vector2.ZERO
+	direction.x = Globals.playerPos.x - (position.x + posx)
+	direction.y = Globals.playerPos.y - (position.y + posy)
 	direction = direction.normalized()
 	if direction.x > 0:
 		$Sprite2D.flip_h = true
