@@ -22,8 +22,7 @@ Globals="*res://Globals.gd"
 
 [display]
 
-window/size/resizable=false
-window/stretch/aspect="ignore"
+window/stretch/mode="canvas_items"
 
 [input]
 

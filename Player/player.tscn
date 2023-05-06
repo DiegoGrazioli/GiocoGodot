@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://dd506jl64yl0m"]
+[gd_scene load_steps=38 format=3 uid="uid://dd506jl64yl0m"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_7oeyu"]
 [ext_resource type="Texture2D" uid="uid://cola5d4gvjo7u" path="res://assets/Enemies/Guerriera/idle/Warrior_Idle_1.png" id="2_hu4cf"]
@@ -34,9 +34,6 @@
 [ext_resource type="Texture2D" uid="uid://ddbthb101bchf" path="res://assets/Enemies/Guerriera/Dash/Warrior_Dash_5.png" id="18_tmrkx"]
 [ext_resource type="Texture2D" uid="uid://doahoh0buasce" path="res://assets/Enemies/Guerriera/Dash/Warrior_Dash_6.png" id="19_ry0hs"]
 [ext_resource type="Texture2D" uid="uid://sex2hc2i6r1" path="res://assets/Enemies/Guerriera/Dash/Warrior_Dash_7.png" id="20_ituuo"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4kfcp"]
-size = Vector2(18, 35)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ok3hr"]
 animations = [{
@@ -165,18 +162,26 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4kfcp"]
+size = Vector2(22.5, 33.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_inhnj"]
+size = Vector2(32, 24)
+
 [node name="Player" type="CharacterBody2D"]
-position = Vector2(5, -5)
+position = Vector2(2.08165e-12, 2.08165e-12)
 script = ExtResource("1_7oeyu")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-5, 5.5)
-shape = SubResource("RectangleShape2D_4kfcp")
-debug_color = Color(0.760784, 0.627451, 0.964706, 0.419608)
-
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2.08165e-12, -2.08165e-12)
 sprite_frames = SubResource("SpriteFrames_ok3hr")
 animation = &"Idle"
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3.25, 4)
+shape = SubResource("RectangleShape2D_4kfcp")
+debug_color = Color(0.760784, 0.627451, 0.964706, 0.419608)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
@@ -190,5 +195,13 @@ position = Vector2(-5, 5)
 scale = Vector2(3, 3)
 target_position = Vector2(0, 16)
 
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="HitBox" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-16, 4)
+shape = SubResource("RectangleShape2D_inhnj")
+
 [connection signal="animation_finished" from="Sprite2D" to="." method="_on_sprite_2d_animation_finished"]
 [connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

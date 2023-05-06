@@ -1,0 +1,123 @@
+[gd_scene load_steps=22 format=3 uid="uid://c5t5ok6c5ygm1"]
+
+[ext_resource type="Script" path="res://Enemies/slime.gd" id="1_145tp"]
+[ext_resource type="Texture2D" uid="uid://cc3s33dys7qs0" path="res://assets/Enemies/Slime/idle/slime-idle-0.png" id="1_tldbb"]
+[ext_resource type="Texture2D" uid="uid://b5qxma48qom2h" path="res://assets/Enemies/Slime/attack/slime-attack-0.png" id="2_f1g4k"]
+[ext_resource type="Texture2D" uid="uid://bwtt61hamcejq" path="res://assets/Enemies/Slime/attack/slime-attack-1.png" id="3_4vpel"]
+[ext_resource type="Texture2D" uid="uid://drfiutvf8pcyr" path="res://assets/Enemies/Slime/attack/slime-attack-2.png" id="4_a6w8r"]
+[ext_resource type="Texture2D" uid="uid://d2xv4armvdxdf" path="res://assets/Enemies/Slime/attack/slime-attack-3.png" id="5_rrr4o"]
+[ext_resource type="Texture2D" uid="uid://dp6i2nsadnj65" path="res://assets/Enemies/Slime/attack/slime-attack-4.png" id="6_ysodq"]
+[ext_resource type="Texture2D" uid="uid://libconvnumdl" path="res://assets/Enemies/Slime/die/slime-die-0.png" id="7_41hpq"]
+[ext_resource type="Texture2D" uid="uid://dlr2ahx3cjg8f" path="res://assets/Enemies/Slime/idle/slime-idle-1.png" id="8_bqfvr"]
+[ext_resource type="Texture2D" uid="uid://cxrnl8yilgaf8" path="res://assets/Enemies/Slime/die/slime-die-1.png" id="8_qitv0"]
+[ext_resource type="Texture2D" uid="uid://jlg4yti544tq" path="res://assets/Enemies/Slime/idle/slime-idle-2.png" id="9_s14u5"]
+[ext_resource type="Texture2D" uid="uid://l8cnhg45n4d8" path="res://assets/Enemies/Slime/die/slime-die-2.png" id="9_xojxd"]
+[ext_resource type="Texture2D" uid="uid://dmt428iwylm0v" path="res://assets/Enemies/Slime/idle/slime-idle-3.png" id="10_4n4gq"]
+[ext_resource type="Texture2D" uid="uid://dbubyc0deyr84" path="res://assets/Enemies/Slime/die/slime-die-3.png" id="10_issdq"]
+[ext_resource type="Texture2D" uid="uid://cjlkgud2t4jks" path="res://assets/Enemies/Slime/hurt/slime-hurt-0.png" id="11_ko1je"]
+[ext_resource type="Texture2D" uid="uid://dogw2ay16yehs" path="res://assets/Enemies/Slime/hurt/slime-hurt-1.png" id="12_8y7vd"]
+[ext_resource type="Texture2D" uid="uid://bela3cwpnkk4l" path="res://assets/Enemies/Slime/hurt/slime-hurt-2.png" id="13_pfkkx"]
+[ext_resource type="Texture2D" uid="uid://bwawp26crs1nh" path="res://assets/Enemies/Slime/hurt/slime-hurt-3.png" id="14_n7x6k"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gvygt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_f1g4k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_4vpel")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_a6w8r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_rrr4o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ysodq")
+}],
+"loop": false,
+"name": &"Attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_41hpq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_qitv0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_xojxd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_issdq")
+}],
+"loop": false,
+"name": &"Die",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_ko1je")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_8y7vd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_pfkkx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_n7x6k")
+}],
+"loop": false,
+"name": &"Hurt",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_tldbb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_bqfvr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_s14u5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_4n4gq")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xpohm"]
+radius = 8.0
+height = 34.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e7rkq"]
+size = Vector2(30, 28)
+
+[node name="Slime" type="CharacterBody2D"]
+script = ExtResource("1_145tp")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_gvygt")
+animation = &"Die"
+autoplay = "Idle"
+
+[node name="HurtBox" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_xpohm")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-15, -2)
+shape = SubResource("RectangleShape2D_e7rkq")
+
+[connection signal="animation_finished" from="Sprite2D" to="." method="_on_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1at8vy1glj0"]
+
+[ext_resource type="Script" path="res://enemy_spawner.gd" id="1_wty45"]
+[ext_resource type="PackedScene" uid="uid://c5t5ok6c5ygm1" path="res://Enemies/slime.tscn" id="2_4i54v"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d8fh7"]
+radius = 308.015
+
+[node name="EnemySpawner" type="Area2D"]
+script = ExtResource("1_wty45")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_d8fh7")
+
+[node name="Slime" parent="." instance=ExtResource("2_4i54v")]
+position = Vector2(5664, 4056)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
