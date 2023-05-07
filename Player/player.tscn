@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dd506jl64yl0m"]
+[gd_scene load_steps=39 format=3 uid="uid://dd506jl64yl0m"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_7oeyu"]
 [ext_resource type="Texture2D" uid="uid://cola5d4gvjo7u" path="res://assets/Enemies/Guerriera/idle/Warrior_Idle_1.png" id="2_hu4cf"]
@@ -168,6 +168,9 @@ size = Vector2(22.5, 33.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_inhnj"]
 size = Vector2(32, 24)
 
+[sub_resource type="Gradient" id="Gradient_vjng3"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 0.960784, 0, 0)
+
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(2.08165e-12, 2.08165e-12)
 script = ExtResource("1_7oeyu")
@@ -205,6 +208,23 @@ target_position = Vector2(0, 16)
 [node name="HitBox" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-16, 4)
 shape = SubResource("RectangleShape2D_inhnj")
+
+[node name="AttackEffect" type="CPUParticles2D" parent="."]
+position = Vector2(2, 21)
+emitting = false
+amount = 256
+lifetime = 1.5
+emission_shape = 3
+emission_rect_extents = Vector2(16, 1)
+direction = Vector2(1, 1)
+gravity = Vector2(0, -64)
+orbit_velocity_min = -0.1
+orbit_velocity_max = 0.1
+damping_max = 6.91
+scale_amount_min = 0.5
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_vjng3")
+hue_variation_max = 0.81
 
 [connection signal="animation_finished" from="Sprite2D" to="." method="_on_sprite_2d_animation_finished"]
 [connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]

@@ -128,6 +128,15 @@ shape = SubResource("RectangleShape2D_e7rkq")
 shape = SubResource("CircleShape2D_nihgp")
 debug_color = Color(0.992157, 0.0117647, 0.262745, 0.419608)
 
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -30.0
+offset_top = -18.0
+offset_right = 170.0
+offset_bottom = 9.0
+scale = Vector2(0.3, 0.3)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+value = 50.0
+
 [connection signal="animation_finished" from="Sprite2D" to="." method="_on_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
