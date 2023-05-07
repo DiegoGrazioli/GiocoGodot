@@ -8,6 +8,8 @@ var makeMove = false
 var posx = 0 
 var posy = 0 
 
+var HIT_PLAYER = false
+
 func _ready():
 	pass
 
@@ -51,10 +53,16 @@ func spawningPosition(r):
 
 func _on_area_2d_body_entered(body):
 	if body.name == "Player":
+		HIT_PLAYER = true
 		$Sprite2D.play("Attack")
 		await $Sprite2D.animation_finished
-		body.hit(2)
+		if HIT_PLAYER:
+			body.hit(2)
 		
+func _on_area_2d_body_exited(body):
+	if body.name == "Player":
+		HIT_PLAYER = false
+
 func move():
 	# Set the enemy's speed and rotation speed
 	var speed = 25
@@ -75,10 +83,6 @@ func move():
 	# Move the enemy smoothly
 	var delta = get_process_delta_time()
 	position += velocity * delta
-
-
-
-
 
 
 func _on_area_2d_2_body_entered(body):

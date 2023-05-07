@@ -9,6 +9,12 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	$ProgressBar.value = Globals.dashBarValue
-	$Label.text = "X: " + str(int(Globals.playerPos.x) / 16) + "  Y: " + str(int(Globals.playerPos.y) / 16)
-	$PlayerLife.value = Globals.life
-	$LabelKey.text = "Keys: " + str(Globals.key)
+	$ColorRect/Label.text = "X: " + str(int(Globals.playerPos.x) / 16) + "  Y: " + str(int(Globals.playerPos.y) / 16)
+	$PlayerLife.value = Globals.life * 100 / Globals.maxHealth
+	$ColorRect2/LabelKey.text = "Keys: " + str(Globals.key)
+
+	$Control/Item/Nome.text = Globals.itemsOwned[Globals.currentItem].nome
+	$Control/Item/Atk.text = str(Globals.itemsOwned[Globals.currentItem].atk)
+	$Control/Item/Speed.text = str(Globals.itemsOwned[Globals.currentItem].speed)
+	$Control/Item/Weight.text = str(Globals.itemsOwned[Globals.currentItem].weight)
+	$Control/Item/Sprite.texture = Globals.itemsOwned[Globals.currentItem].sprite

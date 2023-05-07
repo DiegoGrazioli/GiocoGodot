@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://dd506jl64yl0m" path="res://Player/player.tscn" id="1_kmtr7"]
 [ext_resource type="PackedScene" uid="uid://dt5wm13yl83rd" path="res://ui.tscn" id="3_2g67g"]
 [ext_resource type="Script" path="res://Chest/Chest.gd" id="3_5l8pm"]
-[ext_resource type="Texture2D" uid="uid://crtf7eanptqfl" path="res://assets/World/mana seed seasonal forest sample (summer)/seasonal sample (summer).png" id="3_rdqvu"]
-[ext_resource type="Texture2D" uid="uid://6ghy3y0nurjq" path="res://assets/World/19.07c - Treasure Chests 1.2a/treasure chests.png" id="3_ynfrx"]
+[ext_resource type="Texture2D" uid="uid://ltyijn8hkk58" path="res://assets/World/mana seed seasonal forest sample (summer)/seasonal sample (summer).png" id="3_rdqvu"]
+[ext_resource type="Texture2D" uid="uid://bjx1awcwdsyp4" path="res://assets/World/19.07c - Treasure Chests 1.2a/treasure chests.png" id="3_ynfrx"]
 [ext_resource type="PackedScene" uid="uid://c5t5ok6c5ygm1" path="res://Enemies/slime.tscn" id="6_or5ig"]
 [ext_resource type="PackedScene" uid="uid://c1at8vy1glj0" path="res://enemy_spawner.tscn" id="7_qp5ag"]
 
@@ -700,6 +700,7 @@ region_rect = Rect2(38, 36, 20, 24)
 [node name="UI" parent="." instance=ExtResource("3_2g67g")]
 
 [node name="Slime" parent="." instance=ExtResource("6_or5ig")]
+y_sort_enabled = true
 position = Vector2(529, 306)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("7_qp5ag")]

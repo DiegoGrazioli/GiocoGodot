@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dt5wm13yl83rd"]
+[gd_scene load_steps=6 format=3 uid="uid://dt5wm13yl83rd"]
 
 [ext_resource type="Script" path="res://ui.gd" id="1_dnx8p"]
+[ext_resource type="Texture2D" uid="uid://b0at5t7j7tun2" path="res://assets/Items/swords/rpg_icons49.png" id="2_kbwyc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iuiwk"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -36,9 +37,9 @@ script = ExtResource("1_dnx8p")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 offset_left = 50.0
-offset_top = 10.0
+offset_top = 46.0
 offset_right = 200.0
-offset_bottom = 37.0
+offset_bottom = 73.0
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_styles/background = SubResource("StyleBoxFlat_iuiwk")
 theme_override_styles/fill = SubResource("StyleBoxFlat_c680f")
@@ -46,44 +47,80 @@ value = 56.0
 show_percentage = false
 
 [node name="PlayerLife" type="ProgressBar" parent="."]
-offset_left = 500.0
+offset_left = 50.0
 offset_top = 10.0
-offset_right = 650.0
+offset_right = 200.0
 offset_bottom = 37.0
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_styles/background = SubResource("StyleBoxFlat_iuiwk")
 theme_override_styles/fill = SubResource("StyleBoxFlat_17cku")
-value = 56.0
+value = 100.0
 show_percentage = false
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_left = 973.0
-offset_top = 10.0
-offset_right = 1101.0
-offset_bottom = 50.0
+offset_left = 1016.0
+offset_top = 7.0
+offset_right = 1144.0
+offset_bottom = 47.0
 color = Color(0.137255, 0.137255, 0.137255, 0.494118)
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="ColorRect"]
 modulate = Color(0.0666667, 0.623529, 1, 1)
-offset_left = 995.0
-offset_top = 17.0
-offset_right = 1139.0
-offset_bottom = 50.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 125.0
+offset_bottom = 37.0
 text = "COORDINATES"
+horizontal_alignment = 1
+vertical_alignment = 1
 uppercase = true
 
 [node name="ColorRect2" type="ColorRect" parent="."]
-offset_left = 227.0
-offset_top = 2.0
-offset_right = 355.0
-offset_bottom = 42.0
+offset_left = 226.0
+offset_top = 22.0
+offset_right = 354.0
+offset_bottom = 62.0
 color = Color(0.137255, 0.137255, 0.137255, 0.494118)
 
-[node name="LabelKey" type="Label" parent="."]
+[node name="LabelKey" type="Label" parent="ColorRect2"]
 modulate = Color(0.0666667, 0.623529, 1, 1)
-offset_left = 270.0
-offset_top = 10.0
-offset_right = 414.0
-offset_bottom = 43.0
+offset_right = 128.0
+offset_bottom = 40.0
 text = "Keys"
+horizontal_alignment = 1
+vertical_alignment = 1
 uppercase = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="Item" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 1.0
+offset_top = 225.0
+offset_right = 41.0
+offset_bottom = 329.0
+grow_vertical = 2
+
+[node name="Nome" type="Label" parent="Control/Item"]
+layout_mode = 2
+
+[node name="Sprite" type="Sprite2D" parent="Control/Item"]
+position = Vector2(15, 131.5)
+texture = ExtResource("2_kbwyc")
+
+[node name="Atk" type="Label" parent="Control/Item"]
+layout_mode = 2
+
+[node name="Speed" type="Label" parent="Control/Item"]
+layout_mode = 2
+
+[node name="Weight" type="Label" parent="Control/Item"]
+layout_mode = 2
+text = "f"
