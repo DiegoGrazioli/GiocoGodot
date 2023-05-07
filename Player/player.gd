@@ -51,6 +51,8 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("ATTACK"):
 		
 		if $Sprite2D.animation != "Attack1":
+			$AttackEffect.lifetime = 1
+			$AttackEffect.emitting = true
 			$Sprite2D.play("Attack1", Globals.itemsOwned[Globals.currentItem].speed)
 		else:
 			start_attack2 = true
@@ -98,11 +100,15 @@ func _on_sprite_2d_animation_finished():
 	
 	if $Sprite2D.animation == "Attack1": #quando finisce di attaccare torna all'animazione standard
 		if start_attack2 == false:
+			$AttackEffect.emitting = false
 			$Sprite2D.play("Idle")
 		else:
 			start_attack2 = false
+			$AttackEffect.lifetime = 1
+			$AttackEffect.emitting = true
 			$Sprite2D.play("Attack2", Globals.itemsOwned[Globals.currentItem].speed)
 	elif $Sprite2D.animation == "Attack2":
+		$AttackEffect.emitting = false
 		$Sprite2D.play("Idle")
 	elif $Sprite2D.animation == "Dash":
 		$Sprite2D.play("Idle")

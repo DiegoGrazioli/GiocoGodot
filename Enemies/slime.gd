@@ -1,9 +1,11 @@
 extends CharacterBody2D
 class_name Enemy
 
+#Da fixare colore HealthBar e non-aggiornamento quando c'è l'await
 
 const SPEED = 150.0
-var life = 10
+var life = 10.0
+var max_life = life
 var makeMove = false
 var posx = 0 
 var posy = 0 
@@ -15,6 +17,7 @@ func _ready():
 
 
 func _physics_process(delta):
+	$HealthBar.value = life * 100 / max_life
 	if makeMove:
 		move()
 	if life <= 0:

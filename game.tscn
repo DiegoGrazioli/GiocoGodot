@@ -704,22 +704,27 @@ y_sort_enabled = true
 position = Vector2(529, 306)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("7_qp5ag")]
+position = Vector2(120, 328)
 posx = 1300
 posy = 460
 
 [node name="EnemySpawner2" parent="." instance=ExtResource("7_qp5ag")]
+position = Vector2(244, 2272)
 posx = 2600
 posy = 1650
 
 [node name="EnemySpawner3" parent="." instance=ExtResource("7_qp5ag")]
+position = Vector2(2650, 1670)
 posx = 3700
 posy = 550
 
 [node name="EnemySpawner5" parent="." instance=ExtResource("7_qp5ag")]
+position = Vector2(3896, 528)
 posx = 300
 posy = 2100
 
 [node name="EnemySpawner4" parent="." instance=ExtResource("7_qp5ag")]
+position = Vector2(3829, 2264)
 posx = 3700
 posy = 1100
 

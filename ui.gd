@@ -14,7 +14,7 @@ func _process(delta):
 	$ColorRect2/LabelKey.text = "Keys: " + str(Globals.key)
 
 	$Control/Item/Nome.text = Globals.itemsOwned[Globals.currentItem].nome
-	$Control/Item/Atk.text = str(Globals.itemsOwned[Globals.currentItem].atk)
-	$Control/Item/Speed.text = str(Globals.itemsOwned[Globals.currentItem].speed)
-	$Control/Item/Weight.text = str(Globals.itemsOwned[Globals.currentItem].weight)
+	$Control/Item/Atk.text = "Atk: " + str(Globals.itemsOwned[Globals.currentItem].atk)
+	$Control/Item/Speed.text = "Spd: " + str(Globals.itemsOwned[Globals.currentItem].speed)
+	$Control/Item/Weight.text = "Weight: " + str(Globals.itemsOwned[Globals.currentItem].weight)
 	$Control/Item/Sprite.texture = Globals.itemsOwned[Globals.currentItem].sprite
