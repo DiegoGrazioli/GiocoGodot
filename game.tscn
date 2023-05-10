@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://d4ev2npw117j3"]
+[gd_scene load_steps=13 format=3 uid="uid://d4ev2npw117j3"]
 
 [ext_resource type="PackedScene" uid="uid://dd506jl64yl0m" path="res://Player/player.tscn" id="1_kmtr7"]
 [ext_resource type="PackedScene" uid="uid://dt5wm13yl83rd" path="res://ui.tscn" id="3_2g67g"]
@@ -647,12 +647,30 @@ sources/2 = SubResource("TileSetAtlasSource_b0h3e")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s01o6"]
 size = Vector2(20, 18)
 
+[sub_resource type="Gradient" id="Gradient_0wiat"]
+offsets = PackedFloat32Array(0, 0.662252, 0.980132)
+colors = PackedColorArray(1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Environment" id="Environment_sp7me"]
+background_mode = 3
+glow_enabled = true
+glow_levels/1 = 1.0
+glow_normalized = true
+glow_intensity = 6.28
+glow_strength = 0.07
+glow_bloom = 1.0
+glow_blend_mode = 0
+glow_hdr_threshold = 2.0
+adjustment_brightness = 1.42
+
 [node name="Mappa" type="Node2D"]
 y_sort_enabled = true
 metadata/_edit_horizontal_guides_ = [2516.0]
 metadata/_edit_vertical_guides_ = [4132.0]
 
 [node name="OverWorld" type="TileMap" parent="."]
+light_mask = 2
+visibility_layer = 2
 y_sort_enabled = true
 tile_set = SubResource("TileSet_dtfpn")
 format = 2
@@ -697,6 +715,13 @@ texture = ExtResource("3_ynfrx")
 region_enabled = true
 region_rect = Rect2(38, 36, 20, 24)
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Chest"]
+emission_shape = 3
+emission_rect_extents = Vector2(10, 8)
+gravity = Vector2(0, -16)
+color = Color(3, 3, 3, 1)
+color_ramp = SubResource("Gradient_0wiat")
+
 [node name="UI" parent="." instance=ExtResource("3_2g67g")]
 
 [node name="Slime" parent="." instance=ExtResource("6_or5ig")]
@@ -727,5 +752,11 @@ posy = 2100
 position = Vector2(3829, 2264)
 posx = 3700
 posy = 1100
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_sp7me")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.701961, 0.701961, 0.701961, 1)
 
 [editable path="Player"]

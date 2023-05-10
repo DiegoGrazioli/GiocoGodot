@@ -19,4 +19,4 @@ func open():
 	Globals.itemsOwned.push_back(item)
 	$Closed.visible = false
 	$Opened.visible = true
-	
+	$CPUParticles2D.emitting = false

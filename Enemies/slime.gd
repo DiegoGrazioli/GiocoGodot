@@ -10,6 +10,8 @@ var makeMove = false
 var posx = 0 
 var posy = 0 
 
+var b # body
+
 var HIT_PLAYER = false
 
 func _ready():
@@ -35,6 +37,14 @@ func _physics_process(delta):
 func _on_sprite_2d_animation_finished():
 	if $Sprite2D.animation == "Die":
 		pass
+	elif $Sprite2D.animation == "Hurt":
+		$Sprite2D.modulate = Color(1, 1, 1)
+		$Sprite2D.play("Idle")
+	elif $Sprite2D.animation == "Attack":
+		$Sprite2D.modulate = Color(1, 1, 1)
+		$Sprite2D.play("Idle")
+		if HIT_PLAYER:
+			b.hit(2)
 
 func hit(value, dir):
 	position.x += 10 * dir
@@ -43,8 +53,9 @@ func hit(value, dir):
 	else:
 		$Sprite2D.flip_h = true
 	if life - value > 0:
+		$Sprite2D.modulate = Color(5, 1, 1)
 		$Sprite2D.play("Hurt")
-		await $Sprite2D.animation_finished
+		
 	life -= value
 	
 func spawningPosition(r):
@@ -55,12 +66,14 @@ func spawningPosition(r):
 
 
 func _on_area_2d_body_entered(body):
+	b = body
 	if body.name == "Player":
 		HIT_PLAYER = true
 		$Sprite2D.play("Attack")
+		$Sprite2D.modulate = Color(2, 2, 2)
 		await $Sprite2D.animation_finished
-		if HIT_PLAYER:
-			body.hit(2)
+		#if HIT_PLAYER:
+		#	body.hit(2)
 		
 func _on_area_2d_body_exited(body):
 	if body.name == "Player":
@@ -68,7 +81,7 @@ func _on_area_2d_body_exited(body):
 
 func move():
 	# Set the enemy's speed and rotation speed
-	var speed = 25
+	var speed = 50
 	
 	# Calculate the direction vector towards the player
 	var direction = Vector2.ZERO

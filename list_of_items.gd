@@ -20,7 +20,7 @@ var pugnale_rotto_di_rame = {
 	nome = "Pugnale rotto di rame",
 	atk = 0.2,
 	speed = 2.0,
-	weight = 0.75,
+	weight = 0.65,
 	sprite = preload("res://assets/Items/swords/rpg_icons58.png")
 }
 
