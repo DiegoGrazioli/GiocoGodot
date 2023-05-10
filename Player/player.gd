@@ -48,14 +48,20 @@ func _physics_process(delta):
 		dash_accel = 1
 	
 	#attacco
-	if Input.is_action_just_pressed("ATTACK"):
+	#if Input.is_action_just_pressed("ATTACK"):
 		
-		if $Sprite2D.animation != "Attack1":
-			$AttackEffect.lifetime = 1
-			$AttackEffect.emitting = true
-			$Sprite2D.play("Attack1", Globals.itemsOwned[Globals.currentItem].speed)
-		else:
-			start_attack2 = true
+	#	if $Sprite2D.animation != "Attack1":
+	#		$AttackEffect.lifetime = 1
+	#		$AttackEffect.emitting = true
+	#		$Sprite2D.play("Attack1", Globals.itemsOwned[Globals.currentItem].speed)
+	#	else:
+	#		start_attack2 = true
+	#	await ($Sprite2D.animation_finished)
+	#	for e in enemies:
+	#			if $Area2D/HitBox.position.x > 0:
+	#				e.hit(atk * Globals.itemsOwned[Globals.currentItem].atk, 1)
+	#			else :
+	#				e.hit(atk * Globals.itemsOwned[Globals.currentItem].atk, -1)
 				
 	#dash
 	if Input.is_action_just_pressed("DASH") and $DashCooldown.is_stopped() and velocity != Vector2(0, 0): #se il cooldown è finito e se non è fermo fai il dash
@@ -115,12 +121,20 @@ func _on_sprite_2d_animation_finished():
 		$Sprite2D.play("Idle")
 		$DashCooldown.start()
 	elif $Sprite2D.animation == "Hurt":
-		$Sprite2D.modulate = Color(1.25, 1.25, 1.25)
+		$Sprite2D.modulate = Color(1, 1, 1)
 		$Sprite2D.play("Idle")
 		
 func _on_dash_cooldown_timeout():
 	pass
 
+func _unhandled_input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("ATTACK"):
+		if $Sprite2D.animation != "Attack1":
+			$AttackEffect.lifetime = 1
+			$AttackEffect.emitting = true
+			$Sprite2D.play("Attack1", Globals.itemsOwned[Globals.currentItem].speed)
+		else:
+			start_attack2 = true
 
 func _on_area_2d_body_entered(body):
 	if body is Enemy:
@@ -134,5 +148,5 @@ func hit(value):
 	life -= value
 	if life <= 0:
 		pass
+	$Sprite2D.modulate = Color(5, 1, 1)
 	$Sprite2D.play("Hurt")
-	$Sprite2D.modulate = Color(10, 1.25, 1.25)

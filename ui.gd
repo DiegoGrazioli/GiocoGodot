@@ -18,6 +18,6 @@ func _process(delta):
 	$Control/Item/Speed.text = "Spd: " + str(Globals.itemsOwned[Globals.currentItem].speed)
 	$Control/Item/Weight.text = "Weight: " + str(Globals.itemsOwned[Globals.currentItem].weight)
 	$Control/Item/Sprite.texture = Globals.itemsOwned[Globals.currentItem].sprite
-
-	if $ProgressBar.value > 99 and $ProgressBar.value != 100:
-		$AnimationPlayer.play("new_animation")
+	
+	if $ProgressBar.value > 98 and $ProgressBar.value != 100:
+		$AnimationPlayer.play("ProgBarBlink")

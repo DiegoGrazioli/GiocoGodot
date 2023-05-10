@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name Enemy
 
+#Da fixare colore HealthBar e non-aggiornamento quando c'è l'await
+
 const SPEED = 150.0
 var life = 10.0
 var max_life = life
@@ -8,7 +10,7 @@ var makeMove = false
 var posx = 0 
 var posy = 0 
 
-var b
+var b # body
 
 var HIT_PLAYER = false
 
@@ -22,13 +24,18 @@ func _physics_process(delta):
 		move()
 	if life <= 0:
 		$Sprite2D.play("Die")
+		await ($Sprite2D.animation_finished)
 		var number = randi_range(0,100)
 		if  number == 15:
 			Globals.key += 1
+		queue_free()
+	else: 
+		await ($Sprite2D.animation_finished)
+		$Sprite2D.play("Idle")
+
 
 func _on_sprite_2d_animation_finished():
 	if $Sprite2D.animation == "Die":
-		queue_free()
 		pass
 	elif $Sprite2D.animation == "Hurt":
 		$Sprite2D.modulate = Color(1, 1, 1)
@@ -46,8 +53,9 @@ func hit(value, dir):
 	else:
 		$Sprite2D.flip_h = true
 	if life - value > 0:
-		$Sprite2D.modulate = Color(10, 1, 1)
+		$Sprite2D.modulate = Color(5, 1, 1)
 		$Sprite2D.play("Hurt")
+		
 	life -= value
 	
 func spawningPosition(r):
@@ -58,11 +66,14 @@ func spawningPosition(r):
 
 
 func _on_area_2d_body_entered(body):
+	b = body
 	if body.name == "Player":
 		HIT_PLAYER = true
 		$Sprite2D.play("Attack")
 		$Sprite2D.modulate = Color(2, 2, 2)
-		b = body
+		await $Sprite2D.animation_finished
+		#if HIT_PLAYER:
+		#	body.hit(2)
 		
 func _on_area_2d_body_exited(body):
 	if body.name == "Player":
@@ -70,7 +81,7 @@ func _on_area_2d_body_exited(body):
 
 func move():
 	# Set the enemy's speed and rotation speed
-	var speed = 25
+	var speed = 50
 	
 	# Calculate the direction vector towards the player
 	var direction = Vector2.ZERO
