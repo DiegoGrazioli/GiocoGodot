@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://ui.gd" id="1_dnx8p"]
 [ext_resource type="Texture2D" uid="uid://b0at5t7j7tun2" path="res://assets/Items/swords/rpg_icons49.png" id="2_kbwyc"]
-[ext_resource type="FontFile" uid="uid://dehppjcpxlen5" path="res://assets/Fonts/Peaberry-Base.otf" id="2_nw3xv"]
+[ext_resource type="FontFile" uid="uid://dehppjcpxlen5" path="res://assets/Fonts/Peaberry-Base.otf" id="2_l8net"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iuiwk"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -33,7 +33,54 @@ border_width_bottom = 2
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 
-[sub_resource type="Animation" id="Animation_i2buj"]
+[sub_resource type="Animation" id="Animation_22my7"]
+resource_name = "new_animation"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ProgressBar:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(10, -0.25, 0, 0.1, -6, 1, -0.1, 1, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ProgressBar:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(10, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ProgressBar:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(10, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ProgressBar:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+
+[sub_resource type="Animation" id="Animation_0qqim"]
 length = 0.001
 tracks/0/type = "bezier"
 tracks/0/imported = false
@@ -80,57 +127,10 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0)
 }
 
-[sub_resource type="Animation" id="Animation_4c180"]
-resource_name = "ProgBarBlink"
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ProgressBar:modulate:r")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(10, -0.25, 0, 0.2, -6.5, 1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.5)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ProgressBar:modulate:g")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(10, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.5)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("ProgressBar:modulate:b")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(10, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.5)
-}
-tracks/3/type = "bezier"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("ProgressBar:modulate:a")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.5)
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_nrxdt"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iajjj"]
 _data = {
-"ProgBarBlink": SubResource("Animation_4c180"),
-"RESET": SubResource("Animation_i2buj")
+"RESET": SubResource("Animation_0qqim"),
+"new_animation": SubResource("Animation_22my7")
 }
 
 [node name="UI" type="CanvasLayer"]
@@ -172,7 +172,7 @@ offset_left = 3.0
 offset_top = 3.0
 offset_right = 125.0
 offset_bottom = 37.0
-theme_override_fonts/font = ExtResource("2_nw3xv")
+theme_override_fonts/font = ExtResource("2_l8net")
 text = "COORDINATES"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -190,7 +190,7 @@ modulate = Color(0.0666667, 0.623529, 1, 1)
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 40.0
-theme_override_fonts/font = ExtResource("2_nw3xv")
+theme_override_fonts/font = ExtResource("2_l8net")
 text = "Keys"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -215,26 +215,26 @@ grow_vertical = 2
 
 [node name="Nome" type="Label" parent="Control/Item"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_nw3xv")
+theme_override_fonts/font = ExtResource("2_l8net")
 
 [node name="Sprite" type="Sprite2D" parent="Control/Item"]
-position = Vector2(16, 109)
+position = Vector2(15, 116)
 texture = ExtResource("2_kbwyc")
 
 [node name="Atk" type="Label" parent="Control/Item"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_nw3xv")
+theme_override_fonts/font = ExtResource("2_l8net")
 
 [node name="Speed" type="Label" parent="Control/Item"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_nw3xv")
+theme_override_fonts/font = ExtResource("2_l8net")
 
 [node name="Weight" type="Label" parent="Control/Item"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_nw3xv")
+theme_override_fonts/font = ExtResource("2_l8net")
 text = "f"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_nrxdt")
+"": SubResource("AnimationLibrary_iajjj")
 }

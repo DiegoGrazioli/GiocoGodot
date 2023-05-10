@@ -34,10 +34,10 @@
 [ext_resource type="Texture2D" uid="uid://ddbthb101bchf" path="res://assets/Enemies/Guerriera/Dash/Warrior_Dash_5.png" id="18_tmrkx"]
 [ext_resource type="Texture2D" uid="uid://doahoh0buasce" path="res://assets/Enemies/Guerriera/Dash/Warrior_Dash_6.png" id="19_ry0hs"]
 [ext_resource type="Texture2D" uid="uid://sex2hc2i6r1" path="res://assets/Enemies/Guerriera/Dash/Warrior_Dash_7.png" id="20_ituuo"]
-[ext_resource type="Texture2D" uid="uid://b1glgdf6g78c" path="res://assets/Enemies/Guerriera/Hurt-Effect/Warrior_hurt_1.png" id="21_movns"]
-[ext_resource type="Texture2D" uid="uid://dachksulejigh" path="res://assets/Enemies/Guerriera/Hurt-Effect/Warrior_hurt_2.png" id="22_4vy44"]
-[ext_resource type="Texture2D" uid="uid://85der840pl73" path="res://assets/Enemies/Guerriera/Hurt-Effect/Warrior_hurt_3.png" id="23_t0xbd"]
-[ext_resource type="Texture2D" uid="uid://dr16p3xu6weil" path="res://assets/Enemies/Guerriera/Hurt-Effect/Warrior_hurt_4.png" id="24_f5c3k"]
+[ext_resource type="Texture2D" uid="uid://b1glgdf6g78c" path="res://assets/Enemies/Guerriera/Hurt-Effect/Warrior_hurt_1.png" id="21_qw4so"]
+[ext_resource type="Texture2D" uid="uid://dachksulejigh" path="res://assets/Enemies/Guerriera/Hurt-Effect/Warrior_hurt_2.png" id="22_bsrtu"]
+[ext_resource type="Texture2D" uid="uid://85der840pl73" path="res://assets/Enemies/Guerriera/Hurt-Effect/Warrior_hurt_3.png" id="23_4emr2"]
+[ext_resource type="Texture2D" uid="uid://dr16p3xu6weil" path="res://assets/Enemies/Guerriera/Hurt-Effect/Warrior_hurt_4.png" id="24_ch0xc"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ok3hr"]
 animations = [{
@@ -115,16 +115,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("21_movns")
+"texture": ExtResource("21_qw4so")
 }, {
 "duration": 1.0,
-"texture": ExtResource("22_4vy44")
+"texture": ExtResource("22_bsrtu")
 }, {
 "duration": 1.0,
-"texture": ExtResource("23_t0xbd")
+"texture": ExtResource("23_4emr2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("24_f5c3k")
+"texture": ExtResource("24_ch0xc")
 }],
 "loop": false,
 "name": &"Hurt",
@@ -187,7 +187,7 @@ animations = [{
 size = Vector2(22.5, 33.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_inhnj"]
-size = Vector2(32, 35)
+size = Vector2(32, 24)
 
 [sub_resource type="Gradient" id="Gradient_vjng3"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 0.960784, 0, 0)
@@ -197,7 +197,6 @@ position = Vector2(2.08165e-12, 2.08165e-12)
 script = ExtResource("1_7oeyu")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
-modulate = Color(1.25, 1.25, 1.25, 1)
 position = Vector2(-2.08165e-12, -2.08165e-12)
 sprite_frames = SubResource("SpriteFrames_ok3hr")
 animation = &"Idle"
@@ -228,7 +227,7 @@ target_position = Vector2(0, 16)
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="HitBox" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-16, -1.5)
+position = Vector2(-16, 4)
 shape = SubResource("RectangleShape2D_inhnj")
 
 [node name="AttackEffect" type="CPUParticles2D" parent="."]
