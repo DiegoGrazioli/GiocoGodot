@@ -161,11 +161,30 @@ func _on_area_2d_body_exited(body):
 func hit(value):
 	life -= value
 	if life <= 0:
+		#$CanvasModulate.color.g = 1
+		#$CanvasModulate.color.b = 1
+		pass
+	else:
+		#$CanvasModulate.color.g = life * 100 / Globals.maxHealth
+		#$CanvasModulate.color.b = life * 100 / Globals.maxHealth
 		pass
 	$Sprite2D.modulate = Color(5, 1, 1)
 	$Sprite2D.play("Hurt")
+	#cameraShake
+	var shakeVector = Vector2(randf_range(-1, 1) * 2, randf_range(-1, 1) * 2)
+	var tween = $Camera2D.create_tween()
+	tween.tween_property(self, "offset", shakeVector, 0.1)
+	$Camera2D.set_process(true)
+	$Camera2D/ShakeTimer.start()
+	#damagaIndicator
 	var dmg = damageIndicator.instantiate()
 	add_child(dmg)
 	dmg.modulate = Color(2, 2, 2)
 	dmg.anim.play("showDamage_player")
 	dmg.label.text = str(value)
+	
+func _on_shake_timer_timeout():
+	set_process(false)
+	var tween = $Camera2D.create_tween()
+	tween.tween_property(self, "offset", Vector2(0, 0), 0.1)
+	

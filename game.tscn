@@ -760,9 +760,6 @@ posy = 1100
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_sp7me")
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.701961, 0.701961, 0.701961, 1)
-
 [node name="BlueDemon" parent="." instance=ExtResource("8_j314p")]
 position = Vector2(1873, 239)
 

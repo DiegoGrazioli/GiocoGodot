@@ -1,17 +1,20 @@
 extends CharacterBody2D
 class_name Enemy4
 
-#Da fixare colore HealthBar e non-aggiornamento quando c'è l'await
+#Da fixare colore HealthBar
 
 const SPEED = 0.0
 var life = 10.0
 var max_life = life
 var posx = 0 
 var posy = 0 
+var atk = 3.0
 
 var b # body
 
 var HIT_PLAYER = false
+
+var damageIndicator = preload("res://damageIndicator.tscn")
 
 func _ready():
 	pass
@@ -47,7 +50,7 @@ func _on_sprite_2d_animation_finished():
 		$Sprite2D.modulate = Color(1, 1, 1)
 		$Sprite2D.play("Idle")
 		if HIT_PLAYER:
-			b.hit(3)
+			b.hit(atk)
 
 func hit(value, dir):
 	#position.x += 10 * dir
@@ -60,7 +63,9 @@ func hit(value, dir):
 	if life - value > 0:
 		$Sprite2D.modulate = Color(5, 1, 1)
 		$Sprite2D.play("Hurt")
-		
+		var dmg = damageIndicator.instantiate()
+		add_child(dmg)
+		dmg.label.text = str(value)
 		
 	life -= value
 	
