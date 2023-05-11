@@ -1,18 +1,16 @@
 extends CharacterBody2D
-class_name Enemy2
+class_name Enemy4
 
 #Da fixare colore HealthBar e non-aggiornamento quando c'è l'await
 
-const SPEED = 250.0
-var life = 5.0
+const SPEED = 0.0
+var life = 10.0
 var max_life = life
-var makeMove = false
 var posx = 0 
 var posy = 0 
 
 var b # body
 
-var is_attacking = false
 var HIT_PLAYER = false
 
 func _ready():
@@ -20,11 +18,12 @@ func _ready():
 
 
 func _physics_process(delta):
+	#$Sprite2D.play("Idle")
 	$HealthBar.value = life * 100 / max_life
-	if makeMove and !is_attacking:
-		move()
+	move()
 	if life <= 0:
 		$Sprite2D.play("Die")
+		queue_free()
 		#await ($Sprite2D.animation_finished)
 		#var number = randi_range(0,100)
 		#if  number == 15:
@@ -34,6 +33,7 @@ func _physics_process(delta):
 
 
 func _on_sprite_2d_animation_finished():
+	print($Sprite2D.animation)
 	if $Sprite2D.animation == "Die":
 		var number = randi_range(0,100)
 		print(number)
@@ -45,20 +45,22 @@ func _on_sprite_2d_animation_finished():
 		$Sprite2D.play("Idle")
 	elif $Sprite2D.animation == "Attack":
 		$Sprite2D.modulate = Color(1, 1, 1)
-		is_attacking = false
 		$Sprite2D.play("Idle")
 		if HIT_PLAYER:
-			b.hit(0.5)
+			b.hit(3)
 
 func hit(value, dir):
-	position.x += 10 * dir
+	#position.x += 10 * dir
 	if dir > 0:
 		$Sprite2D.flip_h = true
+		$Area2D/CollisionShape2D.position.x = -14
 	else:
-		$Sprite2D.flip_h = false
+		$Sprite2D.flip_h = false 
+		$Area2D/CollisionShape2D.position.x = 14
 	if life - value > 0:
 		$Sprite2D.modulate = Color(5, 1, 1)
 		$Sprite2D.play("Hurt")
+		
 		
 	life -= value
 	
@@ -76,7 +78,6 @@ func _on_area_2d_body_entered(body):
 		HIT_PLAYER = true
 		$Sprite2D.play("Attack")
 		$Sprite2D.modulate = Color(2, 2, 2)
-		is_attacking = true
 		#await $Sprite2D.animation_finished
 		#if HIT_PLAYER:
 		#	body.hit(2)
@@ -84,36 +85,14 @@ func _on_area_2d_body_entered(body):
 func _on_area_2d_body_exited(body):
 	if body.name == "Player":
 		HIT_PLAYER = false
-		is_attacking = false
+
+func _on_sprite_2d_animation_changed():
+	pass # Replace with function body.
+
 func move():
-	# Set the enemy's speed and rotation speed
-	var speed = 50
-	
-	# Calculate the direction vector towards the player
-	var direction = Vector2.ZERO
-	direction.x = Globals.playerPos.x - (position.x + posx)
-	direction.y = Globals.playerPos.y - (position.y + posy)
-	direction = direction.normalized()
-	if direction.x > 0:
-		$Sprite2D.flip_h = false
-		$Area2D/CollisionShape2D.position.x = 12
-	else:
+	if 	Globals.playerPos.x > position.x:
+		$Sprite2D.flip_h = false 
+		$Area2D/CollisionShape2D.position.x = 14
+	else :
 		$Sprite2D.flip_h = true
-		$Area2D/CollisionShape2D.position.x = -12
-	
-	# Calculate the enemy's velocity and rotation
-	var velocity = direction * speed
-	
-	# Move the enemy smoothly
-	var delta = get_process_delta_time()
-	position += velocity * delta
-
-
-func _on_area_2d_2_body_entered(body):
-	if body.name == "Player":
-		makeMove = true
-
-
-func _on_area_2d_2_body_exited(body):
-	if body.name == "Player":
-		makeMove = false
+		$Area2D/CollisionShape2D.position.x = -14

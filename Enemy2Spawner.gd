@@ -8,7 +8,7 @@ var playerInside = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Slime.visible = false
+	$BlueDemon.visible = false
 	position = Vector2(posx, posy)
 
 
@@ -24,7 +24,8 @@ func _on_body_entered(body):
 		
 func _on_timer_timeout():
 	if playerInside:
-		var e = $Slime.duplicate()
+		print("spawn")
+		var e = $BlueDemon.duplicate()
 		e.name = str(index)
 		index += 1
 		e.posx = posx

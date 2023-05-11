@@ -70,8 +70,9 @@ func spawningPosition(r):
 
 
 func _on_area_2d_body_entered(body):
-	b = body
+	
 	if body.name == "Player":
+		b = body
 		HIT_PLAYER = true
 		$Sprite2D.play("Attack")
 		$Sprite2D.modulate = Color(2, 2, 2)

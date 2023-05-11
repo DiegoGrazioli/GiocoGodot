@@ -8,6 +8,7 @@ var dash_accel = 1
 var enemies = Array()
 var life = 10
 var atk = 1.0
+var dashDamage = false
 
 func _ready():
 	Globals.maxHealth = life
@@ -99,9 +100,19 @@ func scrolling(up_or_down):
 func _on_sprite_2d_animation_finished():
 	
 	if $Sprite2D.animation == "Attack1" or $Sprite2D.animation == "Attack2":
+		if $DashCooldown.time_left >= 1.25:
+			dashDamage = true
+		else:
+			dashDamage = false
 		for e in enemies:
-				if $Area2D/HitBox.position.x > 0:
+			if $Area2D/HitBox.position.x > 0:
+				if dashDamage:
+					e.hit(atk * 2 * Globals.itemsOwned[Globals.currentItem].atk, 1)
+				else :
 					e.hit(atk * Globals.itemsOwned[Globals.currentItem].atk, 1)
+			else :
+				if dashDamage:
+					e.hit(atk * 2 * Globals.itemsOwned[Globals.currentItem].atk, -1)
 				else :
 					e.hit(atk * Globals.itemsOwned[Globals.currentItem].atk, -1)
 	
@@ -137,11 +148,11 @@ func _unhandled_input(event: InputEvent) -> void:
 			start_attack2 = true
 
 func _on_area_2d_body_entered(body):
-	if body is Enemy or body is Enemy2:
+	if body is Enemy or body is Enemy2 or body is Enemy3 or body is Enemy4:
 		enemies.push_back(body)
 
 func _on_area_2d_body_exited(body):
-	if body is Enemy or body is Enemy2:
+	if body is Enemy or body is Enemy2 or body is Enemy3 or body is Enemy4:
 		enemies.erase(body)
 		
 func hit(value):

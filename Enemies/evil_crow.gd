@@ -1,10 +1,10 @@
 extends CharacterBody2D
-class_name Enemy2
+class_name Enemy3
 
 #Da fixare colore HealthBar e non-aggiornamento quando c'è l'await
 
-const SPEED = 250.0
-var life = 5.0
+const SPEED = 75.0
+var life = 20.0
 var max_life = life
 var makeMove = false
 var posx = 0 
@@ -48,14 +48,16 @@ func _on_sprite_2d_animation_finished():
 		is_attacking = false
 		$Sprite2D.play("Idle")
 		if HIT_PLAYER:
-			b.hit(0.5)
+			b.hit(5)
 
 func hit(value, dir):
 	position.x += 10 * dir
 	if dir > 0:
 		$Sprite2D.flip_h = true
+		$HurtBox.position.x = -14
 	else:
 		$Sprite2D.flip_h = false
+		$HurtBox.position.x = 14
 	if life - value > 0:
 		$Sprite2D.modulate = Color(5, 1, 1)
 		$Sprite2D.play("Hurt")
@@ -97,9 +99,11 @@ func move():
 	if direction.x > 0:
 		$Sprite2D.flip_h = false
 		$Area2D/CollisionShape2D.position.x = 12
+		$HurtBox.position.x = -14
 	else:
 		$Sprite2D.flip_h = true
 		$Area2D/CollisionShape2D.position.x = -12
+		$HurtBox.position.x = 14
 	
 	# Calculate the enemy's velocity and rotation
 	var velocity = direction * speed
@@ -117,3 +121,7 @@ func _on_area_2d_2_body_entered(body):
 func _on_area_2d_2_body_exited(body):
 	if body.name == "Player":
 		makeMove = false
+
+
+func _on_sprite_2d_animation_changed():
+	pass # Replace with function body.

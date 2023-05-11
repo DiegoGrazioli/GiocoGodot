@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://dut8c3hw8ssxw"]
+
+[ext_resource type="Script" path="res://Enemy2Spawner.gd" id="1_amblf"]
+[ext_resource type="PackedScene" uid="uid://jmotblnxfv53" path="res://Enemies/blue_demon.tscn" id="2_uvh01"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wa2i5"]
+radius = 308.015
+
+[node name="Enemy2Spawner" type="Area2D"]
+script = ExtResource("1_amblf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_wa2i5")
+debug_color = Color(0.792157, 0.423529, 0.0784314, 0.419608)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="BlueDemon" parent="." instance=ExtResource("2_uvh01")]
+position = Vector2(5648, 4072)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

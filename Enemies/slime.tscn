@@ -127,7 +127,7 @@ shape = SubResource("RectangleShape2D_e7rkq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
 shape = SubResource("CircleShape2D_nihgp")
-debug_color = Color(0.992157, 0.0117647, 0.262745, 0.419608)
+debug_color = Color(0.270588, 0.588235, 0.65098, 0.419608)
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 offset_left = -19.0
