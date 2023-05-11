@@ -10,6 +10,8 @@ var life = 10
 var atk = 1.0
 var dashDamage = false
 
+var damageIndicator = preload("res://damageIndicator.tscn")
+
 func _ready():
 	Globals.maxHealth = life
 	Globals.itemsOwned.push_back(ListOfItems.pugnale_rotto_di_rame)
@@ -121,11 +123,12 @@ func _on_sprite_2d_animation_finished():
 			$AttackEffect.emitting = false
 			$Sprite2D.play("Idle")
 		else:
-			start_attack2 = false
+			
 			$AttackEffect.lifetime = 1
 			$AttackEffect.emitting = true
 			$Sprite2D.play("Attack2", Globals.itemsOwned[Globals.currentItem].speed)
 	elif $Sprite2D.animation == "Attack2":
+		start_attack2 = false
 		$AttackEffect.emitting = false
 		$Sprite2D.play("Idle")
 	elif $Sprite2D.animation == "Dash":
@@ -140,7 +143,7 @@ func _on_dash_cooldown_timeout():
 
 func _unhandled_input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ATTACK"):
-		if $Sprite2D.animation != "Attack1":
+		if $Sprite2D.animation != "Attack1" and !start_attack2:
 			$AttackEffect.lifetime = 1
 			$AttackEffect.emitting = true
 			$Sprite2D.play("Attack1", Globals.itemsOwned[Globals.currentItem].speed)
@@ -161,3 +164,8 @@ func hit(value):
 		pass
 	$Sprite2D.modulate = Color(5, 1, 1)
 	$Sprite2D.play("Hurt")
+	var dmg = damageIndicator.instantiate()
+	add_child(dmg)
+	dmg.modulate = Color(2, 2, 2)
+	dmg.anim.play("showDamage_player")
+	dmg.label.text = str(value)

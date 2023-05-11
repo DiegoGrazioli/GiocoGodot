@@ -9,11 +9,14 @@ var max_life = life
 var makeMove = false
 var posx = 0 
 var posy = 0 
+var atk = 0.5
 
 var b # body
 
 var is_attacking = false
 var HIT_PLAYER = false
+
+var damageIndicator = preload("res://damageIndicator.tscn")
 
 func _ready():
 	pass
@@ -48,7 +51,7 @@ func _on_sprite_2d_animation_finished():
 		is_attacking = false
 		$Sprite2D.play("Idle")
 		if HIT_PLAYER:
-			b.hit(0.5)
+			b.hit(atk)
 
 func hit(value, dir):
 	position.x += 10 * dir
@@ -59,6 +62,9 @@ func hit(value, dir):
 	if life - value > 0:
 		$Sprite2D.modulate = Color(5, 1, 1)
 		$Sprite2D.play("Hurt")
+		var dmg = damageIndicator.instantiate()
+		add_child(dmg)
+		dmg.label.text = str(value)
 		
 	life -= value
 	

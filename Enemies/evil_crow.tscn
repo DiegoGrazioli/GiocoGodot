@@ -1,34 +1,34 @@
 [gd_scene load_steps=29 format=3 uid="uid://c2nhawf7gfpx0"]
 
 [ext_resource type="Script" path="res://Enemies/evil_crow.gd" id="1_xfgyk"]
-[ext_resource type="Texture2D" uid="uid://6pv26ukd4nel" path="res://assets/Enemies/Enemy04/attack01.png" id="2_o3idk"]
-[ext_resource type="Texture2D" uid="uid://bajoj1sb45am0" path="res://assets/Enemies/Enemy04/attack02.png" id="3_2gdpx"]
-[ext_resource type="Texture2D" uid="uid://vpsr10qetxct" path="res://assets/Enemies/Enemy04/attack03.png" id="4_o1lng"]
-[ext_resource type="Texture2D" uid="uid://57aoe68jhp4i" path="res://assets/Enemies/Enemy04/attack04.png" id="5_a4b2r"]
-[ext_resource type="Texture2D" uid="uid://86c8r8wbwjm8" path="res://assets/Enemies/Enemy04/attack05.png" id="6_vlv2a"]
-[ext_resource type="Texture2D" uid="uid://btftygg4nyh5d" path="res://assets/Enemies/Enemy04/attack06.png" id="7_0lv70"]
-[ext_resource type="Texture2D" uid="uid://byi6mt5kw2ye6" path="res://assets/Enemies/Enemy04/attack07.png" id="8_n38vm"]
-[ext_resource type="Texture2D" uid="uid://dt0kqqfl3lcx4" path="res://assets/Enemies/Enemy04/jump_landing.png" id="9_75onk"]
-[ext_resource type="Texture2D" uid="uid://b225s5lnhsg57" path="res://assets/Enemies/Enemy04/jump_mid01.png" id="10_xvgvf"]
-[ext_resource type="Texture2D" uid="uid://d0cj2bpfyb4sr" path="res://assets/Enemies/Enemy04/jump_mid02.png" id="11_i4orw"]
-[ext_resource type="Texture2D" uid="uid://d0avsgu0mflx4" path="res://assets/Enemies/Enemy04/jump_mid03.png" id="12_ecrgm"]
-[ext_resource type="Texture2D" uid="uid://dsclisogjodoe" path="res://assets/Enemies/Enemy04/jump_mid04.png" id="13_rdfa2"]
-[ext_resource type="Texture2D" uid="uid://be4ckx81ixuh8" path="res://assets/Enemies/Enemy04/hit01.png" id="14_ii8y6"]
-[ext_resource type="Texture2D" uid="uid://bduya6ohw7chj" path="res://assets/Enemies/Enemy04/hit02.png" id="15_7v5ab"]
-[ext_resource type="Texture2D" uid="uid://l5cat66fcpgh" path="res://assets/Enemies/Enemy04/hit03.png" id="16_qrtyi"]
-[ext_resource type="Texture2D" uid="uid://c8ro8njtdu0xr" path="res://assets/Enemies/Enemy04/idle01.png" id="17_4t6ia"]
-[ext_resource type="Texture2D" uid="uid://c7as4migh0m7b" path="res://assets/Enemies/Enemy04/idle02.png" id="18_ex6jg"]
-[ext_resource type="FontFile" uid="uid://ddnh6ut2nctfr" path="res://assets/Fonts/Peaberry-Base.otf" id="18_isq28"]
-[ext_resource type="Texture2D" uid="uid://bw611y2ttv505" path="res://assets/Enemies/Enemy04/idle03.png" id="19_6n1mo"]
-[ext_resource type="Texture2D" uid="uid://bm6rmpfbjtd6h" path="res://assets/Enemies/Enemy04/idle04.png" id="20_fqxaq"]
-[ext_resource type="Texture2D" uid="uid://dpvsb0kfrxwla" path="res://assets/Enemies/Enemy04/idle05.png" id="21_76lka"]
-[ext_resource type="Texture2D" uid="uid://dr3wp0qq4f5bp" path="res://assets/Enemies/Enemy04/idle06.png" id="22_efexu"]
-[ext_resource type="Texture2D" uid="uid://cc8wragktmsgq" path="res://assets/Enemies/Enemy04/idle07.png" id="23_wowsr"]
+[ext_resource type="Texture2D" uid="uid://dt1oys5vm31t6" path="res://assets/Enemies/Enemy04/attack01.png" id="2_o3idk"]
+[ext_resource type="Texture2D" uid="uid://1tne6wcft3di" path="res://assets/Enemies/Enemy04/attack02.png" id="3_2gdpx"]
+[ext_resource type="Texture2D" uid="uid://csbsrfb5c6ywk" path="res://assets/Enemies/Enemy04/attack03.png" id="4_o1lng"]
+[ext_resource type="Texture2D" uid="uid://dqhgqod10lx1w" path="res://assets/Enemies/Enemy04/attack04.png" id="5_a4b2r"]
+[ext_resource type="Texture2D" uid="uid://c2gnintordc2r" path="res://assets/Enemies/Enemy04/attack05.png" id="6_vlv2a"]
+[ext_resource type="Texture2D" uid="uid://dg45dihoc5i5b" path="res://assets/Enemies/Enemy04/attack06.png" id="7_0lv70"]
+[ext_resource type="Texture2D" uid="uid://chrmsqlkv3uph" path="res://assets/Enemies/Enemy04/attack07.png" id="8_n38vm"]
+[ext_resource type="Texture2D" uid="uid://h8w0c2bcw70d" path="res://assets/Enemies/Enemy04/jump_landing.png" id="9_75onk"]
+[ext_resource type="Texture2D" uid="uid://bf2rfyvw0wfgs" path="res://assets/Enemies/Enemy04/jump_mid01.png" id="10_xvgvf"]
+[ext_resource type="Texture2D" uid="uid://bev0qwpt0gxg8" path="res://assets/Enemies/Enemy04/jump_mid02.png" id="11_i4orw"]
+[ext_resource type="Texture2D" uid="uid://bcxlgv8okc18i" path="res://assets/Enemies/Enemy04/jump_mid03.png" id="12_ecrgm"]
+[ext_resource type="Texture2D" uid="uid://bglde5bknfhpj" path="res://assets/Enemies/Enemy04/jump_mid04.png" id="13_rdfa2"]
+[ext_resource type="Texture2D" uid="uid://cfg1w82hgl3vu" path="res://assets/Enemies/Enemy04/hit01.png" id="14_ii8y6"]
+[ext_resource type="Texture2D" uid="uid://b8fombqiupojh" path="res://assets/Enemies/Enemy04/hit02.png" id="15_7v5ab"]
+[ext_resource type="Texture2D" uid="uid://drlyah54an34c" path="res://assets/Enemies/Enemy04/hit03.png" id="16_qrtyi"]
+[ext_resource type="Texture2D" uid="uid://jp3b0c1hmpr2" path="res://assets/Enemies/Enemy04/idle01.png" id="17_4t6ia"]
+[ext_resource type="Texture2D" uid="uid://b0wnhkmion1h6" path="res://assets/Enemies/Enemy04/idle02.png" id="18_ex6jg"]
+[ext_resource type="FontFile" uid="uid://dehppjcpxlen5" path="res://assets/Fonts/Peaberry-Base.otf" id="18_isq28"]
+[ext_resource type="Texture2D" uid="uid://bwggtm8if3gfc" path="res://assets/Enemies/Enemy04/idle03.png" id="19_6n1mo"]
+[ext_resource type="Texture2D" uid="uid://omj1houbmd1a" path="res://assets/Enemies/Enemy04/idle04.png" id="20_fqxaq"]
+[ext_resource type="Texture2D" uid="uid://cmkujkwxgabb8" path="res://assets/Enemies/Enemy04/idle05.png" id="21_76lka"]
+[ext_resource type="Texture2D" uid="uid://cxqa7163jurbf" path="res://assets/Enemies/Enemy04/idle06.png" id="22_efexu"]
+[ext_resource type="Texture2D" uid="uid://bqqwvstx1ab0k" path="res://assets/Enemies/Enemy04/idle07.png" id="23_wowsr"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_075x4"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 2.0,
 "texture": ExtResource("2_o3idk")
 }, {
 "duration": 1.0,
@@ -51,7 +51,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Attack",
-"speed": 3.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -128,25 +128,28 @@ radius = 86.093
 script = ExtResource("1_xfgyk")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(14, 0)
 sprite_frames = SubResource("SpriteFrames_075x4")
-animation = &"Attack"
+animation = &"Hurt"
 autoplay = "Idle"
-frame = 6
+frame = 2
 frame_progress = 1.0
 
 [node name="HurtBox" type="CollisionShape2D" parent="."]
-position = Vector2(-14, 9)
+position = Vector2(0, 9)
 shape = SubResource("CapsuleShape2D_foo5r")
 
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2(14, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(14.5, 9)
+position = Vector2(14, 9)
 shape = SubResource("RectangleShape2D_skths")
 
 [node name="Area2D2" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+visible = false
 shape = SubResource("CircleShape2D_ybxbf")
 debug_color = Color(0.137255, 0.156863, 0.160784, 0.419608)
 

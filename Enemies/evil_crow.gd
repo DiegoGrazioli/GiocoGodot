@@ -9,11 +9,14 @@ var max_life = life
 var makeMove = false
 var posx = 0 
 var posy = 0 
+var atk = 5
 
 var b # body
 
 var is_attacking = false
 var HIT_PLAYER = false
+
+var damageIndicator = preload("res://damageIndicator.tscn")
 
 func _ready():
 	pass
@@ -48,19 +51,24 @@ func _on_sprite_2d_animation_finished():
 		is_attacking = false
 		$Sprite2D.play("Idle")
 		if HIT_PLAYER:
-			b.hit(5)
+			b.hit(atk)
 
 func hit(value, dir):
 	position.x += 10 * dir
 	if dir > 0:
 		$Sprite2D.flip_h = true
-		$HurtBox.position.x = -14
+		$Sprite2D.position.x = -14
+		#$HurtBox.position.x = -14
 	else:
 		$Sprite2D.flip_h = false
-		$HurtBox.position.x = 14
+		$Sprite2D.position.x = 14
+		#$HurtBox.position.x = 14
 	if life - value > 0:
 		$Sprite2D.modulate = Color(5, 1, 1)
 		$Sprite2D.play("Hurt")
+		var dmg = damageIndicator.instantiate()
+		add_child(dmg)
+		dmg.label.text = str(value)
 		
 	life -= value
 	
@@ -98,12 +106,14 @@ func move():
 	direction = direction.normalized()
 	if direction.x > 0:
 		$Sprite2D.flip_h = false
-		$Area2D/CollisionShape2D.position.x = 12
-		$HurtBox.position.x = -14
+		$Sprite2D.position.x = 14
+		$Area2D/CollisionShape2D.position.x = 14.5
+		#$HurtBox.position.x = -14
 	else:
 		$Sprite2D.flip_h = true
-		$Area2D/CollisionShape2D.position.x = -12
-		$HurtBox.position.x = 14
+		$Area2D/CollisionShape2D.position.x = -42.5
+		$Sprite2D.position.x = -14
+		#$HurtBox.position.x = 14
 	
 	# Calculate the enemy's velocity and rotation
 	var velocity = direction * speed
