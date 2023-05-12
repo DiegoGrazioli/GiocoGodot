@@ -8,7 +8,7 @@ var SHIFT_DIRECTION = Vector2.ZERO
 @onready var anim = $AnimationPlayer
 
 func _ready():
-	SHIFT_DIRECTION = Vector2(randi_range(-1, 1), randi_range(-1, 1))
+	SHIFT_DIRECTION = Vector2(randi_range(-1, 1), -1)
 	$AnimationPlayer.play("showDamage")
 	
 func _process(delta):

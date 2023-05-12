@@ -9,6 +9,11 @@ var enemies = Array()
 var life = 100.0
 var atk = 1.0
 var dashDamage = false
+var shake = false
+
+var lastHit
+
+var attacked = false
 
 var damageIndicator = preload("res://damageIndicator.tscn")
 
@@ -22,6 +27,25 @@ func _ready():
 func _physics_process(delta):
 	Globals.life = life
 	Globals.playerPos = position
+	
+	#controlla per shake
+	if shake:
+		var shakeVector = Vector2(randf_range(-1, 1) * 4, randf_range(-1, 1) * 4)
+		var tween = $Camera2D.create_tween()
+		tween.tween_property($Camera2D, "offset", shakeVector, 0.1)
+		$Camera2D.set_process(true)
+	
+	#controlla per errori grafici
+	if !$Sprite2D.animation == "Attack1" and !$Sprite2D.animation == "Attack2" and $AttackEffect.emitting:
+		$AttackEffect.emitting = false
+	
+	$Sprite2D.modulate = Color(1, 1, 1)
+	if $Sprite2D.animation == "Hurt":
+		$Sprite2D.modulate = Color(5, 1, 1)
+		
+	if $Sprite2D.animation != "Dash":
+		dash_accel = 1
+	
 	#movimento
 	movement.x = Input.get_axis("LEFT", "RIGHT")
 	movement.y = Input.get_axis("UP", "DOWN")
@@ -53,26 +77,11 @@ func _physics_process(delta):
 	if $Sprite2D.animation == "Dash" and $Sprite2D.frame == 5:
 		dash_accel = 1
 	
-	#attacco
-	#if Input.is_action_just_pressed("ATTACK"):
-		
-	#	if $Sprite2D.animation != "Attack1":
-	#		$AttackEffect.lifetime = 1
-	#		$AttackEffect.emitting = true
-	#		$Sprite2D.play("Attack1", Globals.itemsOwned[Globals.currentItem].speed)
-	#	else:
-	#		start_attack2 = true
-	#	await ($Sprite2D.animation_finished)
-	#	for e in enemies:
-	#			if $Area2D/HitBox.position.x > 0:
-	#				e.hit(atk * Globals.itemsOwned[Globals.currentItem].atk, 1)
-	#			else :
-	#				e.hit(atk * Globals.itemsOwned[Globals.currentItem].atk, -1)
-				
 	#dash
 	if Input.is_action_just_pressed("DASH") and $DashCooldown.is_stopped() and velocity != Vector2(0, 0): #se il cooldown è finito e se non è fermo fai il dash
 		dash_accel = 2
 		$Sprite2D.play("Dash")
+		$DashCooldown.start()
 		
 	#per barra dash
 	Globals.dashBarValue = 50 * ($DashCooldown.wait_time - $DashCooldown.time_left)
@@ -87,6 +96,20 @@ func _physics_process(delta):
 			var collider = $RayCast2D.get_collider()
 			if collider is Chest and collider.is_closed():
 				collider.open()
+	
+	if attacked and ($Sprite2D.animation == "Attack1" and $Sprite2D.frame == 6) or ($Sprite2D.animation == "Attack2" and $Sprite2D.frame == 2):
+		attacked = false
+		for e in enemies:
+			if $Area2D/HitBox.position.x > 0:
+				if dashDamage:
+					e.hit(atk * 2 * Globals.itemsOwned[Globals.currentItem].atk, 1)
+				else :
+					e.hit(atk * Globals.itemsOwned[Globals.currentItem].atk, 1)
+			else :
+				if dashDamage:
+					e.hit(atk * 2 * Globals.itemsOwned[Globals.currentItem].atk, -1)
+				else :
+					e.hit(atk * Globals.itemsOwned[Globals.currentItem].atk, -1)
 	
 	move_and_slide()
 	
@@ -107,19 +130,9 @@ func _on_sprite_2d_animation_finished():
 	if $Sprite2D.animation == "Attack1" or $Sprite2D.animation == "Attack2":
 		if $DashCooldown.time_left >= 1.25:
 			dashDamage = true
+			$EpicAttack.emitting = true
 		else:
 			dashDamage = false
-		for e in enemies:
-			if $Area2D/HitBox.position.x > 0:
-				if dashDamage:
-					e.hit(atk * 2 * Globals.itemsOwned[Globals.currentItem].atk, 1)
-				else :
-					e.hit(atk * Globals.itemsOwned[Globals.currentItem].atk, 1)
-			else :
-				if dashDamage:
-					e.hit(atk * 2 * Globals.itemsOwned[Globals.currentItem].atk, -1)
-				else :
-					e.hit(atk * Globals.itemsOwned[Globals.currentItem].atk, -1)
 	
 	if $Sprite2D.animation == "Attack1": #quando finisce di attaccare torna all'animazione standard
 		if start_attack2 == false:
@@ -136,7 +149,6 @@ func _on_sprite_2d_animation_finished():
 		$Sprite2D.play("Idle")
 	elif $Sprite2D.animation == "Dash":
 		$Sprite2D.play("Idle")
-		$DashCooldown.start()
 	elif $Sprite2D.animation == "Hurt":
 		$Sprite2D.modulate = Color(1, 1, 1)
 		$Sprite2D.play("Idle")
@@ -146,6 +158,7 @@ func _on_dash_cooldown_timeout():
 
 func _unhandled_input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ATTACK"):
+		attacked = true
 		if $Sprite2D.animation != "Attack1" and !start_attack2:
 			$AttackEffect.lifetime = 1
 			$AttackEffect.emitting = true
@@ -173,13 +186,12 @@ func hit(value):
 		pass
 	$Sprite2D.modulate = Color(5, 1, 1)
 	$Sprite2D.play("Hurt")
+	
 	#cameraShake
-	var shakeVector = Vector2(randf_range(-1, 1) * 2, randf_range(-1, 1) * 2)
-	var tween = $Camera2D.create_tween()
-	tween.tween_property(self, "offset", shakeVector, 0.1)
-	$Camera2D.set_process(true)
 	$Camera2D/ShakeTimer.start()
-	#damagaIndicator
+	shake = true
+	
+	#damageIndicator
 	var dmg = damageIndicator.instantiate()
 	add_child(dmg)
 	dmg.modulate = Color(2, 2, 2)
@@ -187,7 +199,6 @@ func hit(value):
 	dmg.label.text = str(value)
 	
 func _on_shake_timer_timeout():
-	set_process(false)
 	var tween = $Camera2D.create_tween()
-	tween.tween_property(self, "offset", Vector2(0, 0), 0.1)
-	
+	tween.tween_property($Camera2D, "offset", Vector2(0, 0), 0.1)
+	shake = false

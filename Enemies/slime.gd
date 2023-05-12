@@ -3,7 +3,7 @@ class_name Enemy
 
 #Da fixare colore HealthBar e non-aggiornamento quando c'è l'await
 
-const SPEED = 150.0
+const SPEED = 50.0
 var life = 10.0
 var max_life = life
 var makeMove = false
@@ -14,13 +14,13 @@ var atk = 1.0
 var b # body
 
 var is_attacking = false
+var is_inside = false
 var HIT_PLAYER = false
 
 var damageIndicator = preload("res://damageIndicator.tscn")
 
 func _ready():
 	pass
-
 
 func _physics_process(delta):
 	$HealthBar.value = life * 100 / max_life
@@ -33,13 +33,14 @@ func _physics_process(delta):
 		#if  number == 15:
 		#	Globals.key += 1
 		#queue_free()
-		
-
+	if $Sprite2D.animation == "Attack" and $Sprite2D.frame == 3:
+		if HIT_PLAYER:
+			b.hit(atk)
+			HIT_PLAYER = false
 
 func _on_sprite_2d_animation_finished():
 	if $Sprite2D.animation == "Die":
 		var number = randi_range(0,100)
-		print(number)
 		if  number == 15:
 			Globals.key += 1
 		queue_free()
@@ -48,10 +49,13 @@ func _on_sprite_2d_animation_finished():
 		$Sprite2D.play("Idle")
 	elif $Sprite2D.animation == "Attack":
 		$Sprite2D.modulate = Color(1, 1, 1)
-		is_attacking = false
-		$Sprite2D.play("Idle")
-		if HIT_PLAYER:
-			b.hit(atk)
+		if is_inside:
+			HIT_PLAYER = true
+			$Sprite2D.play("Attack")
+		else:
+			$Sprite2D.play("Idle")
+			is_attacking = false
+		
 
 func hit(value, dir):
 	position.x += 10 * dir
@@ -77,6 +81,7 @@ func spawningPosition(r):
 func _on_area_2d_body_entered(body):
 	
 	if body.name == "Player":
+		is_inside = true
 		b = body
 		HIT_PLAYER = true
 		$Sprite2D.play("Attack")
@@ -89,10 +94,10 @@ func _on_area_2d_body_entered(body):
 func _on_area_2d_body_exited(body):
 	if body.name == "Player":
 		HIT_PLAYER = false
+		is_inside = false
 
 func move():
 	# Set the enemy's speed and rotation speed
-	var speed = 50
 	
 	# Calculate the direction vector towards the player
 	var direction = Vector2.ZERO
@@ -107,7 +112,7 @@ func move():
 		$Area2D/CollisionShape2D.position.x = -11.5
 	
 	# Calculate the enemy's velocity and rotation
-	var velocity = direction * speed
+	var velocity = direction * SPEED
 	
 	# Move the enemy smoothly
 	var delta = get_process_delta_time()
@@ -118,8 +123,6 @@ func _on_area_2d_2_body_entered(body):
 	if body.name == "Player":
 		makeMove = true
 
-
 func _on_area_2d_2_body_exited(body):
 	if body.name == "Player":
 		makeMove = false
-

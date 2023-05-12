@@ -18,7 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://dogw2ay16yehs" path="res://assets/Enemies/Slime/hurt/slime-hurt-1.png" id="12_8y7vd"]
 [ext_resource type="Texture2D" uid="uid://bela3cwpnkk4l" path="res://assets/Enemies/Slime/hurt/slime-hurt-2.png" id="13_pfkkx"]
 [ext_resource type="Texture2D" uid="uid://bwawp26crs1nh" path="res://assets/Enemies/Slime/hurt/slime-hurt-3.png" id="14_n7x6k"]
-[ext_resource type="FontFile" uid="uid://ddnh6ut2nctfr" path="res://assets/Fonts/Peaberry-Base.otf" id="19_3ftsk"]
+[ext_resource type="FontFile" uid="uid://dehppjcpxlen5" path="res://assets/Fonts/Peaberry-Base.otf" id="19_3ftsk"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gvygt"]
 animations = [{
@@ -99,7 +99,7 @@ radius = 8.0
 height = 34.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e7rkq"]
-size = Vector2(23, 22)
+size = Vector2(25, 24)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nihgp"]
 radius = 154.0
@@ -109,7 +109,7 @@ script = ExtResource("1_145tp")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_gvygt")
-animation = &"Die"
+animation = &"Attack"
 autoplay = "Idle"
 
 [node name="HurtBox" type="CollisionShape2D" parent="."]
@@ -120,7 +120,7 @@ shape = SubResource("CapsuleShape2D_xpohm")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-11.5, 1)
+position = Vector2(-12.5, 0)
 shape = SubResource("RectangleShape2D_e7rkq")
 
 [node name="Area2D2" type="Area2D" parent="."]

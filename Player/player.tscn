@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://dd506jl64yl0m"]
+[gd_scene load_steps=44 format=3 uid="uid://dd506jl64yl0m"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_7oeyu"]
 [ext_resource type="Texture2D" uid="uid://cola5d4gvjo7u" path="res://assets/Enemies/Guerriera/idle/Warrior_Idle_1.png" id="2_hu4cf"]
@@ -192,6 +192,10 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 0.960784, 0, 0)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4kfcp"]
 size = Vector2(22.5, 33.5)
 
+[sub_resource type="Gradient" id="Gradient_kke5o"]
+offsets = PackedFloat32Array(0.0331126, 0.331126, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.615686, 1, 1, 1, 0, 0, 1, 1)
+
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(2.08165e-12, 2.08165e-12)
 script = ExtResource("1_7oeyu")
@@ -213,7 +217,7 @@ rotation_smoothing_speed = 10.0
 metadata/defOffset = Vector2(0, 0)
 
 [node name="ShakeTimer" type="Timer" parent="Camera2D"]
-wait_time = 0.5
+wait_time = 0.2
 one_shot = true
 
 [node name="DashCooldown" type="Timer" parent="."]
@@ -257,6 +261,24 @@ color = Color(0.701961, 0.701961, 0.701961, 1)
 position = Vector2(3.25, 4)
 shape = SubResource("RectangleShape2D_4kfcp")
 debug_color = Color(0.760784, 0.627451, 0.964706, 0.419608)
+
+[node name="RegenTime" type="Timer" parent="."]
+
+[node name="EpicAttack" type="CPUParticles2D" parent="."]
+position = Vector2(-2.08165e-12, 4)
+emitting = false
+amount = 64
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 16.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+color = Color(1.5, 1.5, 1.5, 1)
+color_ramp = SubResource("Gradient_kke5o")
 
 [connection signal="animation_finished" from="Sprite2D" to="." method="_on_sprite_2d_animation_finished"]
 [connection signal="timeout" from="Camera2D/ShakeTimer" to="." method="_on_shake_timer_timeout"]
