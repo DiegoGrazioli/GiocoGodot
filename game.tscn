@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://dd506jl64yl0m" path="res://Player/player.tscn" id="1_kmtr7"]
 [ext_resource type="PackedScene" uid="uid://dt5wm13yl83rd" path="res://ui.tscn" id="3_2g67g"]
 [ext_resource type="Script" path="res://Chest/Chest.gd" id="3_5l8pm"]
-[ext_resource type="Texture2D" uid="uid://ltyijn8hkk58" path="res://assets/World/mana seed seasonal forest sample (summer)/seasonal sample (summer).png" id="3_rdqvu"]
-[ext_resource type="Texture2D" uid="uid://bjx1awcwdsyp4" path="res://assets/World/19.07c - Treasure Chests 1.2a/treasure chests.png" id="3_ynfrx"]
+[ext_resource type="Texture2D" uid="uid://pljom184ph54" path="res://assets/World/mana seed seasonal forest sample (summer)/seasonal sample (summer).png" id="3_rdqvu"]
+[ext_resource type="Texture2D" uid="uid://6kkysifnhbk3" path="res://assets/World/19.07c - Treasure Chests 1.2a/treasure chests.png" id="3_ynfrx"]
 [ext_resource type="PackedScene" uid="uid://c5t5ok6c5ygm1" path="res://Enemies/slime.tscn" id="6_or5ig"]
 [ext_resource type="PackedScene" uid="uid://c1at8vy1glj0" path="res://enemy_spawner.tscn" id="7_qp5ag"]
 [ext_resource type="PackedScene" uid="uid://jmotblnxfv53" path="res://Enemies/blue_demon.tscn" id="8_j314p"]
@@ -693,7 +693,7 @@ layer_1/tile_data = PackedInt32Array(3080216, 720898, 0, 3276832, 720898, 0)
 y_sort_enabled = true
 position = Vector2(531, 398)
 
-[node name="Camera2D" parent="Player" index="2"]
+[node name="Camera2D" parent="Player" index="1"]
 limit_left = 0
 limit_top = 0
 limit_right = 4032

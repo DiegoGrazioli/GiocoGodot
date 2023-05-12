@@ -10,3 +10,6 @@ var key = 0
 
 var itemsOwned = Array()
 var currentItem = 0
+
+func _physics_process(delta):
+	pass

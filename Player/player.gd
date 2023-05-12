@@ -6,13 +6,16 @@ const SPEED = 150.0
 var start_attack2 = false #per il secondo attacco
 var dash_accel = 1
 var enemies = Array()
-var life = 10.0
+var life = 100.0
 var atk = 1.0
 var dashDamage = false
 
 var damageIndicator = preload("res://damageIndicator.tscn")
 
 func _ready():
+	$CanvasModulate.color.r = 0.6
+	$CanvasModulate.color.g = 0.6
+	$CanvasModulate.color.b = 0.6
 	Globals.maxHealth = life
 	Globals.itemsOwned.push_back(ListOfItems.pugnale_rotto_di_rame)
 
@@ -164,11 +167,12 @@ func hit(value):
 		#$CanvasModulate.color.r = 0.1
 		$CanvasModulate.color.g = 0.1
 		$CanvasModulate.color.b = 0.1
-		pass
 	else:
-		#$CanvasModulate.color.r = life / Globals.maxHealth 
-		$CanvasModulate.color.g = life / Globals.maxHealth 
-		$CanvasModulate.color.b = life / Globals.maxHealth
+		$CanvasModulate.color.g = life * 0.6  / Globals.maxHealth 
+		$CanvasModulate.color.b = life * 0.6 / Globals.maxHealth
+		print($CanvasModulate.color.r)
+		print($CanvasModulate.color.g)
+		print($CanvasModulate.color.g)
 		pass
 	$Sprite2D.modulate = Color(5, 1, 1)
 	$Sprite2D.play("Hurt")

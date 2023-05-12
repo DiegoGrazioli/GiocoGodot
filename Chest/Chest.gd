@@ -14,7 +14,7 @@ func is_closed():
 	return $Closed.visible
 	
 func open():
-	var yo = randi_range(0, possibleItems.size()-1)
+	var yo = randi_range(0, possibleItems.size())
 	item = possibleItems[yo]
 	Globals.itemsOwned.push_back(item)
 	$Closed.visible = false
