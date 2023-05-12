@@ -6,7 +6,7 @@ const SPEED = 150.0
 var start_attack2 = false #per il secondo attacco
 var dash_accel = 1
 var enemies = Array()
-var life = 10
+var life = 10.0
 var atk = 1.0
 var dashDamage = false
 
@@ -161,12 +161,14 @@ func _on_area_2d_body_exited(body):
 func hit(value):
 	life -= value
 	if life <= 0:
-		#$CanvasModulate.color.g = 1
-		#$CanvasModulate.color.b = 1
+		#$CanvasModulate.color.r = 0.1
+		$CanvasModulate.color.g = 0.1
+		$CanvasModulate.color.b = 0.1
 		pass
 	else:
-		#$CanvasModulate.color.g = life * 100 / Globals.maxHealth
-		#$CanvasModulate.color.b = life * 100 / Globals.maxHealth
+		#$CanvasModulate.color.r = life / Globals.maxHealth 
+		$CanvasModulate.color.g = life / Globals.maxHealth 
+		$CanvasModulate.color.b = life / Globals.maxHealth
 		pass
 	$Sprite2D.modulate = Color(5, 1, 1)
 	$Sprite2D.play("Hurt")
