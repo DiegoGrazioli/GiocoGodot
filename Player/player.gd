@@ -142,7 +142,7 @@ func _on_sprite_2d_animation_finished():
 		$Sprite2D.play("Idle")
 		
 func _on_dash_cooldown_timeout():
-	pass
+	start_attack2 = false
 
 func _unhandled_input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ATTACK"):
@@ -170,9 +170,6 @@ func hit(value):
 	else:
 		$CanvasModulate.color.g = life * 0.6  / Globals.maxHealth 
 		$CanvasModulate.color.b = life * 0.6 / Globals.maxHealth
-		print($CanvasModulate.color.r)
-		print($CanvasModulate.color.g)
-		print($CanvasModulate.color.g)
 		pass
 	$Sprite2D.modulate = Color(5, 1, 1)
 	$Sprite2D.play("Hurt")
