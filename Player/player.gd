@@ -36,7 +36,7 @@ func _physics_process(delta):
 		$Camera2D.set_process(true)
 	
 	#controlla per errori grafici
-	if !$Sprite2D.animation == "Attack1" and !$Sprite2D.animation == "Attack2" and $AttackEffect.emitting:
+	if $Sprite2D.animation != "Attack1" and $Sprite2D.animation != "Attack2" and $AttackEffect.emitting:
 		$AttackEffect.emitting = false
 	
 	$Sprite2D.modulate = Color(1, 1, 1)
@@ -45,6 +45,9 @@ func _physics_process(delta):
 		
 	if $Sprite2D.animation != "Dash":
 		dash_accel = 1
+	
+	if $Sprite2D.animation != "Attack1" and $Sprite2D.animation != "Attack2":
+		attacked = false
 	
 	#movimento
 	movement.x = Input.get_axis("LEFT", "RIGHT")
@@ -102,12 +105,12 @@ func _physics_process(delta):
 		for e in enemies:
 			if $Area2D/HitBox.position.x > 0:
 				if dashDamage:
-					e.hit(atk * 2 * Globals.itemsOwned[Globals.currentItem].atk, 1)
+					e.hit(atk * 2 * Globals.itemsOwned[Globals.currentItem].atk, 2)
 				else :
 					e.hit(atk * Globals.itemsOwned[Globals.currentItem].atk, 1)
 			else :
 				if dashDamage:
-					e.hit(atk * 2 * Globals.itemsOwned[Globals.currentItem].atk, -1)
+					e.hit(atk * 2 * Globals.itemsOwned[Globals.currentItem].atk, -2)
 				else :
 					e.hit(atk * Globals.itemsOwned[Globals.currentItem].atk, -1)
 	
@@ -128,7 +131,7 @@ func scrolling(up_or_down):
 func _on_sprite_2d_animation_finished():
 	
 	if $Sprite2D.animation == "Attack1" or $Sprite2D.animation == "Attack2":
-		if $DashCooldown.time_left >= 1.25:
+		if $DashCooldown.time_left <= 1.75 and $DashCooldown.time_left != 0 and enemies.size() != 0 and ($Sprite2D.animation == "Attack1" or  $Sprite2D.animation == "Attack2"):
 			dashDamage = true
 			$EpicAttack.emitting = true
 		else:
@@ -159,7 +162,7 @@ func _on_dash_cooldown_timeout():
 func _unhandled_input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ATTACK"):
 		attacked = true
-		if $Sprite2D.animation != "Attack1" and !start_attack2:
+		if $Sprite2D.animation != "Attack1" and $Sprite2D.animation != "Attack2":
 			$AttackEffect.lifetime = 1
 			$AttackEffect.emitting = true
 			$Sprite2D.play("Attack1", Globals.itemsOwned[Globals.currentItem].speed)
@@ -175,6 +178,7 @@ func _on_area_2d_body_exited(body):
 		enemies.erase(body)
 		
 func hit(value):
+	dashDamage = false
 	life -= value
 	if life <= 0:
 		#$CanvasModulate.color.r = 0.1

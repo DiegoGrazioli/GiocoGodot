@@ -24,6 +24,7 @@ ListOfItems="*res://list_of_items.gd"
 [display]
 
 window/stretch/mode="canvas_items"
+window/vsync/vsync_mode=0
 
 [input]
 
