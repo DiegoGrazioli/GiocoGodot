@@ -14,4 +14,14 @@
 	> Gli item all'interno delle chest sono randomici, ma si può decidere quali includere
 
 ## Implementazioni desiderate:
-	> Colore particelle basato su rarità arma (aggiungere variabile colore ad ogni struct item)
+- Colore particelle basato su rarità arma (aggiungere variabile colore ad ogni struct item)
+- Statistiche level-based
+- NPCs
+- Mercato per ottenere item
+- Inventario
+- Pausa
+- Main menu
+- Impostazioni
+- Salvataggio
+- Altri item (armatura, pozioni, ...)
+- Audio?
