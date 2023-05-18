@@ -33,5 +33,7 @@
 - Non esiste inventario, puoi modificare oggetti dal deposito
 - Possibili metodi di cura:
 	> Fontana revitalizzante
+	
 	> Rigenerazione passiva
+	
 	> Tramite pozioni
