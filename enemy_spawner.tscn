@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c5t5ok6c5ygm1" path="res://Enemies/slime.tscn" id="2_4i54v"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d8fh7"]
-radius = 308.015
+radius = 291.015
 
 [node name="EnemySpawner" type="Area2D"]
 script = ExtResource("1_wty45")

@@ -19,11 +19,15 @@ var HIT_PLAYER = false
 
 var damageIndicator = preload("res://damageIndicator.tscn")
 
+var direction = Vector2.ZERO
+
 func _ready():
 	pass
 
 
 func _physics_process(delta):
+	if is_attacking and $Sprite2D.animation != "Attack":
+		is_attacking = false
 	$HealthBar.value = life * 100 / max_life
 	if makeMove and !is_attacking:
 		move()
@@ -103,28 +107,31 @@ func _on_area_2d_body_exited(body):
 		is_attacking = false
 func move():
 	
-	# Calculate the direction vector towards the player
-	var direction = Vector2.ZERO
-	direction.x = Globals.playerPos.x - (position.x + posx)
-	direction.y = Globals.playerPos.y - (position.y + posy)
-	direction = direction.normalized()
 	if direction.x > 0:
-		$Sprite2D.flip_h = false
-		$Sprite2D.position.x = 14
-		$Area2D/CollisionShape2D.position.x = 14.5
+		if $Sprite2D.animation != "Hurt":
+			$Sprite2D.flip_h = false
+			$Sprite2D.position.x = 14
+			$Area2D/CollisionShape2D.position.x = 14.5
 		#$HurtBox.position.x = -14
 	else:
-		$Sprite2D.flip_h = true
-		$Area2D/CollisionShape2D.position.x = -42.5
-		$Sprite2D.position.x = -14
+		if $Sprite2D.animation != "Hurt":
+			$Sprite2D.flip_h = true
+			$Area2D/CollisionShape2D.position.x = -42.5
+			$Sprite2D.position.x = -14
 		#$HurtBox.position.x = 14
-	
+		
+	# Calculate the direction vector towards the player
+	if $Sprite2D.animation != "Hurt":
+		direction.x = Globals.playerPos.x - (position.x + posx)
+		direction.y = Globals.playerPos.y - (position.y + posy)
+		direction = direction.normalized()
 	# Calculate the enemy's velocity and rotation
 	var velocity = direction * SPEED
 	
 	# Move the enemy smoothly
 	var delta = get_process_delta_time()
 	position += velocity * delta
+	move_and_slide()
 
 
 func _on_area_2d_2_body_entered(body):

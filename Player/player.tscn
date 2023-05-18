@@ -190,7 +190,7 @@ size = Vector2(32, 35)
 colors = PackedColorArray(1, 1, 1, 1, 1, 0.960784, 0, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4kfcp"]
-size = Vector2(22.5, 33.5)
+size = Vector2(22.5, 31.75)
 
 [sub_resource type="Gradient" id="Gradient_kke5o"]
 offsets = PackedFloat32Array(0.0331126, 0.331126, 1)
@@ -258,7 +258,7 @@ position = Vector2(-531, -398)
 color = Color(0.701961, 0.701961, 0.701961, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(3.25, 4)
+position = Vector2(3.25, 4.875)
 shape = SubResource("RectangleShape2D_4kfcp")
 debug_color = Color(0.760784, 0.627451, 0.964706, 0.419608)
 
