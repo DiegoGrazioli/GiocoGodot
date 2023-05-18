@@ -8,7 +8,7 @@
 
 	> Velocità attacco basata su tipo arma
 
-	> Velocità di attacco in movimento vasata su peso arma
+	> Velocità di attacco in movimento basata su peso arma
 
 - Item:
 	> Gli item all'interno delle chest sono randomici, ma si può decidere quali includere
@@ -25,3 +25,13 @@
 - Salvataggio
 - Altri item (armatura, pozioni, ...)
 - Audio?
+
+## Promemoria
+- Dash cambia in SHIFT
+- Scudo diventa RMB
+- Utilizzo oggetti LMB
+- Non esiste inventario, puoi modificare oggetti dal deposito
+- Possibili metodi di cura:
+	> Fontana revitalizzante
+	> Rigenerazione passiva
+	> Tramite pozioni
