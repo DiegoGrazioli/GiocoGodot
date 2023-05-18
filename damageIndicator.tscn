@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://d08mvwdu6mw5p"]
+[gd_scene load_steps=8 format=3 uid="uid://d08mvwdu6mw5p"]
 
 [ext_resource type="Script" path="res://damageIndicator.gd" id="1_jye4q"]
-[ext_resource type="FontFile" uid="uid://dehppjcpxlen5" path="res://assets/Fonts/Peaberry-Base.otf" id="2_0wtbo"]
+[ext_resource type="FontFile" uid="uid://ddnh6ut2nctfr" path="res://assets/Fonts/Peaberry-Base.otf" id="2_0wtbo"]
 
 [sub_resource type="Animation" id="Animation_y3u7p"]
 length = 0.001
@@ -112,14 +112,56 @@ tracks/2/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_a6wq6"]
+resource_name = "regen"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.25, 0.25), Vector2(0.5, 0.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 1, 0.239216, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jfb41"]
 _data = {
 "RESET": SubResource("Animation_y3u7p"),
+"regen": SubResource("Animation_a6wq6"),
 "showDamage": SubResource("Animation_012v0"),
 "showDamage_player": SubResource("Animation_nx74s")
 }
 
-[node name="Node" type="Node2D"]
+[node name="Indicator" type="Node2D"]
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_jye4q")
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://mn0n45xsgm5m"]
 
-[ext_resource type="Texture2D" uid="uid://bjcg87ma80gkp" path="res://assets/World/RPGW_Caves_v2.1/MainLev2.0.png" id="1_celcn"]
+[ext_resource type="Texture2D" uid="uid://b3duqeycmkqwx" path="res://assets/World/RPGW_Caves_v2.1/MainLev2.0.png" id="1_celcn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lp1q2"]
 texture = ExtResource("1_celcn")

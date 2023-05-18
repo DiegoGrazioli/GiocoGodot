@@ -6,7 +6,6 @@ const SPEED = 150.0
 var start_attack2 = false #per il secondo attacco
 var dash_accel = 1
 var enemies = Array()
-var life = 100.0
 var atk = 1.0
 var dashDamage = false
 var shake = false
@@ -21,13 +20,18 @@ func _ready():
 	$CanvasModulate.color.r = 0.6
 	$CanvasModulate.color.g = 0.6
 	$CanvasModulate.color.b = 0.6
-	Globals.maxHealth = life
 	Globals.itemsOwned.push_back(ListOfItems.pugnale_rotto_di_rame)
 
 func _physics_process(delta):
-	Globals.life = life
 	Globals.playerPos = position
 	
+	if Globals.life <= 0:
+		#$CanvasModulate.color.r = 0.1
+		$CanvasModulate.color.g = 0.1
+		$CanvasModulate.color.b = 0.1
+	else:
+		$CanvasModulate.color.g = Globals.life * 0.6  / Globals.maxHealth 
+		$CanvasModulate.color.b = Globals.life * 0.6 / Globals.maxHealth
 	#controlla per shake
 	if shake:
 		var shakeVector = Vector2(randf_range(-1, 1) * 4, randf_range(-1, 1) * 4)
@@ -179,15 +183,7 @@ func _on_area_2d_body_exited(body):
 		
 func hit(value):
 	dashDamage = false
-	life -= value
-	if life <= 0:
-		#$CanvasModulate.color.r = 0.1
-		$CanvasModulate.color.g = 0.1
-		$CanvasModulate.color.b = 0.1
-	else:
-		$CanvasModulate.color.g = life * 0.6  / Globals.maxHealth 
-		$CanvasModulate.color.b = life * 0.6 / Globals.maxHealth
-		pass
+	Globals.life -= value
 	$Sprite2D.modulate = Color(5, 1, 1)
 	$Sprite2D.play("Hurt")
 	
@@ -206,3 +202,9 @@ func _on_shake_timer_timeout():
 	var tween = $Camera2D.create_tween()
 	tween.tween_property($Camera2D, "offset", Vector2(0, 0), 0.1)
 	shake = false
+	
+func regenAnimation(value):
+	var dmg = damageIndicator.instantiate()
+	add_child(dmg)
+	dmg.anim.play("regen")
+	dmg.label.text = str(value)

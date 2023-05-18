@@ -4,6 +4,7 @@ var index = 0
 var playerInside = false
 @export var posx = 0
 @export var posy = 0
+@export var keyIndex = 0
 
 
 # Called when the node enters the scene tree for the first time.
@@ -24,7 +25,6 @@ func _on_body_entered(body):
 		
 func _on_timer_timeout():
 	if playerInside:
-		print("spawn")
 		var e = $BlueDemon.duplicate()
 		e.name = str(index)
 		index += 1

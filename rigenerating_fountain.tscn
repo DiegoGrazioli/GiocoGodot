@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqflar7op6up"]
+
+[ext_resource type="Script" path="res://rigenerating_fountain.gd" id="1_m217e"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gdodt"]
+radius = 99.0051
+
+[sub_resource type="Gradient" id="Gradient_y3a4m"]
+offsets = PackedFloat32Array(0, 0.986755)
+colors = PackedColorArray(1, 1, 0, 1, 1.06092e-06, 0.98741, 0.48796, 1)
+
+[node name="RigeneratingFountain" type="Area2D"]
+script = ExtResource("1_m217e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_gdodt")
+debug_color = Color(0, 0.941176, 0, 0.407843)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+modulate = Color(1, 1, 0.0509804, 0.631373)
+amount = 15
+lifetime = 0.3
+speed_scale = 0.2
+randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 86.63
+gravity = Vector2(2.08165e-12, -980)
+radial_accel_max = 32.32
+scale_amount_min = 4.1
+scale_amount_max = 4.1
+color_ramp = SubResource("Gradient_y3a4m")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(-1, 2)
+scale = Vector2(0.653595, 0.653595)
+color = Color(0.388235, 1, 0.27451, 0.0509804)
+polygon = PackedVector2Array(-76, -133, -39, -148, 0, -153, 40, -148, 77, -132, 108, -109, 132, -78, 148, -39, 153, -1, 148, 39, 133, 77, 109, 108, 78, 133, 39, 148, 0, 153, -40, 148, -78, 133, -109, 109, -133, 77, -148, 40, -153, 0, -148, -39, -133, -76, -107, -110)
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

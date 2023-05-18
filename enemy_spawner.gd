@@ -4,6 +4,7 @@ var index = 0
 var playerInside = false
 @export var posx = 0
 @export var posy = 0
+@export var keyIndex = 0
 
 
 # Called when the node enters the scene tree for the first time.
