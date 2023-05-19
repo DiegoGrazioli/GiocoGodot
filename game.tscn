@@ -1,14 +1,15 @@
-[gd_scene load_steps=16 format=3 uid="uid://d4ev2npw117j3"]
+[gd_scene load_steps=17 format=3 uid="uid://d4ev2npw117j3"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_3qjgd"]
-[ext_resource type="Texture2D" uid="uid://cvcrisi8d8ay6" path="res://assets/World/Houses_Pack/houses.png" id="1_el65w"]
+[ext_resource type="Texture2D" uid="uid://dsxfdf07m6tup" path="res://assets/World/Houses_Pack/houses.png" id="1_el65w"]
 [ext_resource type="PackedScene" uid="uid://dd506jl64yl0m" path="res://Player/player.tscn" id="1_kmtr7"]
 [ext_resource type="PackedScene" uid="uid://dt5wm13yl83rd" path="res://ui.tscn" id="3_2g67g"]
-[ext_resource type="Texture2D" uid="uid://ltyijn8hkk58" path="res://assets/World/mana seed seasonal forest sample (summer)/seasonal sample (summer).png" id="3_rdqvu"]
+[ext_resource type="Texture2D" uid="uid://pljom184ph54" path="res://assets/World/mana seed seasonal forest sample (summer)/seasonal sample (summer).png" id="3_rdqvu"]
 [ext_resource type="PackedScene" uid="uid://c7cl40pxx3wt" path="res://Chest/chest.tscn" id="5_h1udk"]
 [ext_resource type="PackedScene" uid="uid://dqflar7op6up" path="res://rigenerating_fountain.tscn" id="7_dajuv"]
 [ext_resource type="PackedScene" uid="uid://c1at8vy1glj0" path="res://enemy_spawner.tscn" id="8_bhrbh"]
 [ext_resource type="PackedScene" uid="uid://dut8c3hw8ssxw" path="res://enemy_2_spawner.tscn" id="9_1gtro"]
+[ext_resource type="PackedScene" uid="uid://dnc84vw5dunko" path="res://Chest/mitic_chest.tscn" id="10_mmfwc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8421b"]
 texture = ExtResource("1_el65w")
@@ -1153,6 +1154,9 @@ posy = 976
 
 [node name="BlueDemon" parent="Enemy2Spawner" index="2"]
 lvl = 2
+
+[node name="MiticChest" parent="." instance=ExtResource("10_mmfwc")]
+position = Vector2(290, 426)
 
 [connection signal="body_entered" from="Dungeon1Portal" to="." method="_on_dungeon_1_portal_body_entered"]
 

@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://dnc84vw5dunko"]
+
+[ext_resource type="Script" path="res://MiticChest.gd" id="1_pte18"]
+[ext_resource type="Texture2D" uid="uid://6kkysifnhbk3" path="res://assets/World/19.07c - Treasure Chests 1.2a/treasure chests.png" id="2_p8obc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6rjex"]
+size = Vector2(20, 18)
+
+[sub_resource type="Gradient" id="Gradient_s5be6"]
+offsets = PackedFloat32Array(0, 0.63245, 0.980132)
+colors = PackedColorArray(1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0)
+
+[node name="MiticChest" type="StaticBody2D"]
+script = ExtResource("1_pte18")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6rjex")
+
+[node name="Closed" type="Sprite2D" parent="."]
+position = Vector2(0, 0.515)
+texture = ExtResource("2_p8obc")
+region_enabled = true
+region_rect = Rect2(70.2652, 72.7038, 19.0362, 19.2962)
+
+[node name="Opened" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -2)
+texture = ExtResource("2_p8obc")
+region_enabled = true
+region_rect = Rect2(71, 99, 19, 25)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emission_shape = 3
+emission_rect_extents = Vector2(10, 8)
+gravity = Vector2(0, -16)
+color = Color(3, 3, 3, 1)
+color_ramp = SubResource("Gradient_s5be6")

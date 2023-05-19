@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://d08mvwdu6mw5p"]
 
 [ext_resource type="Script" path="res://damageIndicator.gd" id="1_jye4q"]
-[ext_resource type="FontFile" uid="uid://dehppjcpxlen5" path="res://assets/Fonts/Peaberry-Base.otf" id="2_0wtbo"]
+[ext_resource type="FontFile" uid="uid://ddnh6ut2nctfr" path="res://assets/Fonts/Peaberry-Base.otf" id="2_0wtbo"]
 
 [sub_resource type="Animation" id="Animation_y3u7p"]
 length = 0.001

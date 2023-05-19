@@ -1,17 +1,15 @@
 extends StaticBody2D
-class_name Chest
+class_name Mitic_chest
 
 var item
 var possibleItems = Array()
 @export var is_opened = false
 
 func _ready():
-	possibleItems.push_back(ListOfItems.spada_di_ferro)
-	possibleItems.push_back(ListOfItems.spada_di_rame)
-	possibleItems.push_back(ListOfItems.pugnale_rotto_di_ferro)
-	possibleItems.push_back(ListOfItems.pugnale_in_rame)
-	possibleItems.push_back(ListOfItems.spadone_di_ferro)
-	possibleItems.push_back(ListOfItems.spadone_di_rame)
+	possibleItems.push_back(ListOfItems.spadone_in_rubino)
+	possibleItems.push_back(ListOfItems.spadone_in_smeraldo)
+	possibleItems.push_back(ListOfItems.spada_in_smeraldo)
+	possibleItems.push_back(ListOfItems.spada_in_rubino)
 
 func is_closed():
 	return $Closed.visible

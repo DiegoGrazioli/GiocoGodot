@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c7cl40pxx3wt"]
 
 [ext_resource type="Script" path="res://Chest/Chest.gd" id="1_uucek"]
-[ext_resource type="Texture2D" uid="uid://bjx1awcwdsyp4" path="res://assets/World/19.07c - Treasure Chests 1.2a/treasure chests.png" id="2_7ga0g"]
+[ext_resource type="Texture2D" uid="uid://6kkysifnhbk3" path="res://assets/World/19.07c - Treasure Chests 1.2a/treasure chests.png" id="2_7ga0g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s01o6"]
 size = Vector2(20, 18)
@@ -10,7 +10,7 @@ size = Vector2(20, 18)
 offsets = PackedFloat32Array(0, 0.662252, 0.980132)
 colors = PackedColorArray(1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
-[node name="Chest" type="StaticBody2D"]
+[node name="CommonChest" type="StaticBody2D"]
 position = Vector2(243, 426)
 script = ExtResource("1_uucek")
 

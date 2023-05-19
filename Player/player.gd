@@ -24,7 +24,6 @@ func _ready():
 
 func _physics_process(delta):
 	Globals.playerPos = position
-	
 	if Globals.life <= 0:
 		#$CanvasModulate.color.r = 0.1
 		$CanvasModulate.color.g = 0.1
@@ -101,7 +100,7 @@ func _physics_process(delta):
 	#per interazioni
 	if Input.is_action_just_pressed("INTERACT") and $RayCast2D.is_colliding():
 			var collider = $RayCast2D.get_collider()
-			if collider is Chest and collider.is_closed():
+			if (collider is Chest or collider is Mitic_chest)and collider.is_closed():
 				collider.open()
 	
 	if attacked and ($Sprite2D.animation == "Attack1" and $Sprite2D.frame == 6) or ($Sprite2D.animation == "Attack2" and $Sprite2D.frame == 2):

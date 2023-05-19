@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dqflar7op6up"]
 
 [ext_resource type="Script" path="res://rigenerating_fountain.gd" id="1_m217e"]
-[ext_resource type="Texture2D" uid="uid://cslv3nqj47wfp" path="res://assets/FX/light.png" id="2_fyreb"]
+[ext_resource type="Texture2D" uid="uid://167y0evcw2j7" path="res://assets/FX/light.png" id="2_fyreb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gdodt"]
 radius = 99.0051
@@ -14,7 +14,6 @@ colors = PackedColorArray(1, 1, 0, 1, 1.06092e-06, 0.98741, 0.48796, 1, 0, 0.988
 script = ExtResource("1_m217e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("CircleShape2D_gdodt")
 debug_color = Color(0, 0.941176, 0, 0.407843)
 

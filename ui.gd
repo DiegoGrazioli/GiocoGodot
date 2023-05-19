@@ -18,6 +18,8 @@ func _process(delta):
 	$Control/Item/Speed.text = "Spd: " + str(Globals.itemsOwned[Globals.currentItem].speed)
 	$Control/Item/Weight.text = "Weight: " + str(Globals.itemsOwned[Globals.currentItem].weight)
 	$Control/Item/Sprite.texture = Globals.itemsOwned[Globals.currentItem].sprite
+	$ColorRect3/LabelKey.text = str(Globals.playerLvl)
+	$ExpBar.value = Globals.exp * 100 / pow(2,Globals.playerLvl + 1)
 	
 	if $ProgressBar.value > 98 and $ProgressBar.value != 100:
 		$AnimationPlayer.play("ProgBarBlink")

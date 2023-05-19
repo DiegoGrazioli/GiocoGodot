@@ -10,6 +10,7 @@ var makeMove = false
 var posx = 0 
 var posy = 0 
 var atk = 5
+var expDrop = 10
 @export var lvl = 1
 
 var b # body
@@ -52,6 +53,7 @@ func _on_sprite_2d_animation_finished():
 		var number = randi_range(0,10)
 		if  number == 5:
 			Globals.key[lvl-1] += 1
+		Globals.exp += expDrop * lvl
 		queue_free()
 	elif $Sprite2D.animation == "Hurt":
 		$Sprite2D.modulate = Color(1, 1, 1)
