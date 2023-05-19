@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://jmotblnxfv53"]
+[gd_scene load_steps=30 format=3 uid="uid://jmotblnxfv53"]
 
 [ext_resource type="Script" path="res://Enemies/blue_demon.gd" id="1_uo4wj"]
 [ext_resource type="Texture2D" uid="uid://c7lbkhtxmqe5g" path="res://assets/Enemies/Enemy02/attack01.png" id="2_w5apm"]
@@ -133,6 +133,9 @@ size = Vector2(24, 26)
 [sub_resource type="CircleShape2D" id="CircleShape2D_yc3is"]
 radius = 259.031
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_824uk"]
+size = Vector2(28, 5)
+
 [node name="BlueDemon" type="CharacterBody2D"]
 script = ExtResource("1_uo4wj")
 
@@ -170,9 +173,17 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("18_i3mfb")
 value = 50.0
 
+[node name="Area2D3" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D3"]
+position = Vector2(0, 13.5)
+shape = SubResource("RectangleShape2D_824uk")
+
 [connection signal="animation_changed" from="Sprite2D" to="." method="_on_sprite_2d_animation_changed"]
 [connection signal="animation_finished" from="Sprite2D" to="." method="_on_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]
 [connection signal="body_exited" from="Area2D2" to="." method="_on_area_2d_2_body_exited"]
+[connection signal="body_entered" from="Area2D3" to="." method="_on_area_2d_3_body_entered"]
+[connection signal="body_exited" from="Area2D3" to="." method="_on_area_2d_3_body_exited"]

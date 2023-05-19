@@ -1,6 +1,5 @@
 extends CanvasLayer
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -8,6 +7,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	#progressBar del boss in dungeon
 	$ProgressBar.value = Globals.dashBarValue
 	$ColorRect/Label.text = "X: " + str(int(Globals.playerPos.x) / 16) + "  Y: " + str(int(Globals.playerPos.y) / 16)
 	$PlayerLife.value = Globals.life * 100 / Globals.maxHealth

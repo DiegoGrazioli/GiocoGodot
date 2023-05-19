@@ -9,6 +9,7 @@ var max_life = life
 var posx = 0 
 var posy = 0 
 var atk = 3.0
+@export var lvl = 1
 
 var b # body
 
@@ -18,8 +19,9 @@ var is_inside = false
 var damageIndicator = preload("res://damageIndicator.tscn")
 
 func _ready():
-	pass
-
+	life = life * lvl
+	atk = atk * lvl
+	max_life = life
 
 func _physics_process(delta):
 	#$Sprite2D.play("Idle")
@@ -27,6 +29,10 @@ func _physics_process(delta):
 	move()
 	if life <= 0:
 		$Sprite2D.play("Die")
+		if $Sprite2D.animation == "Die":
+			var number = randi_range(0,10)
+			if  number == 5:
+				Globals.key[lvl-1] += 1
 		queue_free()
 		#await ($Sprite2D.animation_finished)
 		#var number = randi_range(0,100)

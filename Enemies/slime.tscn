@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://c5t5ok6c5ygm1"]
+[gd_scene load_steps=25 format=3 uid="uid://c5t5ok6c5ygm1"]
 
 [ext_resource type="Script" path="res://Enemies/slime.gd" id="1_145tp"]
 [ext_resource type="Texture2D" uid="uid://cc3s33dys7qs0" path="res://assets/Enemies/Slime/idle/slime-idle-0.png" id="1_tldbb"]
@@ -104,6 +104,9 @@ size = Vector2(25, 24)
 [sub_resource type="CircleShape2D" id="CircleShape2D_nihgp"]
 radius = 154.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_osuu7"]
+size = Vector2(30, 5.5)
+
 [node name="Slime" type="CharacterBody2D"]
 script = ExtResource("1_145tp")
 
@@ -139,9 +142,17 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("19_3ftsk")
 value = 50.0
 
+[node name="Area2D3" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D3"]
+position = Vector2(0, 11.75)
+shape = SubResource("RectangleShape2D_osuu7")
+
 [connection signal="animation_changed" from="Sprite2D" to="." method="_on_sprite_2d_animation_changed"]
 [connection signal="animation_finished" from="Sprite2D" to="." method="_on_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]
 [connection signal="body_exited" from="Area2D2" to="." method="_on_area_2d_2_body_exited"]
+[connection signal="body_entered" from="Area2D3" to="." method="_on_area_2d_3_body_entered"]
+[connection signal="body_exited" from="Area2D3" to="." method="_on_area_2d_3_body_exited"]

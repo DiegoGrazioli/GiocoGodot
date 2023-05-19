@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7cl40pxx3wt"]
+
+[ext_resource type="Script" path="res://Chest/Chest.gd" id="1_uucek"]
+[ext_resource type="Texture2D" uid="uid://bjx1awcwdsyp4" path="res://assets/World/19.07c - Treasure Chests 1.2a/treasure chests.png" id="2_7ga0g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s01o6"]
+size = Vector2(20, 18)
+
+[sub_resource type="Gradient" id="Gradient_0wiat"]
+offsets = PackedFloat32Array(0, 0.662252, 0.980132)
+colors = PackedColorArray(1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="Chest" type="StaticBody2D"]
+position = Vector2(243, 426)
+script = ExtResource("1_uucek")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_s01o6")
+
+[node name="Closed" type="Sprite2D" parent="."]
+position = Vector2(0, 0.515)
+texture = ExtResource("2_7ga0g")
+region_enabled = true
+region_rect = Rect2(38, 9, 20, 19)
+
+[node name="Opened" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -2)
+texture = ExtResource("2_7ga0g")
+region_enabled = true
+region_rect = Rect2(38, 36, 20, 24)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emission_shape = 3
+emission_rect_extents = Vector2(10, 8)
+gravity = Vector2(0, -16)
+color = Color(3, 3, 3, 1)
+color_ramp = SubResource("Gradient_0wiat")

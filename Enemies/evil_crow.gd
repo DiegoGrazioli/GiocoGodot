@@ -10,6 +10,7 @@ var makeMove = false
 var posx = 0 
 var posy = 0 
 var atk = 5
+@export var lvl = 1
 
 var b # body
 
@@ -21,15 +22,18 @@ var damageIndicator = preload("res://damageIndicator.tscn")
 
 var direction = Vector2.ZERO
 
-func _ready():
-	pass
+var useMoveSlide = true
 
+func _ready():
+	life = life * lvl
+	atk = atk * lvl
+	max_life = life
 
 func _physics_process(delta):
 	if is_attacking and $Sprite2D.animation != "Attack":
 		is_attacking = false
 	$HealthBar.value = life * 100 / max_life
-	if makeMove and !is_attacking:
+	if makeMove and !is_attacking and life > 0:
 		move()
 	if life <= 0:
 		$Sprite2D.play("Die")
@@ -45,9 +49,9 @@ func _physics_process(delta):
 
 func _on_sprite_2d_animation_finished():
 	if $Sprite2D.animation == "Die":
-		var number = randi_range(0,100)
-		if  number == 15:
-			Globals.key += 1
+		var number = randi_range(0,10)
+		if  number == 5:
+			Globals.key[lvl-1] += 1
 		queue_free()
 	elif $Sprite2D.animation == "Hurt":
 		$Sprite2D.modulate = Color(1, 1, 1)
@@ -63,6 +67,7 @@ func _on_sprite_2d_animation_finished():
 
 func hit(value, dir):
 	position.x += 10 * dir
+	move_and_slide()
 	if dir > 0:
 		$Sprite2D.flip_h = true
 		$Sprite2D.position.x = -14
@@ -105,6 +110,7 @@ func _on_area_2d_body_exited(body):
 		is_inside = false
 		HIT_PLAYER = false
 		is_attacking = false
+		
 func move():
 	
 	if direction.x > 0:
@@ -131,8 +137,9 @@ func move():
 	# Move the enemy smoothly
 	var delta = get_process_delta_time()
 	position += velocity * delta
-	move_and_slide()
-
+	if useMoveSlide:
+		move_and_slide()
+	
 
 func _on_area_2d_2_body_entered(body):
 	if body.name == "Player":
@@ -144,5 +151,10 @@ func _on_area_2d_2_body_exited(body):
 		makeMove = false
 
 
-func _on_sprite_2d_animation_changed():
-	pass # Replace with function body.
+
+func _on_area_2d_3_body_entered(body):
+	useMoveSlide = false
+
+
+func _on_area_2d_3_body_exited(body):
+	useMoveSlide = true

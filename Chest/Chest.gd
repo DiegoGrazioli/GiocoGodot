@@ -3,7 +3,7 @@ class_name Chest
 
 var item
 var possibleItems = Array()
-
+@export var is_opened = false
 
 func _ready():
 	possibleItems.push_back(ListOfItems.spada_di_ferro)
@@ -20,3 +20,4 @@ func open():
 	$Closed.visible = false
 	$Opened.visible = true
 	$CPUParticles2D.emitting = false
+	is_opened = true

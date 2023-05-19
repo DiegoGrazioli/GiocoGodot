@@ -10,6 +10,8 @@ var makeMove = false
 var posx = 0 
 var posy = 0 
 var atk = 0.5
+@export var lvl = 1
+var useMoveSlide = true
 
 var b # body
 
@@ -22,14 +24,15 @@ var damageIndicator = preload("res://damageIndicator.tscn")
 var direction = Vector2.ZERO
 
 func _ready():
-	pass
-
+	life = life * lvl
+	atk = atk * lvl
+	max_life = life
 
 func _physics_process(delta):
 	if is_attacking and $Sprite2D.animation != "Attack":
 		is_attacking = false
 	$HealthBar.value = life * 100 / max_life
-	if makeMove and !is_attacking:
+	if makeMove and !is_attacking and life > 0:
 		move()
 	if life <= 0:
 		$Sprite2D.play("Die")
@@ -46,9 +49,9 @@ func _physics_process(delta):
 
 func _on_sprite_2d_animation_finished():
 	if $Sprite2D.animation == "Die":
-		var number = randi_range(0,100)
-		if  number == 15:
-			Globals.key += 1
+		var number = randi_range(0,10)
+		if  number == 5:
+			Globals.key[lvl-1] += 1
 		queue_free()
 	elif $Sprite2D.animation == "Hurt":
 		$Sprite2D.modulate = Color(1, 1, 1)
@@ -63,7 +66,8 @@ func _on_sprite_2d_animation_finished():
 			$Sprite2D.play("Idle")
 
 func hit(value, dir):
-	velocity.x += 10 * dir
+	position.x += 10 * dir
+	move_and_slide()
 	if dir > 0:
 		$Sprite2D.flip_h = true
 	else:
@@ -114,17 +118,17 @@ func move():
 			$Area2D/CollisionShape2D.position.x = -12
 		
 	# Calculate the direction vector towards the player
-	if $Sprite2D.animation != "Hurt":
-		direction.x = Globals.playerPos.x - (position.x + posx)
-		direction.y = Globals.playerPos.y - (position.y + posy)
-		direction = direction.normalized()
+	direction.x = Globals.playerPos.x - (position.x + posx)
+	direction.y = Globals.playerPos.y - (position.y + posy)
+	direction = direction.normalized()
 	# Calculate the enemy's velocity and rotation
 	var velocity = direction * SPEED
 	
 	# Move the enemy smoothly
 	var delta = get_process_delta_time()
 	position += velocity * delta
-	move_and_slide()
+	if useMoveSlide:
+		move_and_slide()
 
 
 func _on_area_2d_2_body_entered(body):
@@ -135,3 +139,11 @@ func _on_area_2d_2_body_entered(body):
 func _on_area_2d_2_body_exited(body):
 	if body.name == "Player":
 		makeMove = false
+
+
+func _on_area_2d_3_body_entered(body):
+	useMoveSlide = false
+
+
+func _on_area_2d_3_body_exited(body):
+	useMoveSlide = true
