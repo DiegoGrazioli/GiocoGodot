@@ -5,7 +5,9 @@ extends Node2D
 func _ready():
 	player.position = Globals.overworldPos
 	$UI/BossBar.visible = false
-	
+	$UI/OverWordOccluder.visible = false
+	$UI/OverWordOccluder/LabelKey.visible = false
+	$UI/PlayerPosition.visible = true
 func _process(delta):
 	pass
 

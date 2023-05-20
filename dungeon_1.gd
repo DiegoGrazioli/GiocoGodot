@@ -12,6 +12,9 @@ func _ready():
 	$Chest3/CollisionShape2D.disabled = true
 	$Chest4.visible = false
 	$Chest4/CollisionShape2D.disabled = true
+	$UI/OverWordOccluder.visible = true
+	$UI/OverWordOccluder/LabelKey.visible = true
+	$UI/PlayerPosition.visible = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

@@ -23,3 +23,6 @@ func _process(delta):
 	
 	if $ProgressBar.value > 98 and $ProgressBar.value != 100:
 		$AnimationPlayer.play("ProgBarBlink")
+		
+	$PlayerPosition.position.x = $OverWorld2.position.x + (Globals.playerPos.x * 0.06)
+	$PlayerPosition.position.y = $OverWorld2.position.y + (Globals.playerPos.y * 0.06)

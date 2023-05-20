@@ -6,10 +6,9 @@ var possibleItems = Array()
 @export var is_opened = false
 
 func _ready():
-	possibleItems.push_back(ListOfItems.spadone_in_rubino)
-	possibleItems.push_back(ListOfItems.spadone_in_smeraldo)
-	possibleItems.push_back(ListOfItems.spada_in_smeraldo)
-	possibleItems.push_back(ListOfItems.spada_in_rubino)
+	possibleItems.push_back(ListOfItems.spadone_di_smeraldo)
+	possibleItems.push_back(ListOfItems.spada_di_smeraldo)
+	possibleItems.push_back(ListOfItems.spada_di_rubino)
 
 func is_closed():
 	return $Closed.visible

@@ -9,7 +9,6 @@ func _ready():
 	possibleItems.push_back(ListOfItems.spada_di_ferro)
 	possibleItems.push_back(ListOfItems.spada_di_rame)
 	possibleItems.push_back(ListOfItems.pugnale_rotto_di_ferro)
-	possibleItems.push_back(ListOfItems.pugnale_in_rame)
 	possibleItems.push_back(ListOfItems.spadone_di_ferro)
 	possibleItems.push_back(ListOfItems.spadone_di_rame)
 
