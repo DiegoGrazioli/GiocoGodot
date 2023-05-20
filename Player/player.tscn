@@ -184,7 +184,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_inhnj"]
-size = Vector2(32, 35)
+size = Vector2(32, 41)
 
 [sub_resource type="Gradient" id="Gradient_vjng3"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 0.960784, 0, 0)
@@ -232,7 +232,7 @@ target_position = Vector2(0, 16)
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="HitBox" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-16, -1.5)
+position = Vector2(-16, 1.5)
 shape = SubResource("RectangleShape2D_inhnj")
 
 [node name="AttackEffect" type="CPUParticles2D" parent="."]

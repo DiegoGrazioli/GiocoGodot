@@ -1,11 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://cxo74brp3amli"]
+[gd_scene load_steps=8 format=3 uid="uid://cxo74brp3amli"]
 
 [ext_resource type="Script" path="res://stats.gd" id="1_vkhy5"]
 [ext_resource type="Texture2D" uid="uid://b5wupccquccc7" path="res://assets/UI/UI Assets pack_v.1_st/UI Assets pack_v.1_st/Book.png" id="2_01mvf"]
 [ext_resource type="FontFile" uid="uid://dehppjcpxlen5" path="res://assets/Fonts/Peaberry-Base.otf" id="3_ioojc"]
 
+[sub_resource type="Gradient" id="Gradient_3ljlk"]
+offsets = PackedFloat32Array(0, 0.251908, 0.750636, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_i3243"]
+offsets = PackedFloat32Array(0, 0.256997, 0.722646, 1)
+colors = PackedColorArray(0, 0, 1, 1, 0.117647, 1, 1, 1, 0.117647, 1, 1, 1, 0, 0, 1, 1)
+
+[sub_resource type="Gradient" id="Gradient_47em7"]
+offsets = PackedFloat32Array(0, 0.493639, 1)
+colors = PackedColorArray(0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_7cdod"]
+offsets = PackedFloat32Array(0, 0.267176, 0.727735, 1)
+colors = PackedColorArray(1, 0.384314, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 0.384314, 0, 1)
+
 [node name="CanvasLayer2" type="CanvasLayer"]
 layer = 100
+scale = Vector2(0.75, 0.75)
+transform = Transform2D(0.75, 0, 0, 0.75, 0, 0)
 script = ExtResource("1_vkhy5")
 
 [node name="Pause" type="Control" parent="."]
@@ -14,6 +32,10 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 194.667
+offset_top = 105.333
+offset_right = 194.667
+offset_bottom = 105.333
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -22,6 +44,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -448.0
+offset_top = -357.0
+offset_right = 488.0
+offset_bottom = 364.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.603922)
@@ -63,7 +89,7 @@ offset_bottom = -177.0
 theme_override_colors/font_color = Color(0.647059, 0.470588, 0.333333, 1)
 theme_override_fonts/font = ExtResource("3_ioojc")
 theme_override_font_sizes/font_size = 64
-text = "Statistiche:"
+text = "Statistiche"
 horizontal_alignment = 1
 
 [node name="HP" type="Label" parent="Pause/Container"]
@@ -79,6 +105,21 @@ text = "13123"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="HPup" type="CPUParticles2D" parent="Pause/Container"]
+position = Vector2(-428, -12)
+amount = 32
+gravity = Vector2(0, 0)
+initial_velocity_min = 363.64
+initial_velocity_max = 363.64
+orbit_velocity_min = 1.0
+orbit_velocity_max = 1.0
+tangential_accel_min = 1.0
+tangential_accel_max = 1.0
+scale_amount_min = 2.0
+scale_amount_max = 8.0
+color = Color(1, 0, 0, 1)
+color_ramp = SubResource("Gradient_3ljlk")
+
 [node name="Atk" type="Label" parent="Pause/Container"]
 layout_mode = 0
 offset_left = -213.0
@@ -91,6 +132,21 @@ theme_override_font_sizes/font_size = 26
 text = "13123"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Atkup" type="CPUParticles2D" parent="Pause/Container"]
+position = Vector2(-172, -10.6667)
+amount = 32
+gravity = Vector2(0, 0)
+initial_velocity_min = 363.64
+initial_velocity_max = 363.64
+orbit_velocity_min = 1.0
+orbit_velocity_max = 1.0
+tangential_accel_min = 1.0
+tangential_accel_max = 1.0
+scale_amount_min = 2.0
+scale_amount_max = 8.0
+color = Color(0, 0.823529, 1, 1)
+color_ramp = SubResource("Gradient_i3243")
 
 [node name="Level" type="Label" parent="Pause/Container"]
 layout_mode = 0
@@ -117,6 +173,20 @@ text = "13123"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="HPRup" type="CPUParticles2D" parent="Pause/Container"]
+position = Vector2(-429.333, 246.667)
+amount = 32
+gravity = Vector2(0, 0)
+initial_velocity_min = 363.64
+initial_velocity_max = 363.64
+orbit_velocity_min = 1.0
+orbit_velocity_max = 1.0
+tangential_accel_min = 1.0
+tangential_accel_max = 1.0
+scale_amount_min = 2.0
+scale_amount_max = 8.0
+color_ramp = SubResource("Gradient_47em7")
+
 [node name="Exp" type="Label" parent="Pause/Container"]
 layout_mode = 0
 offset_left = -213.0
@@ -129,6 +199,20 @@ theme_override_font_sizes/font_size = 26
 text = "13123"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Speedup" type="CPUParticles2D" parent="Pause/Container"]
+position = Vector2(-173.333, 244)
+amount = 32
+gravity = Vector2(0, 0)
+initial_velocity_min = 363.64
+initial_velocity_max = 363.64
+orbit_velocity_min = 1.0
+orbit_velocity_max = 1.0
+tangential_accel_min = 1.0
+tangential_accel_max = 1.0
+scale_amount_min = 2.0
+scale_amount_max = 8.0
+color_ramp = SubResource("Gradient_7cdod")
 
 [node name="Upgrade" type="VBoxContainer" parent="Pause/Container"]
 layout_mode = 0
@@ -146,6 +230,13 @@ text = "Upgrades
 "
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="CurrentExp" type="Label" parent="Pause/Container/Upgrade"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.647059, 0.470588, 0.333333, 1)
+theme_override_fonts/font = ExtResource("3_ioojc")
+text = "Exp. attuale: "
+horizontal_alignment = 3
 
 [node name="Life" type="Control" parent="Pause/Container/Upgrade"]
 layout_mode = 2
@@ -209,7 +300,7 @@ theme_override_colors/font_color = Color(0.647059, 0.470588, 0.333333, 1)
 theme_override_fonts/font = ExtResource("3_ioojc")
 text = "Cost"
 
-[node name="Button" type="Button" parent="Pause/Container/Upgrade/LifeRecovery"]
+[node name="Button2" type="Button" parent="Pause/Container/Upgrade/LifeRecovery"]
 layout_mode = 2
 offset_left = 357.0
 offset_top = 80.0
@@ -246,7 +337,7 @@ theme_override_colors/font_color = Color(0.647059, 0.470588, 0.333333, 1)
 theme_override_fonts/font = ExtResource("3_ioojc")
 text = "Cost"
 
-[node name="Button" type="Button" parent="Pause/Container/Upgrade/Attack"]
+[node name="Button3" type="Button" parent="Pause/Container/Upgrade/Attack"]
 layout_mode = 2
 offset_left = 357.0
 offset_top = 136.0
@@ -282,7 +373,7 @@ theme_override_colors/font_color = Color(0.647059, 0.470588, 0.333333, 1)
 theme_override_fonts/font = ExtResource("3_ioojc")
 text = "Cost"
 
-[node name="Button" type="Button" parent="Pause/Container/Upgrade/Speed"]
+[node name="Button4" type="Button" parent="Pause/Container/Upgrade/Speed"]
 layout_mode = 2
 offset_left = 357.0
 offset_top = 193.0
@@ -292,13 +383,12 @@ theme_override_colors/font_color = Color(0.996078, 0.882353, 0.721569, 1)
 theme_override_colors/font_hover_color = Color(0.647059, 0.470588, 0.333333, 1)
 text = "+"
 
-[node name="Esc" type="Button" parent="Pause"]
-offset_left = 1078.0
-offset_top = -20.0
-offset_right = 1118.0
-offset_bottom = 11.0
+[node name="Esc" type="Button" parent="Pause/Container"]
+layout_mode = 0
+offset_left = 522.0
+offset_top = -324.0
+offset_right = 562.0
+offset_bottom = -293.0
 theme_override_colors/font_color = Color(0.996078, 0.882353, 0.721569, 1)
 theme_override_colors/font_hover_color = Color(0.647059, 0.470588, 0.333333, 1)
 text = "X"
-
-[connection signal="pressed" from="Pause/Esc" to="." method="_on_esc_pressed"]

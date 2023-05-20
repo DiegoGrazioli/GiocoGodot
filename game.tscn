@@ -146,13 +146,14 @@ shape = SubResource("RectangleShape2D_vokpj")
 [node name="CanvasLayer2" parent="." instance=ExtResource("10_ylstj")]
 visible = false
 
-[node name="Esc" parent="CanvasLayer2/Pause" index="2"]
-layout_mode = 0
-
 [connection signal="body_entered" from="Dungeon1Portal" to="." method="_on_dungeon_1_portal_body_entered"]
 [connection signal="body_entered" from="StatsHouse" to="." method="_on_stats_house_body_entered"]
+[connection signal="body_exited" from="StatsHouse" to="." method="_on_stats_house_body_exited"]
 [connection signal="pressed" from="CanvasLayer2/Pause/Container/Upgrade/Life/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="CanvasLayer2/Pause/Esc" to="." method="_on_esc_pressed"]
+[connection signal="pressed" from="CanvasLayer2/Pause/Container/Upgrade/LifeRecovery/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="CanvasLayer2/Pause/Container/Upgrade/Attack/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="CanvasLayer2/Pause/Container/Upgrade/Speed/Button4" to="." method="_on_button_4_pressed"]
+[connection signal="pressed" from="CanvasLayer2/Pause/Container/Esc" to="." method="_on_esc_pressed"]
 
 [editable path="Player"]
 [editable path="EnemySpawner"]

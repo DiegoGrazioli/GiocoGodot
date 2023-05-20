@@ -15,7 +15,7 @@ func _on_body_exited(body):
 
 func _on_timer_timeout():
 	if isInside:
-		Globals.life += int(Globals.maxHealth * recoveryAmount)
+		Globals.life += float(Globals.maxHealth * recoveryAmount)
 		if Globals.life > Globals.maxHealth:
 			Globals.life = Globals.maxHealth
 		else:

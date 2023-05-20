@@ -6,7 +6,6 @@ const SPEED = 150.0
 var start_attack2 = false #per il secondo attacco
 var dash_accel = 1
 var enemies = Array()
-var atk = 1.0
 var dashDamage = false
 var shake = false
 
@@ -33,7 +32,7 @@ func _physics_process(delta):
 		$CanvasModulate.color.b = Globals.life * 0.6 / Globals.maxHealth
 	#controlla per shake
 	if shake:
-		var shakeVector = Vector2(randf_range(-1, 1) * 4, randf_range(-1, 1) * 4)
+		var shakeVector = Vector2(randf_range(-1, 1) * 5, randf_range(-1, 1) * 5)
 		var tween = $Camera2D.create_tween()
 		tween.tween_property($Camera2D, "offset", shakeVector, 0.1)
 		$Camera2D.set_process(true)
@@ -65,7 +64,7 @@ func _physics_process(delta):
 	elif movement.x > 0:
 		$CollisionShape2D.position.x = -5
 		$Area2D/HitBox.position.x = 16
-	velocity = movement * SPEED * dash_accel
+	velocity = movement * SPEED * dash_accel * Globals.speed
 	
 	#animazioni
 	if (velocity.y != 0 or velocity.x != 0) and $Sprite2D.animation != "Attack1" and $Sprite2D.animation != "Attack2" and $Sprite2D.animation != "Dash" and $Sprite2D.animation != "Hurt":
@@ -108,14 +107,14 @@ func _physics_process(delta):
 		for e in enemies:
 			if $Area2D/HitBox.position.x > 0:
 				if dashDamage:
-					e.hit(atk * 2 * Globals.itemsOwned[Globals.currentItem].atk, 2)
+					e.hit(Globals.attack * 2 * Globals.itemsOwned[Globals.currentItem].atk, 2)
 				else :
-					e.hit(atk * Globals.itemsOwned[Globals.currentItem].atk, 1)
+					e.hit(Globals.attack * Globals.itemsOwned[Globals.currentItem].atk, 1)
 			else :
 				if dashDamage:
-					e.hit(atk * 2 * Globals.itemsOwned[Globals.currentItem].atk, -2)
+					e.hit(Globals.attack * 2 * Globals.itemsOwned[Globals.currentItem].atk, -2)
 				else :
-					e.hit(atk * Globals.itemsOwned[Globals.currentItem].atk, -1)
+					e.hit(Globals.attack * Globals.itemsOwned[Globals.currentItem].atk, -1)
 	
 	move_and_slide()
 	
