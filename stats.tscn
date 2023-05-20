@@ -1,0 +1,304 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxo74brp3amli"]
+
+[ext_resource type="Script" path="res://stats.gd" id="1_vkhy5"]
+[ext_resource type="Texture2D" uid="uid://b5wupccquccc7" path="res://assets/UI/UI Assets pack_v.1_st/UI Assets pack_v.1_st/Book.png" id="2_01mvf"]
+[ext_resource type="FontFile" uid="uid://dehppjcpxlen5" path="res://assets/Fonts/Peaberry-Base.otf" id="3_ioojc"]
+
+[node name="CanvasLayer2" type="CanvasLayer"]
+layer = 100
+script = ExtResource("1_vkhy5")
+
+[node name="Pause" type="Control" parent="."]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="Pause"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.603922)
+
+[node name="Container" type="Control" parent="Pause"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Book" type="Sprite2D" parent="Pause/Container"]
+position = Vector2(20, 23)
+scale = Vector2(8, 8)
+texture = ExtResource("2_01mvf")
+region_enabled = true
+region_rect = Rect2(16, 32, 160, 96)
+
+[node name="Dec1" type="Sprite2D" parent="Pause/Container"]
+position = Vector2(-301, 70)
+scale = Vector2(8, 8)
+texture = ExtResource("2_01mvf")
+region_enabled = true
+region_rect = Rect2(224, 240, 48, 48)
+
+[node name="Stats" type="Label" parent="Pause/Container"]
+layout_mode = 0
+offset_left = -515.0
+offset_top = -244.0
+offset_right = -91.0
+offset_bottom = -177.0
+theme_override_colors/font_color = Color(0.647059, 0.470588, 0.333333, 1)
+theme_override_fonts/font = ExtResource("3_ioojc")
+theme_override_font_sizes/font_size = 64
+text = "Statistiche:"
+horizontal_alignment = 1
+
+[node name="HP" type="Label" parent="Pause/Container"]
+layout_mode = 0
+offset_left = -469.0
+offset_top = -98.0
+offset_right = -389.0
+offset_bottom = -18.0
+theme_override_colors/font_color = Color(1, 0.141176, 0.0156863, 1)
+theme_override_fonts/font = ExtResource("3_ioojc")
+theme_override_font_sizes/font_size = 26
+text = "13123"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Atk" type="Label" parent="Pause/Container"]
+layout_mode = 0
+offset_left = -213.0
+offset_top = -98.0
+offset_right = -133.0
+offset_bottom = -18.0
+theme_override_colors/font_color = Color(0, 0.694118, 1, 1)
+theme_override_fonts/font = ExtResource("3_ioojc")
+theme_override_font_sizes/font_size = 26
+text = "13123"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Level" type="Label" parent="Pause/Container"]
+layout_mode = 0
+offset_left = -341.0
+offset_top = 30.0
+offset_right = -261.0
+offset_bottom = 110.0
+theme_override_fonts/font = ExtResource("3_ioojc")
+theme_override_font_sizes/font_size = 26
+text = "13123"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HPRegen" type="Label" parent="Pause/Container"]
+layout_mode = 0
+offset_left = -469.0
+offset_top = 158.0
+offset_right = -389.0
+offset_bottom = 238.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_ioojc")
+theme_override_font_sizes/font_size = 26
+text = "13123"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Exp" type="Label" parent="Pause/Container"]
+layout_mode = 0
+offset_left = -213.0
+offset_top = 158.0
+offset_right = -133.0
+offset_bottom = 238.0
+theme_override_colors/font_color = Color(0.988235, 0.729412, 0, 1)
+theme_override_fonts/font = ExtResource("3_ioojc")
+theme_override_font_sizes/font_size = 26
+text = "13123"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Upgrade" type="VBoxContainer" parent="Pause/Container"]
+layout_mode = 0
+offset_left = 144.0
+offset_top = -239.0
+offset_right = 536.0
+offset_bottom = 270.0
+
+[node name="Label" type="Label" parent="Pause/Container/Upgrade"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.647059, 0.470588, 0.333333, 1)
+theme_override_fonts/font = ExtResource("3_ioojc")
+theme_override_font_sizes/font_size = 64
+text = "Upgrades
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Life" type="Control" parent="Pause/Container/Upgrade"]
+layout_mode = 2
+
+[node name="Stat" type="Label" parent="Pause/Container/Upgrade/Life"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = 35.0
+offset_right = 40.0
+offset_bottom = 58.0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.647059, 0.470588, 0.333333, 1)
+theme_override_fonts/font = ExtResource("3_ioojc")
+text = "Life"
+
+[node name="Cost" type="Label" parent="Pause/Container/Upgrade/Life"]
+layout_mode = 0
+offset_left = 181.0
+offset_top = 35.0
+offset_right = 221.0
+offset_bottom = 58.0
+theme_override_colors/font_color = Color(0.647059, 0.470588, 0.333333, 1)
+theme_override_fonts/font = ExtResource("3_ioojc")
+text = "Cost"
+
+[node name="Button" type="Button" parent="Pause/Container/Upgrade/Life"]
+layout_mode = 2
+offset_left = 357.0
+offset_top = 25.0
+offset_right = 397.0
+offset_bottom = 56.0
+theme_override_colors/font_color = Color(0.996078, 0.882353, 0.721569, 1)
+theme_override_colors/font_hover_color = Color(0.647059, 0.470588, 0.333333, 1)
+text = "+"
+
+[node name="LifeRecovery" type="Control" parent="Pause/Container/Upgrade"]
+layout_mode = 2
+
+[node name="Stat" type="Label" parent="Pause/Container/Upgrade/LifeRecovery"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = 90.0
+offset_right = 40.0
+offset_bottom = 113.0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.647059, 0.470588, 0.333333, 1)
+theme_override_fonts/font = ExtResource("3_ioojc")
+text = "Life Recovery"
+
+[node name="Cost" type="Label" parent="Pause/Container/Upgrade/LifeRecovery"]
+layout_mode = 0
+offset_left = 180.0
+offset_top = 91.0
+offset_right = 220.0
+offset_bottom = 114.0
+theme_override_colors/font_color = Color(0.647059, 0.470588, 0.333333, 1)
+theme_override_fonts/font = ExtResource("3_ioojc")
+text = "Cost"
+
+[node name="Button" type="Button" parent="Pause/Container/Upgrade/LifeRecovery"]
+layout_mode = 2
+offset_left = 357.0
+offset_top = 80.0
+offset_right = 397.0
+offset_bottom = 111.0
+theme_override_colors/font_color = Color(0.996078, 0.882353, 0.721569, 1)
+theme_override_colors/font_hover_color = Color(0.647059, 0.470588, 0.333333, 1)
+text = "+"
+
+[node name="Attack" type="Control" parent="Pause/Container/Upgrade"]
+layout_mode = 2
+
+[node name="Stat" type="Label" parent="Pause/Container/Upgrade/Attack"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = 146.0
+offset_right = 119.0
+offset_bottom = 169.0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.647059, 0.470588, 0.333333, 1)
+theme_override_fonts/font = ExtResource("3_ioojc")
+text = "Attack
+"
+
+[node name="Cost" type="Label" parent="Pause/Container/Upgrade/Attack"]
+layout_mode = 0
+offset_left = 180.0
+offset_top = 147.0
+offset_right = 220.0
+offset_bottom = 170.0
+theme_override_colors/font_color = Color(0.647059, 0.470588, 0.333333, 1)
+theme_override_fonts/font = ExtResource("3_ioojc")
+text = "Cost"
+
+[node name="Button" type="Button" parent="Pause/Container/Upgrade/Attack"]
+layout_mode = 2
+offset_left = 357.0
+offset_top = 136.0
+offset_right = 397.0
+offset_bottom = 167.0
+theme_override_colors/font_color = Color(0.996078, 0.882353, 0.721569, 1)
+theme_override_colors/font_hover_color = Color(0.647059, 0.470588, 0.333333, 1)
+text = "+"
+
+[node name="Speed" type="Control" parent="Pause/Container/Upgrade"]
+layout_mode = 2
+
+[node name="Stat" type="Label" parent="Pause/Container/Upgrade/Speed"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = 203.0
+offset_right = 119.0
+offset_bottom = 226.0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.647059, 0.470588, 0.333333, 1)
+theme_override_fonts/font = ExtResource("3_ioojc")
+text = "Speed"
+
+[node name="Cost" type="Label" parent="Pause/Container/Upgrade/Speed"]
+layout_mode = 0
+offset_left = 180.0
+offset_top = 204.0
+offset_right = 220.0
+offset_bottom = 227.0
+theme_override_colors/font_color = Color(0.647059, 0.470588, 0.333333, 1)
+theme_override_fonts/font = ExtResource("3_ioojc")
+text = "Cost"
+
+[node name="Button" type="Button" parent="Pause/Container/Upgrade/Speed"]
+layout_mode = 2
+offset_left = 357.0
+offset_top = 193.0
+offset_right = 397.0
+offset_bottom = 224.0
+theme_override_colors/font_color = Color(0.996078, 0.882353, 0.721569, 1)
+theme_override_colors/font_hover_color = Color(0.647059, 0.470588, 0.333333, 1)
+text = "+"
+
+[node name="Esc" type="Button" parent="Pause"]
+offset_left = 1078.0
+offset_top = -20.0
+offset_right = 1118.0
+offset_bottom = 11.0
+theme_override_colors/font_color = Color(0.996078, 0.882353, 0.721569, 1)
+theme_override_colors/font_hover_color = Color(0.647059, 0.470588, 0.333333, 1)
+text = "X"
+
+[connection signal="pressed" from="Pause/Esc" to="." method="_on_esc_pressed"]
