@@ -281,8 +281,17 @@ scale_amount_max = 4.0
 color = Color(1.5, 1.5, 1.5, 1)
 color_ramp = SubResource("Gradient_kke5o")
 
+[node name="Regen" type="Timer" parent="."]
+one_shot = true
+
+[node name="LastHit" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
 [connection signal="animation_finished" from="Sprite2D" to="." method="_on_sprite_2d_animation_finished"]
 [connection signal="timeout" from="Camera2D/ShakeTimer" to="." method="_on_shake_timer_timeout"]
 [connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="Regen" to="." method="_on_regen_timeout"]
+[connection signal="timeout" from="LastHit" to="." method="_on_last_hit_timeout"]

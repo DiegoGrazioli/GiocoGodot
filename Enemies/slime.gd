@@ -3,7 +3,7 @@ class_name Enemy
 
 #Da fixare colore HealthBar e non-aggiornamento quando c'è l'await
 
-const SPEED = 50.0
+const SPEED = 90.0
 var life = 10.0
 var max_life = life
 var makeMove = false

@@ -10,7 +10,7 @@ func _process(delta):
 	$Pause/Container/Upgrade/CurrentExp.text = "Exp.attuale: " + str(Globals.exp)
 	
 	$Pause/Container/Upgrade/Life/Cost.text = "Costo: " + str(pow(2, Globals.maxHealth - 21))
-	$Pause/Container/HP.text = str(Globals.life) + "/" + str(Globals.maxHealth)
+	$Pause/Container/HP.text = str(int(Globals.life)) + "/" + str(Globals.maxHealth)
 
 	$Pause/Container/Upgrade/LifeRecovery/Cost.text = "Costo: " + str(pow(2, Globals.regenLvl-1))
 	$Pause/Container/HPRegen.text = str(Globals.lifeRecovery)

@@ -3,7 +3,7 @@ class_name Enemy2
 
 #Da fixare colore HealthBar e non-aggiornamento quando c'è l'await
 
-const SPEED = 250.0
+const SPEED = 100.0
 var life = 5.0
 var max_life = life
 var makeMove = false
@@ -91,8 +91,8 @@ func spawningPosition(r):
 
 
 func _on_area_2d_body_entered(body):
-	
 	if body.name == "Player":
+		makeMove = false
 		is_inside = true
 		b = body
 		HIT_PLAYER = true
@@ -104,7 +104,9 @@ func _on_area_2d_body_entered(body):
 		#	body.hit(2)
 		
 func _on_area_2d_body_exited(body):
+	
 	if body.name == "Player":
+		makeMove = true
 		is_inside = false
 		HIT_PLAYER = false
 		is_attacking = false
@@ -124,7 +126,7 @@ func move():
 	direction.y = Globals.playerPos.y - (position.y + posy)
 	direction = direction.normalized()
 	# Calculate the enemy's velocity and rotation
-	var velocity = direction * SPEED
+	velocity = direction * SPEED
 	
 	# Move the enemy smoothly
 	var delta = get_process_delta_time()

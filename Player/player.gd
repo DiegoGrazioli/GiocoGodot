@@ -1,8 +1,6 @@
 extends CharacterBody2D
 var movement = Vector2()
 
-const SPEED = 150.0
-
 var start_attack2 = false #per il secondo attacco
 var dash_accel = 1
 var enemies = Array()
@@ -64,13 +62,13 @@ func _physics_process(delta):
 	elif movement.x > 0:
 		$CollisionShape2D.position.x = -5
 		$Area2D/HitBox.position.x = 16
-	velocity = movement * SPEED * dash_accel * Globals.speed
+	velocity = movement * dash_accel * Globals.speed
 	
 	#animazioni
 	if (velocity.y != 0 or velocity.x != 0) and $Sprite2D.animation != "Attack1" and $Sprite2D.animation != "Attack2" and $Sprite2D.animation != "Dash" and $Sprite2D.animation != "Hurt":
 		$Sprite2D.play("Walk")
 	elif (velocity.y != 0 or velocity.x != 0) and ($Sprite2D.animation != "Attack1" or $Sprite2D.animation != "Attack2") and $Sprite2D.animation != "Dash" and $Sprite2D.animation != "Hurt":
-		velocity = movement * SPEED * dash_accel / Globals.itemsOwned[Globals.currentItem].weight
+		velocity = movement * Globals.speed * dash_accel / Globals.itemsOwned[Globals.currentItem].weight
 	elif $Sprite2D.animation != "Attack1" and $Sprite2D.animation != "Attack2" and $Sprite2D.animation != "Dash" and $Sprite2D.animation != "Hurt":
 		$Sprite2D.play("Idle")
 	if velocity.x > 0:
@@ -157,6 +155,7 @@ func _on_sprite_2d_animation_finished():
 	elif $Sprite2D.animation == "Hurt":
 		$Sprite2D.modulate = Color(1, 1, 1)
 		$Sprite2D.play("Idle")
+		$LastHit.start()
 		
 func _on_dash_cooldown_timeout():
 	start_attack2 = false
@@ -180,6 +179,8 @@ func _on_area_2d_body_exited(body):
 		enemies.erase(body)
 		
 func hit(value):
+	$LastHit.stop()
+	$Regen.stop()
 	dashDamage = false
 	Globals.life -= value
 	$Sprite2D.modulate = Color(5, 1, 1)
@@ -206,3 +207,17 @@ func regenAnimation(value):
 	add_child(dmg)
 	dmg.anim.play("regen")
 	dmg.label.text = str(value)
+
+
+func _on_last_hit_timeout():
+	$Regen.start()
+
+
+func _on_regen_timeout():
+	$Regen.start()
+	Globals.life += Globals.lifeRecovery
+	if Globals.life >= Globals.maxHealth:
+		$Regen.stop()
+		Globals.life = Globals.maxHealth
+	else:
+		regenAnimation(Globals.lifeRecovery)
