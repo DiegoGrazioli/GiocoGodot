@@ -11,6 +11,7 @@ func _process(delta):
 	$ProgressBar.value = Globals.dashBarValue
 	$ColorRect/Label.text = "X: " + str(int(Globals.playerPos.x) / 16) + "  Y: " + str(int(Globals.playerPos.y) / 16)
 	$PlayerLife.value = Globals.life * 100 / Globals.maxHealth
+	$PlayerLife/Label.text = str(Globals.life) + "/" + str(Globals.maxHealth)
 	$ColorRect2/LabelKey.text = "Keys: " + str(Globals.key)
 
 	$Control/Item/Nome.text = Globals.itemsOwned[Globals.currentItem].nome
@@ -20,6 +21,7 @@ func _process(delta):
 	$Control/Item/Sprite.texture = Globals.itemsOwned[Globals.currentItem].sprite
 	$ColorRect3/LabelKey.text = str(Globals.playerLvl)
 	$ExpBar.value = (Globals.exp - pow(2,Globals.playerLvl)) * 200 / pow(2,Globals.playerLvl + 1)
+	$ExpBar/Label.text = str(Globals.exp)
 	
 	if $ProgressBar.value > 98 and $ProgressBar.value != 100:
 		$AnimationPlayer.play("ProgBarBlink")

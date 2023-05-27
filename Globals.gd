@@ -21,7 +21,7 @@ var speedLvl = 1
 
 var exp = 1
 var playerLvl = 1
-
+var availablePoints = 0
 
 var key = [0, 0, 0, 0, 0, 0]
 
@@ -32,11 +32,19 @@ var config = ConfigFile.new()
 
 var loadingComplete = false
 
+var load = false
+
 func _physics_process(delta):
-	playerLvl = int(log(exp) / log(2))
+	if int(log(exp) / log(2)) >= playerLvl:
+		playerLvl += 1
+		availablePoints += 2
+		exp = 0
+	#playerLvl = int(log(exp) / log(2))
 
 func _ready():
 	load_data()
+	if availablePoints == null:
+		availablePoints = 0
 
 func save_data():
 	config.set_value("Player", "pos", playerPos);
@@ -53,6 +61,7 @@ func save_data():
 	config.set_value("Player", "level", playerLvl);
 	config.set_value("Player", "key", key);
 	config.set_value("Player", "items", itemsOwned);
+	config.set_value("Player", "points", availablePoints);
 	
 	config.save("user://data.cfg")
 	
@@ -78,4 +87,6 @@ func load_data():
 	playerLvl = config.get_value(player_sec, "level")
 	key = config.get_value(player_sec, "key")
 	itemsOwned = config.get_value(player_sec, "items")
+	availablePoints = config.get_value(player_sec, "points")
+	
 	loadingComplete = true

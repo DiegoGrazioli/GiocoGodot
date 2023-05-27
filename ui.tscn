@@ -190,6 +190,15 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_17cku")
 value = 100.0
 show_percentage = false
 
+[node name="Label" type="Label" parent="PlayerLife"]
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("2_nw3xv")
+text = "HP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="BossBar" type="ProgressBar" parent="."]
 offset_left = 291.0
 offset_top = 20.0
@@ -211,6 +220,14 @@ theme_override_styles/background = SubResource("StyleBoxFlat_sa18o")
 theme_override_styles/fill = SubResource("StyleBoxFlat_ko4h8")
 value = 50.0
 show_percentage = false
+
+[node name="Label" type="Label" parent="ExpBar"]
+layout_mode = 0
+offset_right = 239.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("2_nw3xv")
+text = "Exp"
+horizontal_alignment = 1
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = 1013.0

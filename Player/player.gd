@@ -23,7 +23,7 @@ func _ready():
 func _physics_process(delta):
 	if Globals.loadingComplete:
 		Globals.loadingComplete = false
-		position = Globals.playerPos	
+		position = Globals.playerPos
 	Globals.playerPos = position
 	
 	if Globals.life <= 0:

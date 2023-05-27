@@ -225,8 +225,8 @@ wait_time = 2.0
 one_shot = true
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2(-5, 5)
-scale = Vector2(3, 3)
+position = Vector2(3, 5)
+scale = Vector2(3.5, 3)
 target_position = Vector2(0, 16)
 
 [node name="Area2D" type="Area2D" parent="."]

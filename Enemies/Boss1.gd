@@ -32,8 +32,12 @@ func _ready():
 	life = life * lvl
 	atk = atk * lvl
 	max_life = life
+	$CastParticle.emitting = false
 
 func _physics_process(delta):
+	if $Sprite2D.animation != "Cast":
+		$CastParticle.emitting = false
+	
 	if is_attacking and $Sprite2D.animation != "Attack":
 		is_attacking = false
 	$HealthBar.value = life * 100 / max_life
@@ -71,6 +75,7 @@ func _on_sprite_2d_animation_finished():
 			is_attacking = false
 	elif $Sprite2D.animation == "Cast":
 		$Sprite2D.play("Idle")
+		$CastParticle.emitting = false
 
 func hit(value, dir):
 	position.x += 10 * dir
@@ -179,6 +184,7 @@ func _on_cast_range_body_exited(body):
 func _on_cast_timer_timeout():
 	if cast:
 		$Sprite2D.play("Cast")
+		$CastParticle.emitting = true
 		var e = $BlueDemon.duplicate()
 		e.name = str(index)
 		index += 1

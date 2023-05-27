@@ -5,6 +5,10 @@ extends Node2D
 var paused = false
 
 func _ready():
+	if Globals.load:
+		Globals.load = false
+		Globals.load_data()
+	
 	player.position = Globals.overworldPos
 	$UI/BossBar.visible = false
 	$UI/OverWordOccluder.visible = false
@@ -33,8 +37,8 @@ func _on_stats_house_body_exited(body):
 
 #life
 func _on_button_pressed():
-	if Globals.exp - pow(2, Globals.maxHealth - 20) > 0:
-		Globals.exp -= pow(2, Globals.maxHealth - 20)
+	if Globals.availablePoints - pow(2, Globals.lifeLvl - 1) >= 0:
+		Globals.availablePoints -= pow(2, Globals.lifeLvl - 1)
 		Globals.maxHealth += 1
 		Globals.life += 1
 		Globals.lifeLvl += 1
@@ -42,24 +46,24 @@ func _on_button_pressed():
 
 #lifeRecovery
 func _on_button_2_pressed():
-	if Globals.exp - pow(2, Globals.regenLvl-1) > 0:
-		Globals.exp -= pow(2, Globals.regenLvl-1)
+	if Globals.availablePoints - pow(2, Globals.regenLvl-1) >= 0:
+		Globals.availablePoints -= pow(2, Globals.regenLvl-1)
 		Globals.regen += 0.1
 		Globals.regenLvl += 1
 		$CanvasLayer2/Pause/Container/HPRup.amount = Globals.regenLvl
 
 #attack
 func _on_button_3_pressed():
-	if Globals.exp - pow(2, Globals.attackLvl-1) > 0:
-		Globals.exp -= pow(2, Globals.attackLvl-1)
+	if Globals.availablePoints - pow(2, Globals.attackLvl-1) >= 0:
+		Globals.availablePoints -= pow(2, Globals.attackLvl-1)
 		Globals.attack += 0.2
 		Globals.attackLvl += 1
 		$CanvasLayer2/Pause/Container/Atkup.amount = Globals.attackLvl
 
 #speed
 func _on_button_4_pressed():
-	if Globals.exp - pow(2, Globals.speedLvl-1) > 0:
-		Globals.exp -= pow(2, Globals.speedLvl-1)
+	if Globals.availablePoints - pow(2, Globals.speedLvl-1) >= 0:
+		Globals.availablePoints -= pow(2, Globals.speedLvl-1)
 		Globals.speed += 0.1
 		Globals.speedLvl += 1
 		$CanvasLayer2/Pause/Container/Speedup.amount = Globals.speedLvl

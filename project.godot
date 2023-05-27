@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Gioco"
-run/main_scene="res://game.tscn"
+run/main_scene="res://MainMenu.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 boot_splash/bg_color=Color(0, 0.639216, 0.717647, 1)
 config/icon="res://icon.svg"

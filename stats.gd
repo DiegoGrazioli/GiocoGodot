@@ -7,9 +7,9 @@ func _ready():
 	$Pause/Container/Speedup.amount = Globals.speedLvl
 
 func _process(delta):
-	$Pause/Container/Upgrade/CurrentExp.text = "Exp.attuale: " + str(Globals.exp)
+	$Pause/Container/Upgrade/CurrentExp.text = "Punti disponibili: " + str(Globals.availablePoints)
 	
-	$Pause/Container/Upgrade/Life/Cost.text = "Costo: " + str(pow(2, Globals.maxHealth - 21))
+	$Pause/Container/Upgrade/Life/Cost.text = "Costo: " + str(pow(2, Globals.lifeLvl-1))
 	$Pause/Container/HP.text = str(int(Globals.life)) + "/" + str(Globals.maxHealth)
 
 	$Pause/Container/Upgrade/LifeRecovery/Cost.text = "Costo: " + str(pow(2, Globals.regenLvl-1))
