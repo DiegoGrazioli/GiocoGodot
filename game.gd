@@ -33,7 +33,7 @@ func _on_stats_house_body_exited(body):
 
 #life
 func _on_button_pressed():
-	if Globals.exp - pow(2, Globals.maxHealth - 20) >= 0:
+	if Globals.exp - pow(2, Globals.maxHealth - 20) > 0:
 		Globals.exp -= pow(2, Globals.maxHealth - 20)
 		Globals.maxHealth += 1
 		Globals.life += 1
@@ -42,7 +42,7 @@ func _on_button_pressed():
 
 #lifeRecovery
 func _on_button_2_pressed():
-	if Globals.exp - pow(2, Globals.regenLvl-1) >= 0:
+	if Globals.exp - pow(2, Globals.regenLvl-1) > 0:
 		Globals.exp -= pow(2, Globals.regenLvl-1)
 		Globals.lifeRecovery += 0.1
 		Globals.regenLvl += 1
@@ -50,7 +50,7 @@ func _on_button_2_pressed():
 
 #attack
 func _on_button_3_pressed():
-	if Globals.exp - pow(2, Globals.attackLvl-1) >= 0:
+	if Globals.exp - pow(2, Globals.attackLvl-1) > 0:
 		Globals.exp -= pow(2, Globals.attackLvl-1)
 		Globals.attack += 0.2
 		Globals.attackLvl += 1
@@ -58,7 +58,7 @@ func _on_button_3_pressed():
 
 #speed
 func _on_button_4_pressed():
-	if Globals.exp - pow(2, Globals.speedLvl-1) >= 0:
+	if Globals.exp - pow(2, Globals.speedLvl-1) > 0:
 		Globals.exp -= pow(2, Globals.speedLvl-1)
 		Globals.speed += 0.1
 		Globals.speedLvl += 1
