@@ -26,3 +26,7 @@ func _process(delta):
 		
 	$PlayerPosition.position.x = $OverWorld2.position.x + (Globals.playerPos.x * 0.06)
 	$PlayerPosition.position.y = $OverWorld2.position.y + (Globals.playerPos.y * 0.06)
+
+
+func _on_save_button_pressed():
+	Globals.save_data()
