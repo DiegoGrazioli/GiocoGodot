@@ -361,3 +361,12 @@ modulate = Color(0, 1, 1, 1)
 position = Vector2(900, 10)
 scale = Vector2(0.06, 0.06)
 texture = ExtResource("6_xf3q1")
+
+[node name="SaveButton" type="Button" parent="."]
+offset_left = 1088.0
+offset_top = 294.0
+offset_right = 1142.0
+offset_bottom = 325.0
+text = "Save"
+
+[connection signal="pressed" from="SaveButton" to="." method="_on_save_button_pressed"]

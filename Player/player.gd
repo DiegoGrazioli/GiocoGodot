@@ -18,9 +18,14 @@ func _ready():
 	$CanvasModulate.color.g = 0.6
 	$CanvasModulate.color.b = 0.6
 	Globals.itemsOwned.push_back(ListOfItems.pugnale_rotto_di_rame)
+	
 
 func _physics_process(delta):
+	if Globals.loadingComplete:
+		Globals.loadingComplete = false
+		position = Globals.playerPos	
 	Globals.playerPos = position
+	
 	if Globals.life <= 0:
 		#$CanvasModulate.color.r = 0.1
 		$CanvasModulate.color.g = 0.1
@@ -183,6 +188,9 @@ func hit(value):
 	$Regen.stop()
 	dashDamage = false
 	Globals.life -= value
+	if (Globals.life < 0):
+		Globals.life = 0
+
 	$Sprite2D.modulate = Color(5, 1, 1)
 	$Sprite2D.play("Hurt")
 	
@@ -215,9 +223,9 @@ func _on_last_hit_timeout():
 
 func _on_regen_timeout():
 	$Regen.start()
-	Globals.life += Globals.lifeRecovery
+	Globals.life += Globals.regen
 	if Globals.life >= Globals.maxHealth:
 		$Regen.stop()
 		Globals.life = Globals.maxHealth
 	else:
-		regenAnimation(Globals.lifeRecovery)
+		regenAnimation(Globals.regen)

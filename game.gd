@@ -44,7 +44,7 @@ func _on_button_pressed():
 func _on_button_2_pressed():
 	if Globals.exp - pow(2, Globals.regenLvl-1) > 0:
 		Globals.exp -= pow(2, Globals.regenLvl-1)
-		Globals.lifeRecovery += 0.1
+		Globals.regen += 0.1
 		Globals.regenLvl += 1
 		$CanvasLayer2/Pause/Container/HPRup.amount = Globals.regenLvl
 
