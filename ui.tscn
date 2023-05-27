@@ -1,10 +1,10 @@
 [gd_scene load_steps=15 format=3 uid="uid://dt5wm13yl83rd"]
 
 [ext_resource type="Script" path="res://ui.gd" id="1_dnx8p"]
-[ext_resource type="Texture2D" uid="uid://lakr1np56xus" path="res://assets/Items/swords/rpg_icons49.png" id="2_kbwyc"]
-[ext_resource type="FontFile" uid="uid://ddnh6ut2nctfr" path="res://assets/Fonts/Peaberry-Base.otf" id="2_nw3xv"]
+[ext_resource type="Texture2D" uid="uid://b0at5t7j7tun2" path="res://assets/Items/swords/rpg_icons49.png" id="2_kbwyc"]
+[ext_resource type="FontFile" uid="uid://dehppjcpxlen5" path="res://assets/Fonts/Peaberry-Base.otf" id="2_nw3xv"]
 [ext_resource type="TileSet" uid="uid://c1relapuyriec" path="res://game.tres" id="3_3ghsn"]
-[ext_resource type="Texture2D" uid="uid://167y0evcw2j7" path="res://assets/FX/light.png" id="6_xf3q1"]
+[ext_resource type="Texture2D" uid="uid://cslv3nqj47wfp" path="res://assets/FX/light.png" id="6_xf3q1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iuiwk"]
 bg_color = Color(0.6, 0.6, 0.6, 0)

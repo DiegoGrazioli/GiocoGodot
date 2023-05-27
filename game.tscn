@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://d4ev2npw117j3"]
+[gd_scene load_steps=18 format=3 uid="uid://d4ev2npw117j3"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_3qjgd"]
 [ext_resource type="PackedScene" uid="uid://dd506jl64yl0m" path="res://Player/player.tscn" id="1_kmtr7"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cxo74brp3amli" path="res://stats.tscn" id="10_ylstj"]
 [ext_resource type="PackedScene" uid="uid://c2nhawf7gfpx0" path="res://Enemies/evil_crow.tscn" id="11_bp1n0"]
 [ext_resource type="PackedScene" uid="uid://c1f2vctjo4mn4" path="res://Enemies/plant_enemy.tscn" id="12_rq8m2"]
+[ext_resource type="PackedScene" uid="uid://cmchvsg52v0pt" path="res://Enemies/boss_1.tscn" id="13_7pevw"]
 
 [sub_resource type="Environment" id="Environment_sp7me"]
 background_mode = 3
@@ -220,6 +221,11 @@ lvl = 2
 [node name="PlantEnemy8" parent="." instance=ExtResource("12_rq8m2")]
 position = Vector2(2036, 958)
 lvl = 2
+
+[node name="Boss1" parent="." instance=ExtResource("13_7pevw")]
+position = Vector2(1508, 694)
+posx = 1508
+posy = 694
 
 [connection signal="body_entered" from="Dungeon1Portal" to="." method="_on_dungeon_1_portal_body_entered"]
 [connection signal="body_entered" from="StatsHouse" to="." method="_on_stats_house_body_entered"]

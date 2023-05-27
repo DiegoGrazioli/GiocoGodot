@@ -13,7 +13,7 @@ func _process(delta):
 	$Pause/Container/HP.text = str(int(Globals.life)) + "/" + str(Globals.maxHealth)
 
 	$Pause/Container/Upgrade/LifeRecovery/Cost.text = "Costo: " + str(pow(2, Globals.regenLvl-1))
-	$Pause/Container/HPRegen.text = str(Globals.lifeRecovery)
+	$Pause/Container/HPRegen.text = str(Globals.regen)
 
 	$Pause/Container/Upgrade/Attack/Cost.text = "Costo: " + str(pow(2, Globals.attackLvl-1))
 	$Pause/Container/Atk.text = str(Globals.attack)

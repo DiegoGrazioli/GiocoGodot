@@ -171,11 +171,11 @@ func _unhandled_input(event: InputEvent) -> void:
 			start_attack2 = true
 
 func _on_area_2d_body_entered(body):
-	if body is Enemy or body is Enemy2 or body is Enemy3 or body is Enemy4:
+	if body is Enemy or body is Enemy2 or body is Enemy3 or body is Enemy4 or body is Enemy5:
 		enemies.push_back(body)
 
 func _on_area_2d_body_exited(body):
-	if body is Enemy or body is Enemy2 or body is Enemy3 or body is Enemy4:
+	if body is Enemy or body is Enemy2 or body is Enemy3 or body is Enemy4 or body is Enemy5:
 		enemies.erase(body)
 		
 func hit(value):
@@ -215,9 +215,9 @@ func _on_last_hit_timeout():
 
 func _on_regen_timeout():
 	$Regen.start()
-	Globals.life += Globals.lifeRecovery
+	Globals.life += Globals.regen
 	if Globals.life >= Globals.maxHealth:
 		$Regen.stop()
 		Globals.life = Globals.maxHealth
 	else:
-		regenAnimation(Globals.lifeRecovery)
+		regenAnimation(Globals.regen)

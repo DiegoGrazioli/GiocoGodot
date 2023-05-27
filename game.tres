@@ -1,7 +1,7 @@
 [gd_resource type="TileSet" load_steps=5 format=3 uid="uid://c1relapuyriec"]
 
-[ext_resource type="Texture2D" uid="uid://dsxfdf07m6tup" path="res://assets/World/Houses_Pack/houses.png" id="1_il8ax"]
-[ext_resource type="Texture2D" uid="uid://pljom184ph54" path="res://assets/World/mana seed seasonal forest sample (summer)/seasonal sample (summer).png" id="2_nqp8i"]
+[ext_resource type="Texture2D" uid="uid://cvcrisi8d8ay6" path="res://assets/World/Houses_Pack/houses.png" id="1_il8ax"]
+[ext_resource type="Texture2D" uid="uid://ltyijn8hkk58" path="res://assets/World/mana seed seasonal forest sample (summer)/seasonal sample (summer).png" id="2_nqp8i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8421b"]
 texture = ExtResource("1_il8ax")

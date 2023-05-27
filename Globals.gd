@@ -13,7 +13,7 @@ var lifeLvl = 1
 var attack = 1.0
 var attackLvl = 1
 
-var lifeRecovery = 0.1
+var regen = 0.1
 var regenLvl = 1
 
 var speed = 150.0
