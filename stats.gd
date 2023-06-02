@@ -1,12 +1,15 @@
 extends CanvasLayer
 
 func _ready():
-	$Pause/Container/HPup.amount = Globals.lifeLvl
-	$Pause/Container/HPRup.amount = Globals.regenLvl
-	$Pause/Container/Atkup.amount = Globals.attackLvl
-	$Pause/Container/Speedup.amount = Globals.speedLvl
+	pass
 
 func _process(delta):
+	if Globals.loadingComplete:
+		$Pause/Container/HPup.amount = Globals.lifeLvl
+		$Pause/Container/HPRup.amount = Globals.regenLvl
+		$Pause/Container/Atkup.amount = Globals.attackLvl
+		$Pause/Container/Speedup.amount = Globals.speedLvl
+		Globals.loadingComplete = false
 	$Pause/Container/Upgrade/CurrentExp.text = "Punti disponibili: " + str(Globals.availablePoints)
 	
 	$Pause/Container/Upgrade/Life/Cost.text = "Costo: " + str(pow(2, Globals.lifeLvl-1))

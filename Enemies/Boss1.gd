@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Enemy5
 
 const SPEED = 90.0
-var life = 120.0
+var life = 90.0
 var max_life = life
 var makeMove = false
 var atk = 1.0
@@ -35,12 +35,12 @@ func _ready():
 	$CastParticle.emitting = false
 
 func _physics_process(delta):
+	Globals.BossLife = life
 	if $Sprite2D.animation != "Cast":
 		$CastParticle.emitting = false
 	
 	if is_attacking and $Sprite2D.animation != "Attack":
 		is_attacking = false
-	$HealthBar.value = life * 100 / max_life
 	if makeMove and !is_attacking and life > 0:
 		move()
 	if life <= 0:
@@ -135,8 +135,8 @@ func move():
 	
 	# Calculate the direction vector towards the player
 	if $Sprite2D.animation != "Hurt":
-		direction.x = Globals.playerPos.x - (position.x + posx)
-		direction.y = Globals.playerPos.y - (position.y + posy)
+		direction.x = Globals.playerPos.x - (position.x)
+		direction.y = Globals.playerPos.y - (position.y)
 		direction = direction.normalized()
 	
 	# Calculate the enemy's velocity and rotation
@@ -197,3 +197,13 @@ func _on_cast_timer_timeout():
 		add_child(e)
 		$CastTimer.start()
 		
+
+
+func _on_boss_bar_body_entered(body):
+	if body.name == "Player":
+		Globals.showBar = true
+
+
+func _on_boss_bar_body_exited(body):
+	if body.name == "Player":
+		Globals.showBar = false

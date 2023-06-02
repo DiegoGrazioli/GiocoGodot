@@ -34,6 +34,10 @@ var loadingComplete = false
 
 var load = false
 
+var showBar = false
+
+var BossLife = 1
+
 func _physics_process(delta):
 	if  exp >= pow(2,playerLvl + 1):
 		exp -= pow(2,playerLvl + 1)

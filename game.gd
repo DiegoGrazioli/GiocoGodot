@@ -8,6 +8,7 @@ func _ready():
 	if Globals.load:
 		Globals.load = false
 		Globals.load_data()
+		
 	
 	player.position = Globals.overworldPos
 	$UI/BossBar.visible = false
@@ -30,11 +31,12 @@ func _on_dungeon_1_portal_body_entered(body):
 func _on_stats_house_body_entered(body):
 	if body.name == "Player":
 		$CanvasLayer2.visible = true
+		
 
 func _on_stats_house_body_exited(body):
 	if body.name == "Player":
 		$CanvasLayer2.visible = false
-
+		
 #life
 func _on_button_pressed():
 	if Globals.availablePoints - pow(2, Globals.lifeLvl - 1) >= 0:

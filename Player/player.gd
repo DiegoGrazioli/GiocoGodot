@@ -11,6 +11,8 @@ var lastHit
 
 var attacked = false
 
+var firstTime = true
+
 var damageIndicator = preload("res://damageIndicator.tscn")
 
 func _ready():
@@ -21,8 +23,8 @@ func _ready():
 	
 
 func _physics_process(delta):
-	if Globals.loadingComplete:
-		Globals.loadingComplete = false
+	if Globals.loadingComplete and firstTime:
+		firstTime = false
 		position = Globals.playerPos
 	Globals.playerPos = position
 	
@@ -185,6 +187,7 @@ func _on_area_2d_body_exited(body):
 		
 func hit(value):
 	$LastHit.stop()
+	$LastHit.start()
 	$Regen.stop()
 	dashDamage = false
 	Globals.life -= value

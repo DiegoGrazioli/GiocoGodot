@@ -41,7 +41,6 @@
 [ext_resource type="Texture2D" uid="uid://bagqxqbh0lefw" path="res://assets/Enemies/Bringer-Of-Death/Individual Sprite/Idle/Bringer-of-Death_Idle_6.png" id="39_j2juh"]
 [ext_resource type="Texture2D" uid="uid://dwu2ont528ba0" path="res://assets/Enemies/Bringer-Of-Death/Individual Sprite/Idle/Bringer-of-Death_Idle_7.png" id="40_eh7wn"]
 [ext_resource type="Texture2D" uid="uid://b6oitynb8dcm5" path="res://assets/Enemies/Bringer-Of-Death/Individual Sprite/Idle/Bringer-of-Death_Idle_8.png" id="41_y6ri5"]
-[ext_resource type="FontFile" uid="uid://dehppjcpxlen5" path="res://assets/Fonts/Peaberry-Base.otf" id="42_v47d1"]
 [ext_resource type="PackedScene" uid="uid://jmotblnxfv53" path="res://Enemies/blue_demon.tscn" id="43_7bxa1"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4v7fm"]
@@ -211,6 +210,9 @@ size = Vector2(30, 5.5)
 offsets = PackedFloat32Array(0.00763359, 0.43257, 0.872774, 0.989822)
 colors = PackedColorArray(0.462745, 0.752941, 1, 1, 0.454902, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_n8cma"]
+radius = 515.009
+
 [node name="Boss1" type="CharacterBody2D"]
 script = ExtResource("1_c1s5w")
 
@@ -247,16 +249,6 @@ debug_color = Color(0.270588, 0.588235, 0.65098, 0.419608)
 shape = SubResource("CircleShape2D_ej7pb")
 debug_color = Color(0.270588, 0.588235, 0.65098, 0.419608)
 
-[node name="HealthBar" type="ProgressBar" parent="."]
-offset_left = -19.0
-offset_top = -17.0
-offset_right = 107.0
-offset_bottom = 10.0
-scale = Vector2(0.3, 0.3)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("42_v47d1")
-value = 50.0
-
 [node name="Area2D3" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D3"]
@@ -285,6 +277,12 @@ tangential_accel_max = 21.82
 scale_amount_max = 2.5
 color_ramp = SubResource("Gradient_xomku")
 
+[node name="BossBar" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BossBar"]
+shape = SubResource("CircleShape2D_n8cma")
+debug_color = Color(0.607843, 0.364706, 1, 0.419608)
+
 [connection signal="animation_finished" from="Sprite2D" to="." method="_on_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
@@ -295,3 +293,5 @@ color_ramp = SubResource("Gradient_xomku")
 [connection signal="body_entered" from="Area2D3" to="." method="_on_area_2d_3_body_entered"]
 [connection signal="body_exited" from="Area2D3" to="." method="_on_area_2d_3_body_exited"]
 [connection signal="timeout" from="CastTimer" to="." method="_on_cast_timer_timeout"]
+[connection signal="body_entered" from="BossBar" to="." method="_on_boss_bar_body_entered"]
+[connection signal="body_exited" from="BossBar" to="." method="_on_boss_bar_body_exited"]

@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://cirh3vpurecew"]
+[gd_scene load_steps=7 format=3 uid="uid://cirh3vpurecew"]
 
 [ext_resource type="Script" path="res://MainMenu.gd" id="1_43umh"]
-[ext_resource type="FontFile" uid="uid://ddnh6ut2nctfr" path="res://assets/Fonts/Peaberry-Base.otf" id="2_6032r"]
+[ext_resource type="FontFile" uid="uid://dehppjcpxlen5" path="res://assets/Fonts/Peaberry-Base.otf" id="2_6032r"]
+[ext_resource type="Texture2D" uid="uid://cslv3nqj47wfp" path="res://assets/FX/light.png" id="2_mje4u"]
+[ext_resource type="Texture2D" uid="uid://b5wupccquccc7" path="res://assets/UI/UI Assets pack_v.1_st/UI Assets pack_v.1_st/Book.png" id="3_4kp0k"]
+[ext_resource type="Texture2D" uid="uid://bm4wkdtnsudpp" path="res://LDAGames/LDAGames48.png" id="5_v0ghr"]
+
+[sub_resource type="Gradient" id="Gradient_ofew0"]
+offsets = PackedFloat32Array(0.529262, 0.913486, 1)
+colors = PackedColorArray(0.996078, 0.882353, 0.721569, 1, 0, 0.882353, 0.721569, 1, 0, 0.882353, 0.721569, 0)
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -11,6 +18,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_43umh")
+metadata/_edit_horizontal_guides_ = [-109.0]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -19,7 +27,38 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.2, 0.2, 0.2, 1)
+color = Color(0, 0, 0, 1)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(637, 307)
+amount = 32
+lifetime = 2.5
+texture = ExtResource("2_mje4u")
+emission_shape = 3
+emission_rect_extents = Vector2(1, 315)
+gravity = Vector2(130, 0)
+tangential_accel_min = -100.0
+tangential_accel_max = 100.0
+scale_amount_min = 0.01
+scale_amount_max = 0.09
+color_ramp = SubResource("Gradient_ofew0")
+
+[node name="Container" type="Container" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Container"]
+position = Vector2(-200, 0)
+scale = Vector2(6.5, 6.5)
+texture = ExtResource("3_4kp0k")
+region_enabled = true
+region_rect = Rect2(192, 32, 80, 94)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -28,10 +67,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -139.0
-offset_top = -68.0
-offset_right = 139.0
-offset_bottom = 69.0
+offset_left = 181.0
+offset_top = -79.0
+offset_right = 459.0
+offset_bottom = 58.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
@@ -53,6 +92,24 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2_6032r")
 theme_override_font_sizes/font_size = 34
 text = "Esci"
+
+[node name="LdaGames48" type="Sprite2D" parent="."]
+position = Vector2(1078, 603)
+texture = ExtResource("5_v0ghr")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 243.0
+offset_top = 189.0
+offset_right = 505.0
+offset_bottom = 269.0
+theme_override_colors/font_color = Color(0.647059, 0.470588, 0.333333, 1)
+theme_override_fonts/font = ExtResource("2_6032r")
+theme_override_font_sizes/font_size = 32
+text = "Dungeon
+Warrior"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="VBoxContainer/NuovaPartita" to="." method="_on_nuova_partita_pressed"]
 [connection signal="pressed" from="VBoxContainer/CaricaPartita" to="." method="_on_carica_partita_pressed"]
