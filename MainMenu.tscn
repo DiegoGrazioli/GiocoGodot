@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cirh3vpurecew"]
 
 [ext_resource type="Script" path="res://MainMenu.gd" id="1_43umh"]
-[ext_resource type="FontFile" uid="uid://dehppjcpxlen5" path="res://assets/Fonts/Peaberry-Base.otf" id="2_6032r"]
+[ext_resource type="FontFile" uid="uid://ddnh6ut2nctfr" path="res://assets/Fonts/Peaberry-Base.otf" id="2_6032r"]
 
 [node name="Control" type="Control"]
 layout_mode = 3

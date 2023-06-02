@@ -20,7 +20,7 @@ func _process(delta):
 	$Control/Item/Weight.text = "Weight: " + str(Globals.itemsOwned[Globals.currentItem].weight)
 	$Control/Item/Sprite.texture = Globals.itemsOwned[Globals.currentItem].sprite
 	$ColorRect3/LabelKey.text = str(Globals.playerLvl)
-	$ExpBar.value = (Globals.exp - pow(2,Globals.playerLvl)) * 200 / pow(2,Globals.playerLvl + 1)
+	$ExpBar.value = Globals.exp * 100 / pow(2, Globals.playerLvl + 1)
 	$ExpBar/Label.text = str(Globals.exp)
 	
 	if $ProgressBar.value > 98 and $ProgressBar.value != 100:

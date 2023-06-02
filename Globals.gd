@@ -35,14 +35,24 @@ var loadingComplete = false
 var load = false
 
 func _physics_process(delta):
-	if int(log(exp) / log(2)) >= playerLvl:
+	if  exp >= pow(2,playerLvl + 1):
+		exp -= pow(2,playerLvl + 1)
 		playerLvl += 1
 		availablePoints += 2
-		exp = 0
+	var index = -1
+	for i in itemsOwned:
+		index += 1
+		var index2 = index
+		while index2 < itemsOwned.size()-1:
+			index2 += 1
+			if i.nome == itemsOwned[index2].nome:
+				itemsOwned.remove_at(index)
+				break
+			
 	#playerLvl = int(log(exp) / log(2))
 
 func _ready():
-	load_data()
+	#load_data()
 	if availablePoints == null:
 		availablePoints = 0
 
