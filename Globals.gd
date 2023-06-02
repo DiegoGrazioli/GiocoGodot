@@ -38,7 +38,7 @@ func _physics_process(delta):
 	if  exp >= pow(2,playerLvl + 1):
 		exp -= pow(2,playerLvl + 1)
 		playerLvl += 1
-		availablePoints += 2
+		availablePoints += pow(2, playerLvl - 2)
 	var index = -1
 	for i in itemsOwned:
 		index += 1
