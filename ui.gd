@@ -29,9 +29,11 @@ func _process(delta):
 	$PlayerPosition.position.x = $OverWorld2.position.x + (Globals.playerPos.x * 0.06)
 	$PlayerPosition.position.y = $OverWorld2.position.y + (Globals.playerPos.y * 0.06)
 	
-	if Globals.showBar:
+	if Globals.showBar and !Globals.dungeon:
 		$BossBar.visible = true
 		$BossBar.value = Globals.BossLife * 100 / 900
+	elif Globals.dungeon:
+		$BossBar.visible = true
 	else:
 		$BossBar.visible = false
 

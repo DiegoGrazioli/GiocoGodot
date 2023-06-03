@@ -5,6 +5,7 @@ var enemies = [true, true, true, true, true]
 var dungeonFinished = false
 
 func _ready():
+	Globals.dungeon = true
 	$UI/BossBar.visible = true
 	$Chest2.visible = false
 	$Chest2/CollisionShape2D.disabled = true
@@ -65,4 +66,5 @@ func _process(delta):
 	
 func _on_dungeon_1_portal_body_entered(body):
 	if body.name == "Player" and dungeonFinished:
+		Globals.showBar = false
 		get_tree().change_scene_to_file("res://game.tscn")

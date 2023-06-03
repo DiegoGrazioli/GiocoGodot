@@ -33,7 +33,7 @@ var config = ConfigFile.new()
 var loadingComplete = false
 
 var load = false
-
+var dungeon = false
 var showBar = false
 
 var BossLife = 1
@@ -57,6 +57,7 @@ func _physics_process(delta):
 
 func _ready():
 	#load_data()
+	Globals.showBar = true
 	if availablePoints == null:
 		availablePoints = 0
 

@@ -9,13 +9,15 @@ func _ready():
 		Globals.load = false
 		Globals.load_data()
 		
-	
+	Globals.dungeon = false
 	player.position = Globals.overworldPos
 	$UI/BossBar.visible = false
 	$UI/OverWordOccluder.visible = false
 	$UI/OverWordOccluder/LabelKey.visible = false
 	$UI/PlayerPosition.visible = true
 	$CanvasLayer2.visible = false
+	Globals.dungeon = false
+	Globals.showBar = false
 	
 func _process(delta):
 	pass
