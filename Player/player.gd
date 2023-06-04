@@ -29,9 +29,7 @@ func _physics_process(delta):
 	Globals.playerPos = position
 	
 	if Globals.life <= 0:
-		#$CanvasModulate.color.r = 0.1
-		$CanvasModulate.color.g = 0.1
-		$CanvasModulate.color.b = 0.1
+		$CanvasModulate.visible = false
 	else:
 		$CanvasModulate.color.g = Globals.life * 0.6  / Globals.maxHealth 
 		$CanvasModulate.color.b = Globals.life * 0.6 / Globals.maxHealth
@@ -57,8 +55,9 @@ func _physics_process(delta):
 		attacked = false
 	
 	#movimento
-	movement.x = Input.get_axis("LEFT", "RIGHT")
-	movement.y = Input.get_axis("UP", "DOWN")
+	if Globals.life > 0:
+		movement.x = Input.get_axis("LEFT", "RIGHT")
+		movement.y = Input.get_axis("UP", "DOWN")
 	movement = movement.normalized() 				#normalizzato yeee (ora funziona)
 	if movement != Vector2(0, 0): 					#se non metti input il raycast non diventa un punto
 		$RayCast2D.target_position.x = movement.x*16
@@ -77,7 +76,8 @@ func _physics_process(delta):
 	elif (velocity.y != 0 or velocity.x != 0) and ($Sprite2D.animation != "Attack1" or $Sprite2D.animation != "Attack2") and $Sprite2D.animation != "Dash" and $Sprite2D.animation != "Hurt":
 		velocity = movement * Globals.speed * dash_accel / Globals.itemsOwned[Globals.currentItem].weight
 	elif $Sprite2D.animation != "Attack1" and $Sprite2D.animation != "Attack2" and $Sprite2D.animation != "Dash" and $Sprite2D.animation != "Hurt":
-		$Sprite2D.play("Idle")
+		if Globals.life > 0:
+			$Sprite2D.play("Idle")
 	if velocity.x > 0:
 		$Sprite2D.flip_h = false
 	elif velocity.x < 0:
@@ -160,9 +160,12 @@ func _on_sprite_2d_animation_finished():
 	elif $Sprite2D.animation == "Dash":
 		$Sprite2D.play("Idle")
 	elif $Sprite2D.animation == "Hurt":
-		$Sprite2D.modulate = Color(1, 1, 1)
-		$Sprite2D.play("Idle")
-		$LastHit.start()
+		if Globals.life == 0:
+			$Sprite2D.play("Death")
+		else:
+			$Sprite2D.modulate = Color(1, 1, 1)
+			$Sprite2D.play("Idle")
+			$LastHit.start()
 		
 func _on_dash_cooldown_timeout():
 	start_attack2 = false
@@ -193,6 +196,7 @@ func hit(value):
 	Globals.life -= value
 	if (Globals.life < 0):
 		Globals.life = 0
+		get_tree().change_scene_to_file("res://Death.tscn")
 
 	$Sprite2D.modulate = Color(5, 1, 1)
 	$Sprite2D.play("Hurt")

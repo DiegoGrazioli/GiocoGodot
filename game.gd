@@ -21,6 +21,7 @@ func _ready():
 	
 func _process(delta):
 	pass
+		
 
 func _on_dungeon_1_portal_body_entered(body):
 	if body.name == "Player" and Globals.key[0] > 0:

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dqflar7op6up"]
 
 [ext_resource type="Script" path="res://rigenerating_fountain.gd" id="1_m217e"]
-[ext_resource type="Texture2D" uid="uid://167y0evcw2j7" path="res://assets/FX/light.png" id="2_fyreb"]
+[ext_resource type="Texture2D" uid="uid://cslv3nqj47wfp" path="res://assets/FX/light.png" id="2_fyreb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gdodt"]
 radius = 99.0051

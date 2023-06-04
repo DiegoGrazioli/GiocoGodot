@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://dd506jl64yl0m"]
+[gd_scene load_steps=55 format=3 uid="uid://dd506jl64yl0m"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_7oeyu"]
 [ext_resource type="Texture2D" uid="uid://cola5d4gvjo7u" path="res://assets/Enemies/Guerriera/idle/Warrior_Idle_1.png" id="2_hu4cf"]
@@ -35,9 +35,20 @@
 [ext_resource type="Texture2D" uid="uid://doahoh0buasce" path="res://assets/Enemies/Guerriera/Dash/Warrior_Dash_6.png" id="19_ry0hs"]
 [ext_resource type="Texture2D" uid="uid://sex2hc2i6r1" path="res://assets/Enemies/Guerriera/Dash/Warrior_Dash_7.png" id="20_ituuo"]
 [ext_resource type="Texture2D" uid="uid://b1glgdf6g78c" path="res://assets/Enemies/Guerriera/Hurt-Effect/Warrior_hurt_1.png" id="21_movns"]
+[ext_resource type="Texture2D" uid="uid://oyxkot78m6y1" path="res://assets/Enemies/Guerriera/Death-Effect/Warrior_Death_1.png" id="21_tc03h"]
 [ext_resource type="Texture2D" uid="uid://dachksulejigh" path="res://assets/Enemies/Guerriera/Hurt-Effect/Warrior_hurt_2.png" id="22_4vy44"]
+[ext_resource type="Texture2D" uid="uid://bj1yh43g43ys3" path="res://assets/Enemies/Guerriera/Death-Effect/Warrior_Death_2.png" id="22_6r3sa"]
+[ext_resource type="Texture2D" uid="uid://fcmakukjs4ru" path="res://assets/Enemies/Guerriera/Death-Effect/Warrior_Death_3.png" id="23_qwlet"]
 [ext_resource type="Texture2D" uid="uid://85der840pl73" path="res://assets/Enemies/Guerriera/Hurt-Effect/Warrior_hurt_3.png" id="23_t0xbd"]
 [ext_resource type="Texture2D" uid="uid://dr16p3xu6weil" path="res://assets/Enemies/Guerriera/Hurt-Effect/Warrior_hurt_4.png" id="24_f5c3k"]
+[ext_resource type="Texture2D" uid="uid://c3iw82k7s5n6l" path="res://assets/Enemies/Guerriera/Death-Effect/Warrior_Death_4.png" id="24_ruxr8"]
+[ext_resource type="Texture2D" uid="uid://1jm6ntxivpsi" path="res://assets/Enemies/Guerriera/Death-Effect/Warrior_Death_5.png" id="25_0is5v"]
+[ext_resource type="Texture2D" uid="uid://c3wc62yk3lyaw" path="res://assets/Enemies/Guerriera/Death-Effect/Warrior_Death_6.png" id="26_oynm8"]
+[ext_resource type="Texture2D" uid="uid://dvwlvv7ut68lc" path="res://assets/Enemies/Guerriera/Death-Effect/Warrior_Death_7.png" id="27_uq6bq"]
+[ext_resource type="Texture2D" uid="uid://4fa0ku5gclqa" path="res://assets/Enemies/Guerriera/Death-Effect/Warrior_Death_8.png" id="28_8afsc"]
+[ext_resource type="Texture2D" uid="uid://dpgafq1ahuyfx" path="res://assets/Enemies/Guerriera/Death-Effect/Warrior_Death_9.png" id="29_byny6"]
+[ext_resource type="Texture2D" uid="uid://b34gyjqncopke" path="res://assets/Enemies/Guerriera/Death-Effect/Warrior_Death_10.png" id="30_nd6yr"]
+[ext_resource type="Texture2D" uid="uid://c3gieievg0okm" path="res://assets/Enemies/Guerriera/Death-Effect/Warrior_Death_11.png" id="31_rnmbt"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ok3hr"]
 animations = [{
@@ -112,6 +123,44 @@ animations = [{
 "loop": false,
 "name": &"Dash",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_tc03h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_6r3sa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_qwlet")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_ruxr8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_0is5v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_oynm8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_uq6bq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_8afsc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_byny6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_nd6yr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_rnmbt")
+}],
+"loop": false,
+"name": &"Death",
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
