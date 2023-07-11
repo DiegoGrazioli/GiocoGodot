@@ -1,6 +1,6 @@
 # GiocoGodot
 
-#### Ce la faremo a finire in tempo?
+#### Ce la faremo a finire in tempo? (spoiler: sì)
 
 ## Features:
 - Combattimento:
@@ -15,15 +15,17 @@
 
 ## Implementazioni desiderate:
 - Colore particelle basato su rarità arma (aggiungere variabile colore ad ogni struct item)
-- Statistiche level-based
+- ~~Statistiche level-based~~
 - NPCs
 - Mercato per ottenere item
-- Inventario
+- Inventario (barra)
 - Pausa
-- Main menu
+- ~~Main menu~~
 - Impostazioni
-- Salvataggio
+- ~~Salvataggio~~
 - Altri item (armatura, pozioni, ...)
+- Possibilità di raccogliere gli item (+info quando vicini)
+- Magia
 - Audio?
 
 ## Promemoria
@@ -32,8 +34,8 @@
 - Utilizzo oggetti LMB
 - Non esiste inventario, puoi modificare oggetti dal deposito
 - Possibili metodi di cura:
-	> Fontana revitalizzante
+	> ~~Fontana revitalizzante~~
 	
-	> Rigenerazione passiva
+	> ~~Rigenerazione passiva~~
 	
 	> Tramite pozioni
