@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://mn0n45xsgm5m"]
 
-[ext_resource type="Texture2D" uid="uid://bjcg87ma80gkp" path="res://assets/World/RPGW_Caves_v2.1/MainLev2.0.png" id="1_celcn"]
+[ext_resource type="Texture2D" uid="uid://b3duqeycmkqwx" path="res://assets/World/RPGW_Caves_v2.1/MainLev2.0.png" id="1_celcn"]
 [ext_resource type="Script" path="res://dungeon_1.gd" id="1_y6t34"]
 [ext_resource type="PackedScene" uid="uid://dd506jl64yl0m" path="res://Player/player.tscn" id="2_fwejx"]
 [ext_resource type="PackedScene" uid="uid://dt5wm13yl83rd" path="res://ui.tscn" id="3_n6q0g"]

@@ -18,7 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://dogw2ay16yehs" path="res://assets/Enemies/Slime/hurt/slime-hurt-1.png" id="12_8y7vd"]
 [ext_resource type="Texture2D" uid="uid://bela3cwpnkk4l" path="res://assets/Enemies/Slime/hurt/slime-hurt-2.png" id="13_pfkkx"]
 [ext_resource type="Texture2D" uid="uid://bwawp26crs1nh" path="res://assets/Enemies/Slime/hurt/slime-hurt-3.png" id="14_n7x6k"]
-[ext_resource type="FontFile" uid="uid://dehppjcpxlen5" path="res://assets/Fonts/Peaberry-Base.otf" id="19_3ftsk"]
+[ext_resource type="FontFile" uid="uid://ddnh6ut2nctfr" path="res://assets/Fonts/Peaberry-Base.otf" id="19_3ftsk"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gvygt"]
 animations = [{

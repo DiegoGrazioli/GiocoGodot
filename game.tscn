@@ -25,6 +25,7 @@ size = Vector2(34, 10)
 
 [node name="Mappa" type="Node2D"]
 y_sort_enabled = true
+position = Vector2(1, -2)
 script = ExtResource("1_3qjgd")
 metadata/_edit_horizontal_guides_ = [2516.0]
 metadata/_edit_vertical_guides_ = [4132.0]
@@ -33,13 +34,13 @@ metadata/_edit_vertical_guides_ = [4132.0]
 y_sort_enabled = true
 position = Vector2(531, 398)
 
-[node name="Camera2D" parent="Player" index="2"]
+[node name="Camera2D" parent="Player" index="1"]
 limit_left = 0
 limit_top = 0
 limit_right = 4032
 limit_bottom = 2416
 
-[node name="CanvasModulate" parent="Player" index="7"]
+[node name="CanvasModulate" parent="Player" index="6"]
 color = Color(0.823529, 0.823529, 0.823529, 1)
 
 [node name="OverWorld" type="TileMap" parent="."]
@@ -215,7 +216,6 @@ position = Vector2(3497, 2083)
 posx = 1508
 posy = 694
 
-[connection signal="animation_finished" from="Player/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="Dungeon1Portal" to="." method="_on_dungeon_1_portal_body_entered"]
 [connection signal="body_entered" from="StatsHouse" to="." method="_on_stats_house_body_entered"]
 [connection signal="body_exited" from="StatsHouse" to="." method="_on_stats_house_body_exited"]

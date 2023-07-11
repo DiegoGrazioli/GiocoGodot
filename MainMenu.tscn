@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://cirh3vpurecew"]
 
 [ext_resource type="Script" path="res://MainMenu.gd" id="1_43umh"]
-[ext_resource type="FontFile" uid="uid://dehppjcpxlen5" path="res://assets/Fonts/Peaberry-Base.otf" id="2_6032r"]
-[ext_resource type="Texture2D" uid="uid://cslv3nqj47wfp" path="res://assets/FX/light.png" id="2_mje4u"]
-[ext_resource type="Texture2D" uid="uid://b5wupccquccc7" path="res://assets/UI/UI Assets pack_v.1_st/UI Assets pack_v.1_st/Book.png" id="3_4kp0k"]
+[ext_resource type="FontFile" uid="uid://ddnh6ut2nctfr" path="res://assets/Fonts/Peaberry-Base.otf" id="2_6032r"]
+[ext_resource type="Texture2D" uid="uid://167y0evcw2j7" path="res://assets/FX/light.png" id="2_mje4u"]
+[ext_resource type="Texture2D" uid="uid://doah35dkfmydn" path="res://assets/UI/UI Assets pack_v.1_st/UI Assets pack_v.1_st/Book.png" id="3_4kp0k"]
 [ext_resource type="Texture2D" uid="uid://bm4wkdtnsudpp" path="res://LDAGames/LDAGames48.png" id="5_v0ghr"]
 
 [sub_resource type="Gradient" id="Gradient_ofew0"]
@@ -37,10 +37,12 @@ texture = ExtResource("2_mje4u")
 emission_shape = 3
 emission_rect_extents = Vector2(1, 315)
 gravity = Vector2(130, 0)
+orbit_velocity_min = 0.01
+orbit_velocity_max = 0.1
 tangential_accel_min = -100.0
 tangential_accel_max = 100.0
 scale_amount_min = 0.01
-scale_amount_max = 0.09
+scale_amount_max = 0.1
 color_ramp = SubResource("Gradient_ofew0")
 
 [node name="Container" type="Container" parent="."]
