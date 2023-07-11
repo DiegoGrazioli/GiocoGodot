@@ -38,6 +38,8 @@ var showBar = false
 
 var BossLife = 1
 
+var enemyPos = Vector2.ZERO
+
 func _physics_process(delta):
 	if  exp >= pow(2,playerLvl + 1):
 		exp -= pow(2,playerLvl + 1)

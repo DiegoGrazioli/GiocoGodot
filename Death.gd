@@ -6,6 +6,7 @@ func _ready():
 	Globals.life = 0
 	$Player/Sprite2D.play("Hurt", 0.25)
 	$AnimationPlayer.play("Death")
+	Globals.enemyPos = Vector2.ZERO
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

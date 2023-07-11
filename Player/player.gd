@@ -23,6 +23,16 @@ func _ready():
 	
 
 func _physics_process(delta):
+	if Globals.enemyPos != Vector2.ZERO:
+		var tempPos = Vector2((position.x + Globals.enemyPos.x) / 2, (position.y + Globals.enemyPos.y) / 2)
+		$Camera2D.position.x = tempPos.x - position.x
+		$Camera2D.position.y = tempPos.y - position.y
+		$Camera2D.zoom = Vector2(2, 2)
+	else:
+		$Camera2D.position.x = 0
+		$Camera2D.position.y = 0
+		$Camera2D.zoom = Vector2(3, 3)
+		
 	if Globals.loadingComplete and firstTime:
 		firstTime = false
 		position = Globals.playerPos

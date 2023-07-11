@@ -1,8 +1,6 @@
 extends CharacterBody2D
 class_name Enemy
 
-#Da fixare colore HealthBar e non-aggiornamento quando c'è l'await
-
 const SPEED = 90.0
 var life = 10.0
 var max_life = life
@@ -25,12 +23,18 @@ var damageIndicator = preload("res://damageIndicator.tscn")
 
 var useMoveSlide = true
 
+var updateCamera = false
+
 func _ready():
 	life = life * lvl
 	atk = atk * lvl
 	max_life = life
 
 func _physics_process(delta):
+	if updateCamera:
+		Globals.enemyPos = position
+	else:
+		Globals.enemyPos = Vector2.ZERO
 	if is_attacking and $Sprite2D.animation != "Attack":
 		is_attacking = false
 	$HealthBar.value = life * 100 / max_life
@@ -136,12 +140,13 @@ func move():
 func _on_area_2d_2_body_entered(body):
 	if body.name == "Player":
 		makeMove = true
+		updateCamera = true
 
 func _on_area_2d_2_body_exited(body):
 	if body.name == "Player":
 		makeMove = false
-
-
+		updateCamera = false
+		
 func _on_area_2d_3_body_entered(body):
 	useMoveSlide = false
 

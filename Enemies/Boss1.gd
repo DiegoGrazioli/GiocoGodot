@@ -25,6 +25,8 @@ var useMoveSlide = true
 
 var cast = false
 
+var updateCamera = false
+
 var en = preload("res://Enemies/blue_demon.tscn")
 var index = 0
 
@@ -35,6 +37,10 @@ func _ready():
 	$CastParticle.emitting = false
 
 func _physics_process(delta):
+	if updateCamera:
+		Globals.enemyPos = position
+	else:
+		Globals.enemyPos = Vector2.ZERO
 	Globals.BossLife = life
 	if $Sprite2D.animation != "Cast":
 		$CastParticle.emitting = false
@@ -202,8 +208,10 @@ func _on_cast_timer_timeout():
 func _on_boss_bar_body_entered(body):
 	if body.name == "Player":
 		Globals.showBar = true
+		updateCamera = true
 
 
 func _on_boss_bar_body_exited(body):
 	if body.name == "Player":
 		Globals.showBar = false
+		updateCamera = false
